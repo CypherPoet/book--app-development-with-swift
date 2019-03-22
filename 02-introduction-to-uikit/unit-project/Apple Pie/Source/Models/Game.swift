@@ -20,11 +20,9 @@ struct Game {
     var state: State
     
    
-    var currentAnswer: String {
+    var remainingLettersToGuess: Set<Character> {
         didSet {
-            if currentAnswer != answerToGuess {
-                mistakesRemaining -= 1
-            } else {
+            if remainingLettersToGuess.isEmpty {
                 state = .won
             }
         }
@@ -43,7 +41,20 @@ struct Game {
         self.answerToGuess = answerToGuess
         self.mistakesRemaining = guessesRemaining
         
-        self.state = .playing
-        self.currentAnswer = ""
+        state = .playing
+        remainingLettersToGuess = Set<Character>(answerToGuess.sorted())
+    }
+}
+
+
+// MARK: - Core Methods
+
+extension Game {
+    mutating func letterGuessed(_ letter: String) {
+        if answerToGuess.contains(letter) {
+            remainingLettersToGuess.remove(Character(letter))
+        } else {
+            mistakesRemaining -= 1
+        }
     }
 }

@@ -62,6 +62,15 @@ extension HomeViewController {
     var winLossLabelText: String {
         return "Wins: \(totalWins), Losses: \(totalLosses)"
     }
+    
+    var formattedAnswerText: String {
+        return currentGame.answerToGuess.reduce("", { (accumulated, currentCharacter) -> String in
+            if currentGame.remainingLettersToGuess.contains(currentCharacter) {
+                return accumulated + "_"
+            }
+            return accumulated + String(currentCharacter)
+        })
+    }
 }
 
 
@@ -69,9 +78,11 @@ extension HomeViewController {
 
 extension HomeViewController {
     @IBAction func letterButtonPressed(_ button: UIButton) {
-        guard let letter = button.titleLabel?.text else {
+        guard let letter = button.title(for: .normal) else {
             fatalError("Failed to read letter from button")
         }
+        
+        currentGame.letterGuessed(letter.lowercased())
         
         button.isEnabled = false
     }
@@ -88,12 +99,54 @@ private extension HomeViewController {
     
     func handleGameChange() {
         treeImageView.image = currentTreeImage
+        answerLetterLabel.text = formattedAnswerText
         
         switch currentGame.state {
-        default:
+        case .lost:
+            handleLoss()
+        case .won:
+            handleWin()
+        case .playing:
             break
         }
     }
     
+    
+    func handleLoss() {
+        let alertController = UIAlertController(
+            title: "Round Lost",
+            message: "Sorry, the correct word was \"\(currentGame.answerToGuess)\". Press OK to start a new round",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(
+            UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                self?.currentScore -= 1
+                self?.totalLosses += 1
+                self?.startNewRound()
+            }
+        )
+        
+        present(alertController, animated: true)
+    }
+    
+
+    func handleWin() {
+        let alertController = UIAlertController(
+            title: "Well Done! 👏",
+            message: "You won the round. Press OK to continue to the next level",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(
+            UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                self?.currentScore += 3
+                self?.totalWins += 1
+                self?.startNewRound()
+            }
+        )
+        
+        present(alertController, animated: true)
+    }
 }
 
