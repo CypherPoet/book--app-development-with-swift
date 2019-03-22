@@ -8,19 +8,22 @@
 
 import UIKit
 
+// 📝 Ideally, this would be loaded in externally 🙂
+let wordChoices = ["buccaneer", "swift", "glorious",
+"incandescent", "bug", "program"]
+
+
 class HomeViewController: UIViewController {
-    @IBOutlet weak var answerSpacesLabel: UILabel!
+    @IBOutlet weak var winLossLabel: UILabel!
     @IBOutlet weak var answerLetterLabel: UILabel!
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var letterButtons: [UIButton]!
     
-    var answerWord = ""
+    let maxGuesses = 7
     
-    var currentAnswer = "" {
-        didSet {
-            
-        }
+    var currentGame: Game! {
+        didSet { handleGameChange() }
     }
     
     var currentScore = 0 {
@@ -29,11 +32,36 @@ class HomeViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    var totalWins = 0 {
+        didSet { winLossLabel.text = winLossLabelText }
     }
     
+    var totalLosses = 0 {
+        didSet { winLossLabel.text = winLossLabelText }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        currentScore = 0
+        totalWins = 0
+        totalLosses = 0
+        startNewRound()
+    }
+}
+
+
+// MARK: - Computed Properties
+
+extension HomeViewController {
+    var currentTreeImage: UIImage {
+        return UIImage(named: "Tree \(currentGame.mistakesRemaining)")!
+    }
+    
+    var winLossLabelText: String {
+        return "Wins: \(totalWins), Losses: \(totalLosses)"
+    }
 }
 
 
@@ -47,5 +75,25 @@ extension HomeViewController {
         
         button.isEnabled = false
     }
+}
+
+
+// MARK: - Private Helper Methods
+
+private extension HomeViewController {
+    func startNewRound() {
+        currentGame = Game(answerToGuess: wordChoices.randomElement()!, guessesRemaining: maxGuesses)
+    }
+    
+    
+    func handleGameChange() {
+        treeImageView.image = currentTreeImage
+        
+        switch currentGame.state {
+        default:
+            break
+        }
+    }
+    
 }
 

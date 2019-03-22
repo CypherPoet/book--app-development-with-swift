@@ -12,6 +12,7 @@
 		F37698872243746A006966DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F376987F2243746A006966DA /* Assets.xcassets */; };
 		F37698882243746A006966DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F37698812243746A006966DA /* LaunchScreen.storyboard */; };
 		F37698892243746A006966DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37698822243746A006966DA /* AppDelegate.swift */; };
+		F37698902244480B006966DA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376988F2244480B006966DA /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		F37698812243746A006966DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F37698822243746A006966DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F37698842243746A006966DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F376988F2244480B006966DA /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		F37698792243746A006966DA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F376988E22444804006966DA /* Models */,
 				F376988B22437597006966DA /* Extensions */,
 				F376987A2243746A006966DA /* Scenes */,
 				F376987E2243746A006966DA /* Content */,
@@ -110,6 +113,14 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F376988E22444804006966DA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F376988F2244480B006966DA /* Game.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37698892243746A006966DA /* AppDelegate.swift in Sources */,
+				F37698902244480B006966DA /* Game.swift in Sources */,
 				F37698852243746A006966DA /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

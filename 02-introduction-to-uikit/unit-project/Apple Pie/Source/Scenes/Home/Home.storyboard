@@ -287,9 +287,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="answerLetterLabel" destination="oU1-WL-dEy" id="URD-G1-QcX"/>
-                        <outlet property="answerSpacesLabel" destination="lLf-AX-WPt" id="IXh-Rx-Mdv"/>
                         <outlet property="scoreLabel" destination="iw4-3l-Frc" id="jGD-ff-7ek"/>
                         <outlet property="treeImageView" destination="22x-ux-Iik" id="O33-vx-gxw"/>
+                        <outlet property="winLossLabel" destination="lLf-AX-WPt" id="IXh-Rx-Mdv"/>
                         <outletCollection property="letterButtons" destination="qg9-6b-3tE" collectionClass="NSMutableArray" id="ci3-Aa-fwE"/>
                         <outletCollection property="letterButtons" destination="mHA-NR-of9" collectionClass="NSMutableArray" id="Cwl-uz-y8U"/>
                         <outletCollection property="letterButtons" destination="eg4-Ut-GWK" collectionClass="NSMutableArray" id="1oK-2d-ZjL"/>
