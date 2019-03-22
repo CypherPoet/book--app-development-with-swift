@@ -8,15 +8,33 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
-| 1 - Getting Started | <br>[Light](./01-getting-started/unit-project/Light): A minimalist flashlight app 🔦 | Xcode, Interface Builder, and connecting outlets and actions between them | ✅ |
-| 2 - Intro to UIKit | <br> [Hello](./02-introduction-to-uikit/lesson-projects/Hello): An app for introducing someone. | Configuring views in Interface Builder; customizing labels; customizing image views | 🚧 |
-| 2 - Intro to UIKit | <br> [Auto-Layout Calculator](./02-introduction-to-uikit/lesson-projects/Calculator): Using nested vertical and horizontal stack views to display a calculator that fits lays out cleanly across size classes | ✅ |
+| 1 - Getting Started | [Light](./01-getting-started/unit-project/Light): A minimalist flashlight app 🔦 | Xcode, Interface Builder, and connecting outlets and actions between them | ✅ |
+| 2 - Intro to UIKit |  [Hello](./02-introduction-to-uikit/lesson-projects/Hello): An app for introducing someone. | Configuring views in Interface Builder; customizing labels; customizing image views | 🚧 |
+| 2 - Intro to UIKit |  [Auto-Layout Calculator](./02-introduction-to-uikit/lesson-projects/Calculator) | Using nested vertical and horizontal stack views to display a calculator that fits lays out cleanly across size classes | ✅ |
+
+<br>
+<br>
 
 <div style="text-align: center;">
   <img src="./02-introduction-to-uikit/lesson-projects/Calculator/Screenshots/portrait.png" width="200"/>
   <img src="./02-introduction-to-uikit/lesson-projects/Calculator/Screenshots/landscape.png" width="400"/>
 </div>
 
+<br>
+<br>
+
+
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
-| 2 - Intro to UIKit | <br> [Apple Pie](./02-introduction-to-uikit/lesson-projects/Calculator):  | 🚧 |
+| 2 - Intro to UIKit | <br> [Apple Pie](./02-introduction-to-uikit/unit-project): A hangman-style word guessing game | Building a game interface with nested vertical and horizontal stack views; responding to events and updating complex interfaces based on game state changes | ✅ |
+
+<br>
+<br>
+
+<div style="text-align: center;">
+  <img src="./02-introduction-to-uikit/unit-project/Apple%20Pie/Screenshots/portrait-1.png" width="200"/>
+  <img src="./02-introduction-to-uikit/unit-project/Apple%20Pie/Screenshots/landscape-1.png" width="400"/>
+</div>
+
+<br>
+<br>

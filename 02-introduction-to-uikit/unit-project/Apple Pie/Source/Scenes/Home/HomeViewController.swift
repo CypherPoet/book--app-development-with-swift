@@ -63,13 +63,19 @@ extension HomeViewController {
         return "Wins: \(totalWins), Losses: \(totalLosses)"
     }
     
-    var formattedAnswerText: String {
+    var revealedAnswer: String {
         return currentGame.answerToGuess.reduce("", { (accumulated, currentCharacter) -> String in
             if currentGame.remainingLettersToGuess.contains(currentCharacter) {
                 return accumulated + "_"
             }
             return accumulated + String(currentCharacter)
         })
+    }
+    
+    var formattedAnswerText: String {
+        return revealedAnswer
+            .map{ String($0) }
+            .joined(separator: " ")
     }
 }
 
@@ -93,6 +99,7 @@ extension HomeViewController {
 
 private extension HomeViewController {
     func startNewRound() {
+        letterButtons.forEach { $0.isEnabled = true }
         currentGame = Game(answerToGuess: wordChoices.randomElement()!, guessesRemaining: maxGuesses)
     }
     
@@ -121,9 +128,11 @@ private extension HomeViewController {
         
         alertController.addAction(
             UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-                self?.currentScore -= 1
-                self?.totalLosses += 1
-                self?.startNewRound()
+                guard let self = self else { return }
+                
+                self.currentScore = max(0, self.currentScore - 1)
+                self.totalLosses += 1
+                self.startNewRound()
             }
         )
         
@@ -140,9 +149,11 @@ private extension HomeViewController {
         
         alertController.addAction(
             UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-                self?.currentScore += 3
-                self?.totalWins += 1
-                self?.startNewRound()
+                guard let self = self else { return }
+
+                self.currentScore += 3
+                self.totalWins += 1
+                self.startNewRound()
             }
         )
         
