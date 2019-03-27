@@ -12,6 +12,7 @@
 		F3AB133C2249057D007B7B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AB133A2249057D007B7B73 /* Main.storyboard */; };
 		F3AB133E2249057E007B7B73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AB133D2249057E007B7B73 /* Assets.xcassets */; };
 		F3AB13412249057E007B7B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AB133F2249057E007B7B73 /* LaunchScreen.storyboard */; };
+		F3AB134A224A9E53007B7B73 /* StoryboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1349224A9E53007B7B73 /* StoryboardID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		F3AB133D2249057E007B7B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3AB13402249057E007B7B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3AB13422249057E007B7B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3AB1349224A9E53007B7B73 /* StoryboardID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,17 @@
 				F3AB133D2249057E007B7B73 /* Assets.xcassets */,
 				F3AB133F2249057E007B7B73 /* LaunchScreen.storyboard */,
 				F3AB13422249057E007B7B73 /* Info.plist */,
+				F3AB1348224A9E46007B7B73 /* Helpers */,
 			);
 			path = TrafficSegues;
+			sourceTree = "<group>";
+		};
+		F3AB1348224A9E46007B7B73 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F3AB1349224A9E53007B7B73 /* StoryboardID.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3AB134A224A9E53007B7B73 /* StoryboardID.swift in Sources */,
 				F3AB13392249057D007B7B73 /* RedViewController.swift in Sources */,
 				F3AB13372249057D007B7B73 /* AppDelegate.swift in Sources */,
 			);

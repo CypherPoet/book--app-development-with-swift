@@ -11,11 +11,40 @@ import UIKit
 class RedViewController: UIViewController {
     @IBOutlet weak var nextTitleText: UITextField!
     
+    
+    enum NavLockState {
+        case enabled, disabled
+    }
+    
+    var currentNavLockState: NavLockState = .enabled
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 }
+
+
+// MARK: - Event handling
+
+extension RedViewController {
+    @IBAction func navLockStateToggled(_ sender: UISwitch) {
+        currentNavLockState = sender.isOn ? .disabled : .enabled
+    }
+    
+    @IBAction func showYellowTapped(_ sender: UIButton) {
+        if currentNavLockState == .enabled {
+            performSegue(withIdentifier: StoryboardID.Segue.showYellow, sender: sender)
+        }
+    }
+    
+    @IBAction func showGreenTapped(_ sender: UIButton) {
+        if currentNavLockState == .enabled {
+            performSegue(withIdentifier: StoryboardID.Segue.showGreen, sender: sender)
+        }
+    }
+}
+
 
 
 // MARK: - Navigation

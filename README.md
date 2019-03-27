@@ -38,3 +38,19 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 <br>
 <br>
+
+| Unit | Project | Topics Covered | Progress |
+| :--: | :--------------------------: | :--------------: | :--------: |
+| 3 - Navigation and Workflows | <br> [Traffic Segues](./03-navigation-and-workflows/lesson-projects/TrafficSegues) | Using programmatic an Storyboard-based segues to construct multiple levels of view transitions; reading segue identifiers; different segue animations. | ✅ |
+
+<br/>
+<br/>
+
+<div style="text-align: center;">
+  <img src="./03-navigation-and-workflows/lesson-projects/TrafficSegues/screenshots/screenshot-1.png" width="30%"/>
+  <img src="./03-navigation-and-workflows/lesson-projects/TrafficSegues/screenshots/screenshot-2.png" width="30%"/>
+  <img src="./03-navigation-and-workflows/lesson-projects/TrafficSegues/screenshots/screenshot-3.png" width="30%"/>
+</div>
+
+<br/>
+<br/>
