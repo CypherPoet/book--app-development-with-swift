@@ -26,7 +26,7 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
-| 2 - Intro to UIKit | <br> [Apple Pie](./02-introduction-to-uikit/unit-project): A hangman-style word guessing game | Building a game interface with nested vertical and horizontal stack views; responding to events and updating complex interfaces based on game state changes | ✅ |
+| 2 - Intro to UIKit | [Apple Pie](./02-introduction-to-uikit/unit-project): A hangman-style word guessing game | Building a game interface with nested vertical and horizontal stack views; responding to events and updating complex interfaces based on game state changes | ✅ |
 
 <br>
 <br>
@@ -41,7 +41,7 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
-| 3 - Navigation and Workflows | <br> [Traffic Segues](./03-navigation-and-workflows/lesson-projects/TrafficSegues) | Using programmatic an Storyboard-based segues to construct multiple levels of view transitions; reading segue identifiers; different segue animations. | ✅ |
+| 3 - Navigation and Workflows | [Traffic Segues](./03-navigation-and-workflows/lesson-projects/TrafficSegues) | Using programmatic and Storyboard-based segues to construct multiple levels of view transitions; reading segue identifiers; different segue animations. | ✅ |
 
 <br/>
 <br/>
@@ -54,3 +54,8 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 <br/>
 <br/>
+
+| Unit | Project | Topics Covered | Progress |
+| :--: | :--------------------------: | :--------------: | :--------: |
+| 3 - Navigation and Workflows | [Login](./03-navigation-and-workflows/lesson-projects/Login) | Using programmatic and Storyboard-based segues to orchestrate a login page flow. | ✅ |
+
