@@ -58,4 +58,5 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
 | 3 - Navigation and Workflows | [Login](./03-navigation-and-workflows/lesson-projects/Login) | Using programmatic and Storyboard-based segues to orchestrate a login page flow. | ✅ |
+| 3 - Navigation and Workflows | [Rainbow Tabs](./03-navigation-and-workflows/lesson-projects/RainbowTabs) | Relating a TabBarController to child view controllers and customizing the tab bar button icon for each  | ✅ |
 
