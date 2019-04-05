@@ -15,10 +15,10 @@
                 <outlet property="questionLabel" destination="QwC-oz-IFt" id="8VL-zf-ugg"/>
                 <outlet property="submitButton" destination="HiC-iz-3dW" id="4BM-S2-8zm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outletCollection property="answerSwitch" destination="niv-yR-hkg" collectionClass="NSMutableArray" id="MWw-DG-IhQ"/>
-                <outletCollection property="answerSwitch" destination="x7B-EM-sSB" collectionClass="NSMutableArray" id="ozL-lT-zdV"/>
-                <outletCollection property="answerSwitch" destination="xAh-x4-R84" collectionClass="NSMutableArray" id="Ix9-7K-xOp"/>
-                <outletCollection property="answerSwitch" destination="wQC-Ii-iyb" collectionClass="NSMutableArray" id="zbX-vS-Bhn"/>
+                <outletCollection property="answerSwitches" destination="niv-yR-hkg" collectionClass="NSMutableArray" id="MWw-DG-IhQ"/>
+                <outletCollection property="answerSwitches" destination="x7B-EM-sSB" collectionClass="NSMutableArray" id="ozL-lT-zdV"/>
+                <outletCollection property="answerSwitches" destination="xAh-x4-R84" collectionClass="NSMutableArray" id="Ix9-7K-xOp"/>
+                <outletCollection property="answerSwitches" destination="wQC-Ii-iyb" collectionClass="NSMutableArray" id="zbX-vS-Bhn"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

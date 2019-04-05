@@ -10,12 +10,19 @@ import UIKit
 
 class Question2ViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet var answerSwitch: [UISwitch]!
+    @IBOutlet var answerSwitches: [UISwitch]!
     @IBOutlet weak var submitButton: UIButton!
     
     enum SubmissionState {
         case submitEnabled
         case submitDisabled
+    }
+    
+    enum AnswerTag {
+        static let negativeTenYears = 1
+        static let lived = 2
+        static let threeHundredYears = 3
+        static let oneThousandPlusYears = 4
     }
     
     var currentSubmissionState: SubmissionState = .submitDisabled {
@@ -31,7 +38,13 @@ class Question2ViewController: UIViewController {
 
 extension Question2ViewController {
     var canSubmitAnswer: Bool {
-        return answerSwitch.first { $0.isOn == true } != nil
+        return answerSwitches.first { $0.isOn == true } != nil
+    }
+    
+    var tagsActivated: [Int] {
+        return answerSwitches
+            .filter { $0.isOn }
+            .map { $0.tag }
     }
 }
 
@@ -60,25 +73,65 @@ extension Question2ViewController {
     
     @IBAction func submitButtonTapped(_ button: UIButton) {
         // TODO: Handle logic
+        guard tagsActivated.count > 0 else {
+            preconditionFailure("Submit should not be enabled until a switch is activated.")
+        }
         
-        // (All: Assume wizard)
-        //
-        // -10 years (if checked: wizard)
-        //
-        // Lived? (only: vampire)
-        //
-        // 300 years (only: mermaid)
-        //
-        // 1000+ years (only: elf)
-        //
-        // Lived? + 300 years: vampire
-        //
-        // 300 + 1000:
-        //     - is -10 checked: wizard
-        //          - else: elf
-        //
-        // Any other two: wizard
+        guard tagsActivated.count <= 4 else {
+            preconditionFailure("Too many switch tags are being recorded")
+        }
         
+        if tagsActivated.count == 4 {
+            // All: Assume wizard
+            handleAnswer(for: .wizard)
+        } else if tagsActivated.count == 1 {
+            switch tagsActivated[0] {
+            case AnswerTag.negativeTenYears:
+                // -10 years only: wizard
+                handleAnswer(for: .wizard)
+            case AnswerTag.lived:
+                // "Lived?" only: vampire
+                handleAnswer(for: .vampire)
+            case AnswerTag.threeHundredYears:
+                // 300 years only: mermaid
+                handleAnswer(for: .mermaid)
+            case AnswerTag.oneThousandPlusYears:
+                // 1000+ years only: elf
+                handleAnswer(for: .elf)
+            default:
+                assertionFailure("Active tag should correspond to an answer tag.")
+            }
+        } else if tagsActivated.count == 2 {
+            if
+                tagsActivated.contains(AnswerTag.lived),
+                tagsActivated.contains(AnswerTag.threeHundredYears)
+            {
+                // "Lived?" + 300 years: vampire
+                handleAnswer(for: .vampire)
+            } else {
+                // Any other two: wizard
+                handleAnswer(for: .wizard)
+            }
+        } else {
+            if tagsActivated.contains(AnswerTag.lived) {
+               handleAnswer(for: .vampire)
+            } else if
+                tagsActivated.contains(AnswerTag.threeHundredYears),
+                tagsActivated.contains(AnswerTag.oneThousandPlusYears)
+            {
+                // 300 + 1000:
+                //     - is -10 checked: wizard
+                //          - else: elf
+                if tagsActivated.contains(AnswerTag.negativeTenYears) {
+                    handleAnswer(for: .wizard)
+                } else {
+                    handleAnswer(for: .elf)
+                }
+            } else {
+                // Only black magic could make it this far 😛
+                handleAnswer(for: .wizard)
+            }
+        }
     }
 
     
@@ -92,10 +145,12 @@ extension Question2ViewController {
         switch currentSubmissionState {
         case .submitDisabled:
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.submitButton.isEnabled = false
                 self?.submitButton.alpha = 0.5
             })
         case .submitEnabled:
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.submitButton.isEnabled = true
                 self?.submitButton.alpha = 1.0
             })
         }
@@ -109,7 +164,6 @@ extension Question2ViewController {
 extension Question2ViewController: QuestionViewController {
     func handleAnswer(for creature: Creature) {
         question.answeredFor = creature
-        
         delegate?.answerSubmitted(for: question)
     }
 }
