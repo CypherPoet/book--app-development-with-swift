@@ -9,24 +9,53 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
+    @IBOutlet weak var creatureSymbolLabel: UILabel!
+    @IBOutlet weak var resultDescriptionLabel: UILabel!
+    
+    
     var creatureAnswer: Creature!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupUI()
     }
+}
+
+
+// MARK: - Computed Properties
+
+extension ResultsViewController {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    var resultDescription: String {
+        guard let creature = creatureAnswer else {
+            fatalError("ResultsViewController has no answer")
+        }
+        
+        switch creature {
+        case .elf:
+            return "You turned out to be an Elf!"
+        case .mermaid:
+            return "You turned out to be a Mermaid!"
+        case .vampire:
+            return "You turned out to be a Vampire!"
+        case .wizard:
+            return "You're a Wizard!"
+        }
     }
-    */
+}
 
+
+
+// MARK: - Private Helper Methods
+
+extension ResultsViewController {
+    
+    func setupUI() {
+        navigationItem.hidesBackButton = true
+        
+        creatureSymbolLabel.text = creatureAnswer.rawValue
+        resultDescriptionLabel.text = resultDescription
+    }
 }

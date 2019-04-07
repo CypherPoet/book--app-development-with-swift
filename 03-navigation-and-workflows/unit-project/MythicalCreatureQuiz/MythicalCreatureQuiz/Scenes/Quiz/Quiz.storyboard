@@ -155,7 +155,42 @@
                     <view key="view" contentMode="scaleToFill" id="77l-DQ-EXh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B8s-bK-OuA">
+                                <rect key="frame" x="0.0" y="152" width="414" height="646"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhQ-tI-cF8">
+                                        <rect key="frame" x="100" y="0.0" width="214" height="117.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧛‍♂️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Z7-RP-qbX">
+                                        <rect key="frame" x="157.5" y="125.5" width="99" height="359"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="92"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You turned out to be a Vampire!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ax-9U-XrV">
+                                        <rect key="frame" x="16" y="492.5" width="382" height="153.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5Ax-9U-XrV" firstAttribute="leading" secondItem="B8s-bK-OuA" secondAttribute="leading" constant="16" id="fW0-dW-s76"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Ax-9U-XrV" secondAttribute="trailing" constant="16" id="gFm-PN-Z5c"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B8s-bK-OuA" firstAttribute="top" secondItem="cd9-I6-RrL" secondAttribute="top" constant="64" id="5Zq-ed-c45"/>
+                            <constraint firstItem="B8s-bK-OuA" firstAttribute="bottom" secondItem="cd9-I6-RrL" secondAttribute="bottom" constant="-64" id="NpI-f5-oDP"/>
+                            <constraint firstItem="B8s-bK-OuA" firstAttribute="leading" secondItem="cd9-I6-RrL" secondAttribute="leading" id="lwG-uM-WWq"/>
+                            <constraint firstItem="cd9-I6-RrL" firstAttribute="trailing" secondItem="B8s-bK-OuA" secondAttribute="trailing" id="tev-RA-7rj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cd9-I6-RrL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="v1y-1E-G7L">
@@ -166,6 +201,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="creatureSymbolLabel" destination="0Z7-RP-qbX" id="CWS-FE-N0N"/>
+                        <outlet property="resultDescriptionLabel" destination="5Ax-9U-XrV" id="rp7-1V-TY8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGb-cl-cdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="SER-Bg-SL7" userLabel="Exit" sceneMemberID="exit"/>

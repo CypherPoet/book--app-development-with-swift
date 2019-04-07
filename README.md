@@ -60,5 +60,22 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 | 3 - Navigation and Workflows | [Login](./03-navigation-and-workflows/lesson-projects/Login) | Using programmatic and Storyboard-based segues to orchestrate a login page flow. | ✅ |
 | 3 - Navigation and Workflows | [Rainbow Tabs](./03-navigation-and-workflows/lesson-projects/RainbowTabs) | Relating a TabBarController to child view controllers and customizing the tab bar button icon for each  | ✅ |
 | 3 - Navigation and Workflows | [Life Cycle](./03-navigation-and-workflows/lesson-projects/LifeCycle) | Debugging and viewing the lifecycle events of view controllers as they're called between two transitioning controllers  | ✅ |
-| 3 - Navigation and Workflows | [Mythical Creature Personality Quiz](./03-navigation-and-workflows/unit-project/MythicalCreatureQuiz) | Debugging and viewing the lifecycle events of view controllers as they're called between two transitioning controllers  | ✅ |
+| 3 - Navigation and Workflows | [Mythical Creature Personality Quiz](./03-navigation-and-workflows/unit-project/MythicalCreatureQuiz) | View Controller Containment; encapsulating views in nibs; communicating game state across controllers and transitions; more fun with stack views, Auto Layout, and interface controls 😀  | ✅ |
+
+<br/>
+<br/>
+
+<div style="text-align: center;">
+  <img src="./03-navigation-and-workflows/unit-project/MythicalCreatureQuiz/screenshots/screenshot-1.png" width="30%"/>
+  <img src="./03-navigation-and-workflows/unit-project/MythicalCreatureQuiz/screenshots/screenshot-2.png" width="30%"/>
+  <img src="./03-navigation-and-workflows/unit-project/MythicalCreatureQuiz/screenshots/screenshot-3.png" width="30%"/>
+</div>
+
+<div style="text-align: center;">
+  <img src="./03-navigation-and-workflows/unit-project/MythicalCreatureQuiz/screenshots/screenshot-4.png" width="45%"/>
+  <img src="./03-navigation-and-workflows/unit-project/MythicalCreatureQuiz/screenshots/screenshot-5.png" width="45%"/>
+</div>
+
+<br/>
+<br/>
 
