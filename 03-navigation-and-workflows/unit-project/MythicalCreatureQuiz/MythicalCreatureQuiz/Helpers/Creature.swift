@@ -8,9 +8,11 @@
 
 import Foundation
 
-enum Creature: CaseIterable {
-    case elf
-    case mermaid
-    case vampire
-    case wizard
+
+
+enum Creature: String, CaseIterable {
+    case elf = "🧝‍♀️"
+    case mermaid = "🧜‍♀️"
+    case vampire = "🧛‍♂️"
+    case wizard = "🧙‍♂️"
 }

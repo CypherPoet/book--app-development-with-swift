@@ -9,7 +9,9 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-
+    var creatureAnswer: Creature!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

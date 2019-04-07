@@ -29,7 +29,8 @@ class Question2ViewController: UIViewController {
         didSet { submissionStateChanged() }
     }
     
-    lazy var question: Question = Question(text: "Members of your species have lived to...")
+    lazy var question: Question = Question(number: 2, text: "Members of your species have lived to...")
+    
     weak var delegate: QuestionViewControllerDelegate? = nil
 }
 

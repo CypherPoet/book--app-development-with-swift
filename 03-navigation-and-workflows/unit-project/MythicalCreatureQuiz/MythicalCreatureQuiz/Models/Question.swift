@@ -9,10 +9,13 @@
 import Foundation
 
 struct Question {
+    var number: Int
     var text: String
     var answeredFor: Creature? = nil
+
     
-    init(text: String) {
+    init(number: Int, text: String) {
+        self.number = number
         self.text = text
     }
 }

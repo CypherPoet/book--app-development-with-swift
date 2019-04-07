@@ -36,6 +36,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧜‍♀️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpi-f7-LOk">
+                                <rect key="frame" x="8" y="804.5" width="52" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="bSr-gi-CfO">
                                 <rect key="frame" x="8" y="374" width="398" height="148"/>
                                 <subviews>
@@ -62,12 +68,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧜‍♀️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpi-f7-LOk">
-                                <rect key="frame" x="8" y="804.5" width="52" height="57.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -91,36 +91,57 @@
             </objects>
             <point key="canvasLocation" x="-199.55357142857142" y="137.68115942028987"/>
         </scene>
-        <!--Questions View Controller-->
+        <!--Questions Container View Controller-->
         <scene sceneID="dWK-ry-Fw3">
             <objects>
-                <viewController id="YQu-hO-G9f" customClass="QuestionsViewController" customModule="MythicalCreatureQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YQu-hO-G9f" customClass="QuestionsContainerViewController" customModule="MythicalCreatureQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qgm-L2-Rej">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVR-AN-T1Y">
-                                <rect key="frame" x="168" y="438" width="78" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z6W-SQ-jSl">
-                                <rect key="frame" x="152" y="348" width="110" height="200"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="CZO-BA-lAA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjM-s2-2jj">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
+                                        <connections>
+                                            <segue destination="JVV-cY-fYS" kind="embed" identifier="Embed Questions View Controller" id="zZ1-fX-bXq"/>
+                                        </connections>
+                                    </containerView>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="diT-NV-YRM">
+                                        <rect key="frame" x="16" y="772" width="382" height="2"/>
+                                    </progressView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xjM-s2-2jj" secondAttribute="trailing" id="4om-dX-a20"/>
+                                    <constraint firstAttribute="trailing" secondItem="diT-NV-YRM" secondAttribute="trailing" constant="16" id="mfZ-kI-PbK"/>
+                                    <constraint firstItem="diT-NV-YRM" firstAttribute="leading" secondItem="CZO-BA-lAA" secondAttribute="leading" constant="16" id="qWK-Cl-Ann"/>
+                                    <constraint firstItem="xjM-s2-2jj" firstAttribute="leading" secondItem="CZO-BA-lAA" secondAttribute="leading" id="vdn-V8-AQn"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="z6W-SQ-jSl" firstAttribute="centerY" secondItem="Qgm-L2-Rej" secondAttribute="centerY" id="AuB-G9-cPt"/>
-                            <constraint firstItem="z6W-SQ-jSl" firstAttribute="centerX" secondItem="Qgm-L2-Rej" secondAttribute="centerX" id="c3h-C9-5Qf"/>
+                            <constraint firstItem="CZO-BA-lAA" firstAttribute="top" secondItem="WbI-Lb-oqf" secondAttribute="top" id="eqh-sD-tqW"/>
+                            <constraint firstItem="CZO-BA-lAA" firstAttribute="leading" secondItem="Qgm-L2-Rej" secondAttribute="leading" id="gLm-5w-qy2"/>
+                            <constraint firstItem="CZO-BA-lAA" firstAttribute="bottom" secondItem="WbI-Lb-oqf" secondAttribute="bottom" id="i1Y-ij-hFL"/>
+                            <constraint firstAttribute="trailing" secondItem="CZO-BA-lAA" secondAttribute="trailing" id="t78-MI-d4X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WbI-Lb-oqf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dED-1I-e9w"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="WUi-Ov-EV4"/>
+                        <barButtonItem title="Progress Bar" style="plain" id="cqO-jX-yd2"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="HZP-JE-eMz"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="dED-1I-e9w">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outletCollection property="questionViews" destination="z6W-SQ-jSl" collectionClass="NSMutableArray" id="2Uq-y3-KcS"/>
-                        <segue destination="eyG-rs-hXR" kind="show" identifier="ShowResults" id="DUY-AC-48d"/>
+                        <outlet property="quizProgressBar" destination="diT-NV-YRM" id="153-2q-cAX"/>
+                        <segue destination="eyG-rs-hXR" kind="show" identifier="Show Results" id="DUY-AC-48d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCc-mU-r6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,6 +165,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGb-cl-cdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="SER-Bg-SL7" userLabel="Exit" sceneMemberID="exit"/>
@@ -158,8 +180,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2aO-FP-VeG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="inL-5C-dmV">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </toolbar>
                     <connections>
                         <segue destination="YQu-hO-G9f" kind="relationship" relationship="rootViewController" id="4aZ-cF-hHK"/>
                     </connections>
@@ -167,6 +194,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HCg-dR-pv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="715.94202898550725" y="138.61607142857142"/>
+        </scene>
+        <!--Questions View Controller-->
+        <scene sceneID="zOn-Je-A7S">
+            <objects>
+                <viewController id="JVV-cY-fYS" customClass="QuestionsViewController" customModule="MythicalCreatureQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d9J-5d-gip">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vyf-kS-vPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1625" y="855"/>
         </scene>
     </scenes>
 </document>

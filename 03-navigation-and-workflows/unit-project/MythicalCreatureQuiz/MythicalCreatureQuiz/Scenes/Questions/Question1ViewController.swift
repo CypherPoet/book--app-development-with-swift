@@ -18,7 +18,8 @@ class Question1ViewController: UIViewController {
         4: .wizard,
     ]
     
-    lazy var question = Question(text: "If presented, which food would you prefer the most?")
+    lazy var question = Question(number: 1, text: "If presented, which food would you prefer the most?")
+    
     weak var delegate: QuestionViewControllerDelegate? = nil
 }
 
