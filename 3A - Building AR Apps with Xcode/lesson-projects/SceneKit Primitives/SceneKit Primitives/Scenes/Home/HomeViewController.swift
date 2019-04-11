@@ -34,7 +34,7 @@ extension HomeViewController {
         super.viewDidLoad()
         
         sceneView.delegate = self
-//        sceneView.debugOptions = [.showWorldOrigin]
+        sceneView.debugOptions = [.showWorldOrigin, .showFeaturePoints]
         sceneView.showsStatistics = true
         sceneView.autoenablesDefaultLighting = true
         
