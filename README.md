@@ -79,3 +79,8 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 <br/>
 <br/>
 
+
+| Unit | Project | Topics Covered | Progress |
+| :--: | :--------------------------: | :--------------: | :--------: |
+| 3A - Building AR Apps with Xcode | [Surface Coater](./3A%20-%20-Building%20AR%20Apps%20with%20Xcode/lesson-projects/Surface%20Coater/) | Detecting vertical and horizontal planes in the world; overlaying different colored planes on differently aligned surfaces | ✅ |
+| 3A - Building AR Apps with Xcode | [AR Shots](./3A%20-%20-Building%20AR%20Apps%20with%20Xcode/lesson-projects/ARShots/) | Translating user  taps into real-world positions; placing 3D objects when discovered planes are selected; adding physics to an AR scene | 🛠 |
