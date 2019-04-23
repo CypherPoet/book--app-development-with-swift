@@ -63,17 +63,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZT-dQ-cPa">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select A Geometry" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWx-fi-zI1">
                                                 <rect key="frame" x="0.0" y="28.5" width="834" height="24"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <gestureRecognizers/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="2az-8N-wUM" appends="YES" id="49C-ci-qHA"/>
+                                                    <action selector="geometryFieldEditingBegan:" destination="8Ek-a7-2se" eventType="editingDidBegin" id="1OQ-u4-cgV"/>
                                                 </connections>
-                                            </label>
+                                            </textField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="2Q4-fQ-ueW" secondAttribute="trailing" id="eAT-ph-3No"/>
@@ -96,9 +95,6 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="2az-8N-wUM" appends="YES" id="E7L-n2-xrR"/>
-                                                </connections>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -108,34 +104,20 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQL-5v-pZh">
-                                <rect key="frame" x="0.0" y="556" width="834" height="556"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JQL-5v-pZh" firstAttribute="trailing" secondItem="mQK-mF-3f4" secondAttribute="trailing" id="4fM-E4-3ay"/>
                             <constraint firstItem="Zc4-a5-Jhc" firstAttribute="leading" secondItem="Kk1-Jl-FBK" secondAttribute="leading" id="TKM-b3-uef"/>
-                            <constraint firstItem="JQL-5v-pZh" firstAttribute="leading" secondItem="mQK-mF-3f4" secondAttribute="leading" id="Uea-Fb-cJD"/>
-                            <constraint firstAttribute="bottom" secondItem="JQL-5v-pZh" secondAttribute="bottom" id="VqC-0a-Mnf"/>
                             <constraint firstItem="Zc4-a5-Jhc" firstAttribute="top" secondItem="mQK-mF-3f4" secondAttribute="top" id="qcz-XC-Cg3"/>
-                            <constraint firstItem="JQL-5v-pZh" firstAttribute="height" secondItem="Kk1-Jl-FBK" secondAttribute="height" multiplier="0.5" id="s3m-dd-Vf1"/>
                             <constraint firstAttribute="trailing" secondItem="Zc4-a5-Jhc" secondAttribute="trailing" id="uJ4-nL-hug"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mQK-mF-3f4"/>
                     </view>
                     <connections>
-                        <outlet property="selectedColorLabel" destination="4yw-bG-cGT" id="K56-jC-shU"/>
-                        <outlet property="selectedGeometryLabel" destination="JZT-dQ-cPa" id="vPM-TQ-GP3"/>
-                        <outlet property="shapeOptionPicker" destination="JQL-5v-pZh" id="GFK-4q-2AC"/>
+                        <outlet property="selectedGeometryTextField" destination="CWx-fi-zI1" id="bsS-KI-yT6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgd-cx-Okk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="2az-8N-wUM">
-                    <connections>
-                        <action selector="selectionLabelTapped:" destination="8Ek-a7-2se" id="yP2-Kd-ntP"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2179" y="-447"/>
         </scene>

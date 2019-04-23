@@ -9,9 +9,14 @@
 import UIKit
 
 class SelectBasicShapeOptionsViewController: UIViewController {
-    @IBOutlet weak var shapeOptionPicker: UIPickerView!
-    @IBOutlet weak var selectedGeometryLabel: UILabel!
-    @IBOutlet weak var selectedColorLabel: UILabel!
+    @IBOutlet weak var selectedGeometryTextField: UITextField!
+    
+    enum FieldTag: Int {
+        case geometry = 1
+        case color = 2
+        case size = 3
+    }
+    
     
     private let geometryOptions = ["Box", "Sphere", "Cylinder", "Cone", "Torus"]
     private var geometryPickerDataSource: PickerViewDataSource<String>!
@@ -23,27 +28,78 @@ class SelectBasicShapeOptionsViewController: UIViewController {
     private var sizePickerDataSource: PickerViewDataSource<String>!
     
     
+    lazy var optionsPicker: UIPickerView = {
+        let picker = UIPickerView()
+        
+        picker.delegate = self
+        
+        return picker
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupPickerDataSources()
+        setupUI()
     }
     
 
-    @IBAction func selectionLabelTapped(_ sender: UITapGestureRecognizer) {
+
+    @IBAction func geometryFieldEditingBegan(_ sender: UITextField) {
+        guard let fieldTag = FieldTag(rawValue: sender.tag) else {
+            preconditionFailure("Unknown tag for input field")
+        }
         
+        switch fieldTag {
+        case .geometry:
+            optionsPicker.dataSource = geometryPickerDataSource
+        case .size:
+            optionsPicker.dataSource = sizePickerDataSource
+        case .color:
+            optionsPicker.dataSource = colorPickerDataSource
+        }
+    }
+}
+
+
+// MARK: - Event handling
+
+extension SelectBasicShapeOptionsViewController {
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        closeOptionsPicker()
+    }
+}
+
+
+// MARK: - UIPickerViewDelegate
+
+extension SelectBasicShapeOptionsViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let dataSource = optionsPicker.dataSource as? PickerViewDataSource<String> else {
+            preconditionFailure("Unable to read data source for picker")
+        }
+        
+        return dataSource.options[row]
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let dataSource = optionsPicker.dataSource as? PickerViewDataSource<String> else {
+            preconditionFailure("Unable to read data source for picker")
+        }
+        
+        switch dataSource {
+        case geometryPickerDataSource:
+            selectedGeometryTextField.text = dataSource.options[row]
+        default:
+            break
+        }
     }
-    */
 }
+
 
 
 // MARK: - Private Helper Methods
@@ -55,4 +111,22 @@ private extension SelectBasicShapeOptionsViewController {
         self.colorPickerDataSource = PickerViewDataSource(options: colorOptions)
         self.sizePickerDataSource = PickerViewDataSource(options: sizeOptions)
     }
+    
+    
+    func setupUI() {
+        selectedGeometryTextField.inputView = optionsPicker
+        
+        view.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        )
+    }
+    
+    
+    func closeOptionsPicker() {
+        view.endEditing(true)
+        
+        // TODO: Process final selection? (Or use a submit button?)
+    }
 }
+
+
