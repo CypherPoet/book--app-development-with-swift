@@ -45,6 +45,20 @@ extension MainViewController {
 }
 
 
+// MARK: - Computed Properties
+
+extension MainViewController {
+    
+    var waitAndRemoveAction: SCNAction {
+        return SCNAction.sequence([
+            .wait(duration: 5.0),
+            .fadeOut(duration: 2.0),
+            .removeFromParentNode(),
+        ])
+    }
+}
+
+
 // MARK: - ARSCNViewDelegate
 
 extension MainViewController: ARSCNViewDelegate {
@@ -93,7 +107,7 @@ private extension MainViewController {
     func setupScene() {
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [.showFeaturePoints]
+        sceneView.debugOptions = [.showFeaturePoints, .showBoundingBoxes]
     }
     
     
@@ -113,12 +127,40 @@ private extension MainViewController {
     }
     
     
+    func makeImageCovering(from referenceImage: ARReferenceImage) -> SCNNode {
+        let geometry = SCNPlane(
+            width: referenceImage.physicalSize.width,
+            height: referenceImage.physicalSize.height
+        )
+        geometry.firstMaterial?.diffuse.contents = #colorLiteral(red: 0.5524958772, green: 0.3723448692, blue: 0.9544175863, alpha: 1)
+        
+        let node = SCNNode(geometry: geometry)
+        
+        node.eulerAngles.x = -.pi / 2
+        node.opacity = 0.3
+        
+        let labelGeometry = SCNText(string: referenceImage.name, extrusionDepth: 3.0)
+        let labelNode = SCNNode(geometry: labelGeometry)
+        
+        labelNode.position = SCNVector3(x: Float(node.frame.midX), y: Float(node.frame.minY), z: 1.0)
+        
+        node.addChildNode(labelNode)
+        
+        return node
+    }
+    
+    
     func nodeAdded(_ node: SCNNode, for planeAnchor: ARPlaneAnchor) {
         // TODO: Handle plane detection
     }
     
     
     func nodeAdded(_ node: SCNNode, for imageAnchor: ARImageAnchor) {
-        // TODO: Handle image detection
+        print("Adding surface for image anchor")
+        
+        let referenceImage = imageAnchor.referenceImage
+        
+        node.addChildNode(makeImageCovering(from: referenceImage))
+        node.runAction(waitAndRemoveAction)
     }
 }
