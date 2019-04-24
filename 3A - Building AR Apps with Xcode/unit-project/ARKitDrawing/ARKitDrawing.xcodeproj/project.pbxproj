@@ -16,7 +16,7 @@
 		F328CDFE226C3CAC003D4F6F /* ObjectPlacementMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CDFD226C3CAC003D4F6F /* ObjectPlacementMode.swift */; };
 		F328CE00226D2EA6003D4F6F /* OptionsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CDFF226D2EA6003D4F6F /* OptionsMenuViewController.swift */; };
 		F328CE02226D2FF8003D4F6F /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F328CE01226D2FF8003D4F6F /* Options.storyboard */; };
-		F328CE29226D9879003D4F6F /* SelectBasicShapeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE28226D9879003D4F6F /* SelectBasicShapeOptionsViewController.swift */; };
+		F328CE29226D9879003D4F6F /* NewShapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE28226D9879003D4F6F /* NewShapeViewController.swift */; };
 		F328CE2B226D989F003D4F6F /* StoryboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE2A226D989F003D4F6F /* StoryboardID.swift */; };
 		F328CE31226DAD9F003D4F6F /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE30226DAD9E003D4F6F /* PickerViewDataSource.swift */; };
 		F328CE33226E74A6003D4F6F /* OptionsMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE32226E74A6003D4F6F /* OptionsMenuDelegate.swift */; };
@@ -24,6 +24,7 @@
 		F328CE38226E7A9B003D4F6F /* OptionsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE37226E7A9B003D4F6F /* OptionsMenuDataSource.swift */; };
 		F328CE3C226EBCC3003D4F6F /* PlacementMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE3B226EBCC3003D4F6F /* PlacementMenuOption.swift */; };
 		F328CE3E226ED02B003D4F6F /* SelectSceneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE3D226ED02B003D4F6F /* SelectSceneTableViewController.swift */; };
+		F328CE7A226FFEF3003D4F6F /* NewShapeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE79226FFEF3003D4F6F /* NewShapeSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +39,7 @@
 		F328CDFD226C3CAC003D4F6F /* ObjectPlacementMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectPlacementMode.swift; sourceTree = "<group>"; };
 		F328CDFF226D2EA6003D4F6F /* OptionsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsMenuViewController.swift; sourceTree = "<group>"; };
 		F328CE01226D2FF8003D4F6F /* Options.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
-		F328CE28226D9879003D4F6F /* SelectBasicShapeOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBasicShapeOptionsViewController.swift; sourceTree = "<group>"; };
+		F328CE28226D9879003D4F6F /* NewShapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeViewController.swift; sourceTree = "<group>"; };
 		F328CE2A226D989F003D4F6F /* StoryboardID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardID.swift; sourceTree = "<group>"; };
 		F328CE30226DAD9E003D4F6F /* PickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		F328CE32226E74A6003D4F6F /* OptionsMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsMenuDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		F328CE37226E7A9B003D4F6F /* OptionsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsMenuDataSource.swift; sourceTree = "<group>"; };
 		F328CE3B226EBCC3003D4F6F /* PlacementMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementMenuOption.swift; sourceTree = "<group>"; };
 		F328CE3D226ED02B003D4F6F /* SelectSceneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSceneTableViewController.swift; sourceTree = "<group>"; };
+		F328CE79226FFEF3003D4F6F /* NewShapeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +122,7 @@
 		F328CDFB226C3340003D4F6F /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				F328CE2F226DACB3003D4F6F /* Basic Shape */,
+				F328CE2F226DACB3003D4F6F /* New Shape */,
 				F328CDFF226D2EA6003D4F6F /* OptionsMenuViewController.swift */,
 				F328CE01226D2FF8003D4F6F /* Options.storyboard */,
 				F328CE37226E7A9B003D4F6F /* OptionsMenuDataSource.swift */,
@@ -136,6 +138,7 @@
 				F328CDFD226C3CAC003D4F6F /* ObjectPlacementMode.swift */,
 				F328CE2A226D989F003D4F6F /* StoryboardID.swift */,
 				F328CE3B226EBCC3003D4F6F /* PlacementMenuOption.swift */,
+				F328CE79226FFEF3003D4F6F /* NewShapeSetting.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -148,12 +151,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		F328CE2F226DACB3003D4F6F /* Basic Shape */ = {
+		F328CE2F226DACB3003D4F6F /* New Shape */ = {
 			isa = PBXGroup;
 			children = (
-				F328CE28226D9879003D4F6F /* SelectBasicShapeOptionsViewController.swift */,
+				F328CE28226D9879003D4F6F /* NewShapeViewController.swift */,
 			);
-			path = "Basic Shape";
+			path = "New Shape";
 			sourceTree = "<group>";
 		};
 		F328CE36226E7A21003D4F6F /* Models */ = {
@@ -244,8 +247,9 @@
 				F328CE00226D2EA6003D4F6F /* OptionsMenuViewController.swift in Sources */,
 				F328CDE5226C31E1003D4F6F /* AppDelegate.swift in Sources */,
 				F328CE31226DAD9F003D4F6F /* PickerViewDataSource.swift in Sources */,
+				F328CE7A226FFEF3003D4F6F /* NewShapeSetting.swift in Sources */,
 				F328CE2B226D989F003D4F6F /* StoryboardID.swift in Sources */,
-				F328CE29226D9879003D4F6F /* SelectBasicShapeOptionsViewController.swift in Sources */,
+				F328CE29226D9879003D4F6F /* NewShapeViewController.swift in Sources */,
 				F328CDFE226C3CAC003D4F6F /* ObjectPlacementMode.swift in Sources */,
 				F328CE3C226EBCC3003D4F6F /* PlacementMenuOption.swift in Sources */,
 				F328CE35226E7A0F003D4F6F /* OptionsMenuItem.swift in Sources */,

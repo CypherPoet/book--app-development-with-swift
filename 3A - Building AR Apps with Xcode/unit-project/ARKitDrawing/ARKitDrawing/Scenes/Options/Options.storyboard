@@ -43,16 +43,16 @@
             </objects>
             <point key="canvasLocation" x="1158" y="27"/>
         </scene>
-        <!--Select Basic Shape Options View Controller-->
+        <!--New Shape-->
         <scene sceneID="kTk-Sw-Yt1">
             <objects>
-                <viewController id="8Ek-a7-2se" customClass="SelectBasicShapeOptionsViewController" customModule="ARKitDrawing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8Ek-a7-2se" customClass="NewShapeViewController" customModule="ARKitDrawing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kk1-Jl-FBK">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="Zc4-a5-Jhc">
-                                <rect key="frame" x="0.0" y="70" width="834" height="153"/>
+                                <rect key="frame" x="0.0" y="70" width="834" height="253.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qCd-BT-nKX">
                                         <rect key="frame" x="0.0" y="0.0" width="834" height="52.5"/>
@@ -70,7 +70,7 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                                 <connections>
-                                                    <action selector="geometryFieldEditingBegan:" destination="8Ek-a7-2se" eventType="editingDidBegin" id="1OQ-u4-cgV"/>
+                                                    <action selector="shapeFieldEditingBegan:" destination="8Ek-a7-2se" eventType="editingDidBegin" id="1OQ-u4-cgV"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -79,27 +79,54 @@
                                             <constraint firstItem="2Q4-fQ-ueW" firstAttribute="leading" secondItem="qCd-BT-nKX" secondAttribute="leading" id="ydc-pO-X4O"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gjO-Gj-m4Z">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QIQ-tH-c0l">
                                         <rect key="frame" x="0.0" y="100.5" width="834" height="52.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8d-Bj-s52">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gt-Fv-SaF">
                                                 <rect key="frame" x="0.0" y="0.0" width="834" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yw-bG-cGT">
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select A Color" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mqm-fP-wQg">
                                                 <rect key="frame" x="0.0" y="28.5" width="834" height="24"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <gestureRecognizers/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                                                <connections>
+                                                    <action selector="shapeFieldEditingBegan:" destination="8Ek-a7-2se" eventType="editingDidBegin" id="nHt-5P-M3n"/>
+                                                </connections>
+                                            </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="U8d-Bj-s52" secondAttribute="trailing" id="JS3-i1-rTB"/>
-                                            <constraint firstItem="U8d-Bj-s52" firstAttribute="leading" secondItem="gjO-Gj-m4Z" secondAttribute="leading" id="jmg-AB-Kr1"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Gt-Fv-SaF" secondAttribute="trailing" id="Hzj-Xb-08r"/>
+                                            <constraint firstItem="6Gt-Fv-SaF" firstAttribute="leading" secondItem="QIQ-tH-c0l" secondAttribute="leading" id="pGg-aL-qH2"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qP9-Wl-Wce">
+                                        <rect key="frame" x="0.0" y="201" width="834" height="52.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQy-f6-4ci">
+                                                <rect key="frame" x="0.0" y="0.0" width="834" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select A Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5jX-Vk-55v">
+                                                <rect key="frame" x="0.0" y="28.5" width="834" height="24"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                                                <connections>
+                                                    <action selector="shapeFieldEditingBegan:" destination="8Ek-a7-2se" eventType="editingDidBegin" id="Nk9-aD-72U"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="vQy-f6-4ci" firstAttribute="leading" secondItem="qP9-Wl-Wce" secondAttribute="leading" id="Iix-s7-cYt"/>
+                                            <constraint firstAttribute="trailing" secondItem="vQy-f6-4ci" secondAttribute="trailing" id="y2r-LU-VKG"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -113,13 +140,32 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mQK-mF-3f4"/>
                     </view>
+                    <navigationItem key="navigationItem" title="New Shape" id="i3J-r0-pgV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XMM-V9-wNC">
+                            <connections>
+                                <segue destination="Hxr-aK-8IH" kind="unwind" unwindAction="cancelAddShapeWithUnwindSegue:" id="Cl5-Xg-g9a"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="XKi-QI-Wr3">
+                            <connections>
+                                <segue destination="Hxr-aK-8IH" kind="unwind" unwindAction="saveShapeWithUnwindSegue:" id="djW-sq-VrH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="saveButton" destination="XKi-QI-Wr3" id="ESP-34-PJk"/>
+                        <outlet property="selectedColorTextField" destination="mqm-fP-wQg" id="x6g-go-hJe"/>
                         <outlet property="selectedGeometryTextField" destination="CWx-fi-zI1" id="bsS-KI-yT6"/>
+                        <outlet property="selectedSizeTextField" destination="5jX-Vk-55v" id="RCH-3l-xDg"/>
+                        <outletCollection property="shapeSettingTextFields" destination="CWx-fi-zI1" collectionClass="NSMutableArray" id="S6T-Y7-CdC"/>
+                        <outletCollection property="shapeSettingTextFields" destination="mqm-fP-wQg" collectionClass="NSMutableArray" id="ajV-EW-kGc"/>
+                        <outletCollection property="shapeSettingTextFields" destination="5jX-Vk-55v" collectionClass="NSMutableArray" id="kbw-0d-NoO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgd-cx-Okk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Hxr-aK-8IH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2179" y="-447"/>
+            <point key="canvasLocation" x="2162" y="-453"/>
         </scene>
         <!--Select Scene Table View Controller-->
         <scene sceneID="oKG-i7-LdO">

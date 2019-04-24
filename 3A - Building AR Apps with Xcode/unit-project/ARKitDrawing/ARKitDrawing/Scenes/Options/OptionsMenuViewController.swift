@@ -32,6 +32,19 @@ extension OptionsMenuViewController {
 }
 
 
+// MARK: - Navigation
+
+extension OptionsMenuViewController {
+    @IBAction func cancelAddShape(unwindSegue: UIStoryboardSegue) {}
+
+    
+    @IBAction func saveShape(unwindSegue: UIStoryboardSegue) {
+        // TODO: Read shape from `SelectBasicShapeOptionsViewController`
+    }
+}
+
+
+
 // MARK: -  UITableViewDelegate
 
 extension OptionsMenuViewController {
