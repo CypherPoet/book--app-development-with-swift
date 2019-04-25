@@ -25,6 +25,7 @@
 		F328CE3C226EBCC3003D4F6F /* PlacementMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE3B226EBCC3003D4F6F /* PlacementMenuOption.swift */; };
 		F328CE3E226ED02B003D4F6F /* SelectSceneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE3D226ED02B003D4F6F /* SelectSceneTableViewController.swift */; };
 		F328CE7A226FFEF3003D4F6F /* NewShapeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE79226FFEF3003D4F6F /* NewShapeSetting.swift */; };
+		F328CE7F22705B5F003D4F6F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F328CE7E22705B5F003D4F6F /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		F328CE3B226EBCC3003D4F6F /* PlacementMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementMenuOption.swift; sourceTree = "<group>"; };
 		F328CE3D226ED02B003D4F6F /* SelectSceneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSceneTableViewController.swift; sourceTree = "<group>"; };
 		F328CE79226FFEF3003D4F6F /* NewShapeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeSetting.swift; sourceTree = "<group>"; };
+		F328CE7E22705B5F003D4F6F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		F328CDE3226C31E1003D4F6F /* ARKitDrawing */ = {
 			isa = PBXGroup;
 			children = (
+				F328CE7B227055E4003D4F6F /* Extensions */,
 				F328CE36226E7A21003D4F6F /* Models */,
 				F328CE2C226DA9FF003D4F6F /* Protocols */,
 				F328CDFC226C3C93003D4F6F /* Helpers */,
@@ -104,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				F328CDED226C31E3003D4F6F /* Assets.xcassets */,
+				F328CE7E22705B5F003D4F6F /* Colors.xcassets */,
 				F328CDE6226C31E1003D4F6F /* art.scnassets */,
 			);
 			path = Content;
@@ -167,6 +171,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F328CE7B227055E4003D4F6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,6 +239,7 @@
 				F328CDE7226C31E1003D4F6F /* art.scnassets in Resources */,
 				F328CDF1226C31E3003D4F6F /* LaunchScreen.storyboard in Resources */,
 				F328CDEE226C31E3003D4F6F /* Assets.xcassets in Resources */,
+				F328CE7F22705B5F003D4F6F /* Colors.xcassets in Resources */,
 				F328CDEC226C31E1003D4F6F /* Main.storyboard in Resources */,
 				F328CE02226D2FF8003D4F6F /* Options.storyboard in Resources */,
 			);

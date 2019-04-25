@@ -6,7 +6,7 @@
 //  Copyright © 2019 Brian Sipple. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum NewShapeSetting {
     enum Color: String, CaseIterable {
@@ -19,6 +19,14 @@ enum NewShapeSetting {
         case white
         case purple
         case special
+        
+        var uiColor: UIColor {
+            guard let color = UIColor(named: self.rawValue.capitalized) else {
+                preconditionFailure("Failed to make name color from shape setting")
+            }
+
+            return color
+        }
     }
     
     enum Geometry: String, CaseIterable {
@@ -33,6 +41,17 @@ enum NewShapeSetting {
         case small
         case medium
         case large
+        
+        var meters: Double {
+            switch self {
+            case .small:
+                return 0.33
+            case .medium:
+                return 1.3
+            case .large:
+                return 3.0
+            }
+        }
     }
 }
 

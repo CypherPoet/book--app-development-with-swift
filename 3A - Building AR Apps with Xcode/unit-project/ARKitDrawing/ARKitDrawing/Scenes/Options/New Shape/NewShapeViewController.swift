@@ -13,7 +13,7 @@ class NewShapeViewController: UIViewController {
     @IBOutlet weak var selectedGeometryTextField: UITextField!
     @IBOutlet weak var selectedColorTextField: UITextField!
     @IBOutlet weak var selectedSizeTextField: UITextField!
-    @IBOutlet var shapeSettingTextFields: [UITextField]!
+    @IBOutlet var settingTextFields: [UITextField]!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     enum FieldTag: Int {
@@ -58,7 +58,7 @@ extension NewShapeViewController {
 
     
     var canSaveShape: Bool {
-        return shapeSettingTextFields.allSatisfy { $0.hasText }
+        return settingTextFields.allSatisfy { $0.hasText }
     }
 }
     
@@ -106,7 +106,7 @@ extension NewShapeViewController {
 extension NewShapeViewController {
     
     /**
-     Attempt to create, then expose, the final SCNNode object created
+     Attempt to create, then expose, the final SCNNode shape
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         shape = createNodeFromOptions()
@@ -148,7 +148,6 @@ extension NewShapeViewController: UIPickerViewDelegate {
 }
 
 
-
 // MARK: - Private Helper Methods
 
 private extension NewShapeViewController {
@@ -169,7 +168,11 @@ private extension NewShapeViewController {
     
     
     func setupUI() {
-        shapeSettingTextFields.forEach { $0.inputView = optionsPicker }
+        settingTextFields.forEach {
+            $0.inputView = optionsPicker
+            $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: $0.frame.height))
+            $0.leftViewMode = .always
+        }
         
         view.addGestureRecognizer(
             UITapGestureRecognizer(
@@ -192,16 +195,13 @@ private extension NewShapeViewController {
             let colorSelection = colorSelection,
             let sizeSelection = sizeSelection
         else {
-            preconditionFailure("Failed to read selections required to make shape")
+            return nil
         }
         
         let geometry = makeGeometry(from: geometrySelection, withSize: sizeSelection)
+        geometry.firstMaterial?.diffuse.contents = colorSelection.uiColor
         
-//        geometry.firstMaterial?.diffuse.contents = UIColor(colorSelection)
-        
-        let shapeNode = SCNNode(geometry: geometry)
-        
-        return shapeNode
+        return SCNNode(geometry: geometry)
     }
     
     
@@ -209,8 +209,20 @@ private extension NewShapeViewController {
         from geometrySelection: NewShapeSetting.Geometry,
         withSize sizeSelection: NewShapeSetting.Size
     ) -> SCNGeometry {
-        // TODO: Figure out for realz
-        return SCNGeometry()
+        let meters = CGFloat(sizeSelection.meters)
+        
+        switch geometrySelection {
+        case .box:
+            return SCNBox(width: meters, height: meters, length: meters, chamferRadius: 0.0)
+        case .cone:
+            return SCNCone(topRadius: 0.0, bottomRadius: meters, height: meters)
+        case .cylinder:
+            return SCNCylinder(radius: meters / 2, height: meters)
+        case .sphere:
+            return SCNSphere(radius: meters)
+        case .torus:
+            return SCNTorus(ringRadius: meters * 1.5, pipeRadius: meters * 0.2)
+        }
     }
 }
 
