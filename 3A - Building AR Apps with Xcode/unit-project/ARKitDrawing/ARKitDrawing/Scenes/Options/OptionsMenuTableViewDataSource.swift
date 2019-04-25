@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionsMenuDataSource: NSObject, UITableViewDataSource {
+class OptionsMenuTableViewDataSource: NSObject, UITableViewDataSource {
     var models: [OptionsMenuItem]
     var cellReuseIdentifier: String
     

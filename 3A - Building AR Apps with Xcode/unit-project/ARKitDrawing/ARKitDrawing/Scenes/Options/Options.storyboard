@@ -220,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="2162" y="-453"/>
         </scene>
-        <!--Select Scene Table View Controller-->
+        <!--Select Scene View Controller-->
         <scene sceneID="oKG-i7-LdO">
             <objects>
-                <tableViewController id="Eba-XN-qsh" customClass="SelectSceneTableViewController" customModule="ARKitDrawing" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Eba-XN-qsh" customClass="SelectSceneViewController" customModule="ARKitDrawing" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fak-Fa-jjr">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

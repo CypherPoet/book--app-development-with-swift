@@ -10,7 +10,7 @@ import UIKit
 
 class OptionsMenuViewController: UITableViewController {
     var menuDelegate: OptionsMenuDelegate!
-    var dataSource: OptionsMenuDataSource!
+    var dataSource: OptionsMenuTableViewDataSource!
     
     lazy var menuItems: [OptionsMenuItem] = makeMenuItems()
 }
@@ -83,7 +83,7 @@ extension OptionsMenuViewController {
 private extension OptionsMenuViewController {
     
     func setupMenu() {
-        dataSource = OptionsMenuDataSource(
+        dataSource = OptionsMenuTableViewDataSource(
             models: menuItems,
             cellReuseIdentifier: StoryboardID.ReuseIdentifier.optionsMenuCell
         )

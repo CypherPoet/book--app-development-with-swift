@@ -1,5 +1,5 @@
 //
-//  SelectSceneTableViewController.swift
+//  SelectSceneViewController.swift
 //  ARKitDrawing
 //
 //  Created by Brian Sipple on 4/23/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectSceneTableViewController: UITableViewController {
+class SelectSceneViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
