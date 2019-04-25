@@ -45,11 +45,11 @@ enum NewShapeSetting {
         var meters: Double {
             switch self {
             case .small:
-                return 0.33
+                return 0.033
             case .medium:
-                return 1.3
+                return 0.1
             case .large:
-                return 3.0
+                return 0.3
             }
         }
     }
