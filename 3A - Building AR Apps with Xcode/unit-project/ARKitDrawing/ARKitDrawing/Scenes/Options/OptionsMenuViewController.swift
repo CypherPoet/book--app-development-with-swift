@@ -40,6 +40,16 @@ extension OptionsMenuViewController {
     
     @IBAction func saveShape(unwindSegue: UIStoryboardSegue) {
         // TODO: Read shape from `SelectBasicShapeOptionsViewController`
+        guard let newShapeVC = unwindSegue.source as? NewShapeViewController else {
+            return
+        }
+        
+        if let newShape = newShapeVC.shape {
+            menuDelegate.optionsMenu(self, didSelectObject: newShape)
+//            dismiss(animated: true)
+        } else {
+            assertionFailure("No shape created after `NewShapeViewController` attempted to save one")
+        }
     }
 }
 

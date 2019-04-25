@@ -43,17 +43,23 @@ class NewShapeViewController: UIViewController {
 extension NewShapeViewController {
     
     var geometrySelection: NewShapeSetting.Geometry? {
-        return NewShapeSetting.Geometry(rawValue: selectedGeometryTextField.text ?? "")
+        let text = selectedGeometryTextField.text ?? ""
+        
+        return NewShapeSetting.Geometry(rawValue: text.lowercased())
     }
 
     
     var colorSelection: NewShapeSetting.Color? {
-        return NewShapeSetting.Color(rawValue: selectedColorTextField.text ?? "")
+        let text = selectedColorTextField.text ?? ""
+        
+        return NewShapeSetting.Color(rawValue: text.lowercased())
     }
     
     
     var sizeSelection: NewShapeSetting.Size? {
-        return NewShapeSetting.Size(rawValue: selectedSizeTextField.text ?? "")
+        let text = selectedSizeTextField.text ?? ""
+        
+        return NewShapeSetting.Size(rawValue: text.lowercased())
     }
 
     
@@ -142,8 +148,10 @@ extension NewShapeViewController: UIPickerViewDelegate {
         case sizePickerDataSource:
             selectedSizeTextField.text = selection
         default:
-            break
+            preconditionFailure("Attempted to use unknown data source")
         }
+        
+        saveButton.isEnabled = canSaveShape
     }
 }
 
@@ -154,15 +162,15 @@ private extension NewShapeViewController {
     
     func setupPickerDataSources() {
         self.geometryPickerDataSource = PickerViewDataSource(
-            options: NewShapeSetting.Geometry.allCases.map { $0.rawValue.capitalized }
+            options: [""] + NewShapeSetting.Geometry.allCases.map { $0.rawValue.capitalized }
         )
         
         self.colorPickerDataSource = PickerViewDataSource(
-            options: NewShapeSetting.Color.allCases.map { $0.rawValue.capitalized }
+            options: [""] + NewShapeSetting.Color.allCases.map { $0.rawValue.capitalized }
         )
         
         self.sizePickerDataSource = PickerViewDataSource(
-            options: NewShapeSetting.Size.allCases.map { $0.rawValue.capitalized }
+            options: [""] + NewShapeSetting.Size.allCases.map { $0.rawValue.capitalized }
         )
     }
     
