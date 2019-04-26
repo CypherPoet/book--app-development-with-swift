@@ -36,10 +36,10 @@ extension OptionsMenuViewController {
 
 extension OptionsMenuViewController {
     @IBAction func cancelAddShape(unwindSegue: UIStoryboardSegue) {}
+    @IBAction func cancelAddScene(unwindSegue: UIStoryboardSegue) {}
 
     
     @IBAction func saveShape(unwindSegue: UIStoryboardSegue) {
-        // TODO: Read shape from `SelectBasicShapeOptionsViewController`
         guard let newShapeVC = unwindSegue.source as? NewShapeViewController else {
             return
         }
@@ -49,6 +49,19 @@ extension OptionsMenuViewController {
 //            dismiss(animated: true)
         } else {
             assertionFailure("No shape created after `NewShapeViewController` attempted to save one")
+        }
+    }
+    
+    
+    @IBAction func saveScene(unwindSegue: UIStoryboardSegue) {
+        guard let selectSceneVC = unwindSegue.source as? SelectSceneViewController else {
+            return
+        }
+        
+        if let sceneModel = selectSceneVC.sceneModel {
+            menuDelegate.optionsMenu(self, didSelectObject: sceneModel)
+        } else {
+            assertionFailure("No scene model created after `SelectSceneViewController` attempted to save one")
         }
     }
 }
@@ -66,7 +79,7 @@ extension OptionsMenuViewController {
         case .addBasicShape:
             performSegue(withIdentifier: StoryboardID.Segue.showShapeSelectionView, sender: self)
         case .addScene:
-            performSegue(withIdentifier: StoryboardID.Segue.showShapeSelectionView, sender: self)
+            performSegue(withIdentifier: StoryboardID.Segue.showSceneSelectionView, sender: self)
         case .togglePlaneVizualization:
             menuDelegate.optionsMenuDidTogglePlaneVizualization(self)
         case .undoLastShape:

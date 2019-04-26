@@ -13,6 +13,7 @@ enum StoryboardID {
         static let showShapeSelectionView = "Show Shape Selection View"
         static let showSceneSelectionView = "Show Scene Selection View"
         static let popoverToOptionsMenu = "Popover to Options Menu"
+        static let unwindToOptionsAfterSceneSelect = "Unwind to Options After Scene File Selection"
     }
     
     enum ReuseIdentifier {

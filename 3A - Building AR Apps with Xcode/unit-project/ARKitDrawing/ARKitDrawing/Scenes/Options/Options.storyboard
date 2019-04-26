@@ -36,7 +36,7 @@
                     <navigationItem key="navigationItem" id="vno-KE-hRy"/>
                     <connections>
                         <segue destination="8Ek-a7-2se" kind="show" identifier="Show Shape Selection View" id="gCE-H9-Sbe"/>
-                        <segue destination="Eba-XN-qsh" kind="show" identifier="Show Scene Selection View" id="AsN-Pv-rgU"/>
+                        <segue destination="O6K-8p-mC4" kind="presentation" identifier="Show Scene Selection View" id="AsN-Pv-rgU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fM2-RC-cKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -220,7 +220,7 @@
             </objects>
             <point key="canvasLocation" x="2162" y="-453"/>
         </scene>
-        <!--Select Scene View Controller-->
+        <!--Select a Scene File-->
         <scene sceneID="oKG-i7-LdO">
             <objects>
                 <tableViewController id="Eba-XN-qsh" customClass="SelectSceneViewController" customModule="ARKitDrawing" customModuleProvider="target" sceneMemberID="viewController">
@@ -229,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dq8-0g-boD">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Selected Scene Cell" id="dq8-0g-boD">
                                 <rect key="frame" x="0.0" y="28" width="834" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dq8-0g-boD" id="0ps-1v-Qlp">
@@ -243,10 +243,21 @@
                             <outlet property="delegate" destination="Eba-XN-qsh" id="hLs-xj-YY3"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Select a Scene File" id="Lnh-cO-Z54">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QH1-EM-3FK">
+                            <connections>
+                                <segue destination="TsH-u2-3ev" kind="unwind" unwindAction="cancelAddSceneWithUnwindSegue:" id="A16-fP-WLs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="TsH-u2-3ev" kind="unwind" identifier="Unwind to Options After Scene File Selection" unwindAction="saveSceneWithUnwindSegue:" id="FDa-uX-zVI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aeu-8v-bOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TsH-u2-3ev" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2178" y="361"/>
+            <point key="canvasLocation" x="2930.2158273381297" y="360.97122302158277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yfI-5n-gar">
@@ -265,6 +276,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKi-TV-ZAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="298.55072463768118" y="26.785714285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R4z-oH-sU8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O6K-8p-mC4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l4H-sV-MNl">
+                        <rect key="frame" x="0.0" y="20" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Eba-XN-qsh" kind="relationship" relationship="rootViewController" id="FyL-qD-5SW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="178-JK-Kg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177.6978417266187" y="360.97122302158277"/>
         </scene>
     </scenes>
 </document>
