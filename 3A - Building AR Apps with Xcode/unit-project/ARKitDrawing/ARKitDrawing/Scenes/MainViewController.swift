@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     lazy var worldTrackingConfig: ARWorldTrackingConfiguration = makeWorldTrackingConfig()
     
     var currentObjectPlacementMode: ObjectPlacementMode = .freeform
+    var selectedNode: SCNNode?
 }
 
 
@@ -43,13 +44,34 @@ extension MainViewController {
         
         sceneView.session.pause()
     }
-
 }
 
 
 // MARK: - Event handling
 
 extension MainViewController {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        guard
+            let node = selectedNode,
+            let touch = touches.first
+        else {
+            return
+        }
+        
+        switch currentObjectPlacementMode {
+        case .freeform:
+            addNodeInFront(node)
+        case .image:
+            break  // TODO: Implement
+        case .plane:
+            break  // TODO: Implement
+        }
+    }
+    
+    
     @IBAction func changeObjectPlacementMode(_ sender: UISegmentedControl) {
         
     }
@@ -111,8 +133,11 @@ extension MainViewController: ARSCNViewDelegate {
 // MARK: -  OptionsViewControllerDelegate
 
 extension MainViewController: OptionsMenuDelegate {
-    func optionsMenu(_: OptionsMenuViewController, didSelectObject object: SCNNode) {
-//        sceneView.scene.addChildNode(object)
+    func optionsMenu(_: OptionsMenuViewController, didSelectNode newNode: SCNNode) {
+        print("New node selected: \(newNode.description)")
+        
+        selectedNode = newNode
+        dismiss(animated: true)
     }
     
     func optionsMenuDidUndoLastObject(_: OptionsMenuViewController) {
@@ -131,7 +156,7 @@ extension MainViewController: OptionsMenuDelegate {
 
 // MARK: - Private Helper Methods
 
-extension MainViewController {
+private extension MainViewController {
     
     func setupSceneView() {
         sceneView.delegate = self
@@ -139,9 +164,35 @@ extension MainViewController {
         sceneView.debugOptions = [.showWorldOrigin]
     }
     
+    
     func makeWorldTrackingConfig() -> ARWorldTrackingConfiguration {
         let config = ARWorldTrackingConfiguration()
         
         return config
+    }
+    
+    
+    /**
+     Sets the transform of a given node to be 20cm in from of the camera,
+     then adds it to the scene.
+     */
+    func addNodeInFront(_ node: SCNNode) {
+        guard let currentFrame = sceneView.session.currentFrame else { return }
+        
+        node.simdTransform = transformFrom(camera: currentFrame.camera, x: 0, y: 0, z: -0.2)
+
+        // 🔑 Use a clone to allow for placing multiple copies
+        sceneView.scene.rootNode.addChildNode(node.clone())
+    }
+    
+    
+    func transformFrom(camera: ARCamera, x: Float, y: Float, z: Float) -> simd_float4x4 {
+        var offsettingTransform = matrix_identity_float4x4
+        
+        offsettingTransform.columns.3.x = x
+        offsettingTransform.columns.3.y = y
+        offsettingTransform.columns.3.z = z
+        
+        return matrix_multiply(camera.transform, offsettingTransform)
     }
 }

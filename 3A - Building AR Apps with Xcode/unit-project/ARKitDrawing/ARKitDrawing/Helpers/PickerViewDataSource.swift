@@ -11,11 +11,13 @@ import UIKit
 class PickerViewDataSource<Option>: NSObject, UIPickerViewDataSource {
     var options: [Option]
     var columnCount: Int
+    var startWithBlank: Bool
     
     
-    init(options: [Option], columnCount: Int = 1) {
+    init(options: [Option], columnCount: Int = 1, startWithBlank: Bool = true) {
         self.options = options
         self.columnCount = columnCount
+        self.startWithBlank = startWithBlank
     }
     
     
@@ -26,6 +28,6 @@ class PickerViewDataSource<Option>: NSObject, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return options.count
+        return options.count + (startWithBlank ? 1 : 0)
     }
 }

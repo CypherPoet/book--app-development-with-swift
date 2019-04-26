@@ -35,12 +35,14 @@ enum NewShapeSetting {
         case cylinder
         case cone
         case torus
+        case pyramid
     }
     
     enum Size: String, CaseIterable {
         case small
         case medium
         case large
+        case extraLarge = "Extra Large"
         
         var meters: Double {
             switch self {
@@ -50,8 +52,23 @@ enum NewShapeSetting {
                 return 0.1
             case .large:
                 return 0.3
+            case .extraLarge:
+                return 0.6
             }
         }
     }
 }
 
+
+
+extension NewShapeSetting {
+    typealias NewShapeSettings = (geometry: NewShapeSetting.Geometry, color: NewShapeSetting.Color, size: NewShapeSetting.Size)
+    
+    static func nodeName(fromSettings settings: NewShapeSettings) -> String {
+        let size = settings.size.rawValue
+        let geometry = settings.geometry.rawValue
+        let color = settings.color.rawValue
+        
+        return "\(size) \(geometry) with a \(color) color"
+    }
+}

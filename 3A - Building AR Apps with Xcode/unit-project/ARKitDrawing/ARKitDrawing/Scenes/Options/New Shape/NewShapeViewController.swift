@@ -22,9 +22,27 @@ class NewShapeViewController: UIViewController {
         case size = 3
     }
     
-    private var geometryPickerDataSource: PickerViewDataSource<String>!
-    private var colorPickerDataSource: PickerViewDataSource<String>!
-    private var sizePickerDataSource: PickerViewDataSource<String>!
+    private var geometryPickerDataSource: PickerViewDataSource<NewShapeSetting.Geometry>!
+    private var colorPickerDataSource: PickerViewDataSource<NewShapeSetting.Color>!
+    private var sizePickerDataSource: PickerViewDataSource<NewShapeSetting.Size>!
+    
+    private var currentGeometrySetting: NewShapeSetting.Geometry? = .box {
+        didSet {
+            selectedGeometryTextField.text = currentGeometrySetting?.rawValue.capitalized ?? ""
+        }
+    }
+    
+    private var currentColorSetting: NewShapeSetting.Color? = .blue {
+        didSet {
+            selectedColorTextField.text = currentColorSetting?.rawValue.capitalized ?? ""
+        }
+    }
+    
+    private var currentSizeSetting: NewShapeSetting.Size? = .small {
+        didSet {
+            selectedSizeTextField.text = currentSizeSetting?.rawValue.capitalized ?? ""
+        }
+    }
     
     var shape: SCNNode?
     
@@ -125,30 +143,20 @@ extension NewShapeViewController {
 extension NewShapeViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let dataSource = optionsPicker.dataSource as? PickerViewDataSource<String> else {
-            preconditionFailure("Unable to read data source for picker")
-        }
-        
-        return dataSource.options[row]
+        return dataSourceValue(forRow: row)
     }
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let dataSource = optionsPicker.dataSource as? PickerViewDataSource<String> else {
-            preconditionFailure("Unable to read data source for picker")
-        }
-        
-        let selection = dataSource.options[row]
-        
-        switch dataSource {
-        case geometryPickerDataSource:
-            selectedGeometryTextField.text = selection
-        case colorPickerDataSource:
-            selectedColorTextField.text = selection
-        case sizePickerDataSource:
-            selectedSizeTextField.text = selection
+        switch pickerView.dataSource {
+        case let dataSource as PickerViewDataSource<NewShapeSetting.Geometry>:
+            currentGeometrySetting = row == 0 ? nil : dataSource.options[row - 1]
+        case let dataSource as PickerViewDataSource<NewShapeSetting.Color>:
+            currentColorSetting = row == 0 ? nil : dataSource.options[row - 1]
+        case let dataSource as PickerViewDataSource<NewShapeSetting.Size>:
+            currentSizeSetting = row == 0 ? nil : dataSource.options[row - 1]
         default:
-            preconditionFailure("Attempted to use unknown data source")
+            preconditionFailure("Unable to read data source for picker")
         }
         
         saveButton.isEnabled = canSaveShape
@@ -162,15 +170,15 @@ private extension NewShapeViewController {
     
     func setupPickerDataSources() {
         self.geometryPickerDataSource = PickerViewDataSource(
-            options: [""] + NewShapeSetting.Geometry.allCases.map { $0.rawValue.capitalized }
+            options: NewShapeSetting.Geometry.allCases
         )
         
         self.colorPickerDataSource = PickerViewDataSource(
-            options: [""] + NewShapeSetting.Color.allCases.map { $0.rawValue.capitalized }
+            options: NewShapeSetting.Color.allCases
         )
         
         self.sizePickerDataSource = PickerViewDataSource(
-            options: [""] + NewShapeSetting.Size.allCases.map { $0.rawValue.capitalized }
+            options: NewShapeSetting.Size.allCases
         )
     }
     
@@ -195,24 +203,27 @@ private extension NewShapeViewController {
         view.endEditing(true)
         saveButton.isEnabled = canSaveShape
     }
-    
+
     
     func createNodeFromOptions() -> SCNNode? {
         guard
-            let geometrySelection = geometrySelection,
-            let colorSelection = colorSelection,
-            let sizeSelection = sizeSelection
+            let geometrySetting = currentGeometrySetting,
+            let colorSetting = currentColorSetting,
+            let sizeSetting = currentSizeSetting
         else {
             return nil
         }
         
-        let geometry = makeGeometry(from: geometrySelection, withSize: sizeSelection)
-        geometry.firstMaterial?.diffuse.contents = colorSelection.uiColor
+        let geometry = makeGeometry(from: geometrySetting, withSize: sizeSetting)
+        geometry.firstMaterial?.diffuse.contents = colorSetting.uiColor
         
-        return SCNNode(geometry: geometry)
+        let node = SCNNode(geometry: geometry)
+        node.name = NewShapeSetting.nodeName(fromSettings: (geometrySetting, colorSetting, sizeSetting))
+        
+        return node
     }
     
-    
+
     func makeGeometry(
         from geometrySelection: NewShapeSetting.Geometry,
         withSize sizeSelection: NewShapeSetting.Size
@@ -230,6 +241,22 @@ private extension NewShapeViewController {
             return SCNSphere(radius: meters)
         case .torus:
             return SCNTorus(ringRadius: meters * 1.5, pipeRadius: meters * 0.2)
+        case .pyramid:
+            return SCNPyramid(width: meters, height: meters * 1.5, length: meters)
+        }
+    }
+    
+    
+    func dataSourceValue(forRow row: Int) -> String {
+        switch optionsPicker.dataSource {
+        case let dataSource as PickerViewDataSource<NewShapeSetting.Geometry>:
+            return row == 0 ? "" : dataSource.options[row - 1].rawValue.capitalized
+        case let dataSource as PickerViewDataSource<NewShapeSetting.Color>:
+            return row == 0 ? "" : dataSource.options[row - 1].rawValue.capitalized
+        case let dataSource as PickerViewDataSource<NewShapeSetting.Size>:
+            return row == 0 ? "" : dataSource.options[row - 1].rawValue.capitalized
+        default:
+            preconditionFailure("Unable to read data source for picker")
         }
     }
 }

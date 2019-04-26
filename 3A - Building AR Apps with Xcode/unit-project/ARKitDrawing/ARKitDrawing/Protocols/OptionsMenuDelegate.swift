@@ -9,7 +9,7 @@
 import ARKit
 
 protocol OptionsMenuDelegate {
-    func optionsMenu(_: OptionsMenuViewController, didSelectObject object: SCNNode)
+    func optionsMenu(_: OptionsMenuViewController, didSelectNode newNode: SCNNode)
     func optionsMenuDidUndoLastObject(_: OptionsMenuViewController)
     func optionsMenuDidTogglePlaneVizualization(_: OptionsMenuViewController)
     func optionsMenuDidResetScene(_: OptionsMenuViewController)

@@ -45,8 +45,7 @@ extension OptionsMenuViewController {
         }
         
         if let newShape = newShapeVC.shape {
-            menuDelegate.optionsMenu(self, didSelectObject: newShape)
-//            dismiss(animated: true)
+            menuDelegate.optionsMenu(self, didSelectNode: newShape)
         } else {
             assertionFailure("No shape created after `NewShapeViewController` attempted to save one")
         }
@@ -59,7 +58,7 @@ extension OptionsMenuViewController {
         }
         
         if let sceneModel = selectSceneVC.sceneModel {
-            menuDelegate.optionsMenu(self, didSelectObject: sceneModel)
+            menuDelegate.optionsMenu(self, didSelectNode: sceneModel)
         } else {
             assertionFailure("No scene model created after `SelectSceneViewController` attempted to save one")
         }
