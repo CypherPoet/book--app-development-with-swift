@@ -28,6 +28,7 @@
 		F328CE7F22705B5F003D4F6F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F328CE7E22705B5F003D4F6F /* Colors.xcassets */; };
 		F328CE812271BA0A003D4F6F /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE802271BA0A003D4F6F /* TableViewDataSource.swift */; };
 		F328CE832271CBB2003D4F6F /* SceneSelectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE822271CBB2003D4F6F /* SceneSelectionItem.swift */; };
+		F3ECDDF622744A2B00C67293 /* PlaneVizibilityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECDDF522744A2B00C67293 /* PlaneVizibilityMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		F328CE7E22705B5F003D4F6F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F328CE802271BA0A003D4F6F /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		F328CE822271CBB2003D4F6F /* SceneSelectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSelectionItem.swift; sourceTree = "<group>"; };
+		F3ECDDF522744A2B00C67293 /* PlaneVizibilityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneVizibilityMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				F328CE3B226EBCC3003D4F6F /* PlacementMenuOption.swift */,
 				F328CE79226FFEF3003D4F6F /* NewShapeSetting.swift */,
 				F328CE802271BA0A003D4F6F /* TableViewDataSource.swift */,
+				F3ECDDF522744A2B00C67293 /* PlaneVizibilityMode.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				F328CDE5226C31E1003D4F6F /* AppDelegate.swift in Sources */,
 				F328CE31226DAD9F003D4F6F /* PickerViewDataSource.swift in Sources */,
 				F328CE7A226FFEF3003D4F6F /* NewShapeSetting.swift in Sources */,
+				F3ECDDF622744A2B00C67293 /* PlaneVizibilityMode.swift in Sources */,
 				F328CE2B226D989F003D4F6F /* StoryboardID.swift in Sources */,
 				F328CE29226D9879003D4F6F /* NewShapeViewController.swift in Sources */,
 				F328CDFE226C3CAC003D4F6F /* ObjectPlacementMode.swift in Sources */,

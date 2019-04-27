@@ -108,9 +108,9 @@ private extension OptionsMenuViewController {
         return [
             OptionsMenuItem(title: "Select Basic Shape", hasDisclosureIndicator: true, optionFor: .addBasicShape),
             OptionsMenuItem(title: "Add Scene File", hasDisclosureIndicator: true, optionFor: .addScene),
-            OptionsMenuItem(title: "Enable/Disable Plane Vizualization", hasDisclosureIndicator: true, optionFor: .togglePlaneVizualization),
-            OptionsMenuItem(title: "Undo Last Object", hasDisclosureIndicator: true, optionFor: .undoLastShape),
-            OptionsMenuItem(title: "Reset Scene", hasDisclosureIndicator: true, optionFor: .resetScene),
+            OptionsMenuItem(title: "Enable/Disable Plane Visualization", hasDisclosureIndicator: false, optionFor: .togglePlaneVizualization),
+            OptionsMenuItem(title: "Undo Last Object", hasDisclosureIndicator: false, optionFor: .undoLastShape),
+            OptionsMenuItem(title: "Reset Scene", hasDisclosureIndicator: false, optionFor: .resetScene),
         ]
     }
 }
