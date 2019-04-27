@@ -71,7 +71,7 @@ extension MainViewController {
         super.touchesBegan(touches, with: event)
         
         guard
-            let node = selectedNode,
+            let nodeToPlace = selectedNode,
             let touch = touches.first
         else {
             return
@@ -79,11 +79,14 @@ extension MainViewController {
         
         switch currentObjectPlacementMode {
         case .freeform:
-            addNodeInFront(node)
+            addNodeInFrontOfCamera(nodeToPlace)
         case .image:
             break  // TODO: Implement
         case .plane:
-            break  // TODO: Implement
+            if let contactPoint = planeContactPoint(from: touch) {
+                nodeToPlace.position = contactPoint
+                makePlacement(of: nodeToPlace, on: sceneView.scene.rootNode)
+            }
         }
     }
     
@@ -221,7 +224,11 @@ extension MainViewController: OptionsMenuDelegate {
     
     
     func optionsMenuDidResetScene(_: OptionsMenuViewController) {
-        // clear nodes from scene
+        placedNodes.forEach { $0.removeFromParentNode() }
+        placedNodes.removeAll(keepingCapacity: true)
+        
+        planeNodes.forEach { $0.removeFromParentNode() }
+        planeNodes.removeAll(keepingCapacity: true)
     }
 }
 
@@ -256,10 +263,10 @@ private extension MainViewController {
      Sets the transform of a given node to be 20cm in from of the camera,
      then adds it to the scene.
      */
-    func addNodeInFront(_ node: SCNNode) {
+    func addNodeInFrontOfCamera(_ node: SCNNode, byDistanceOf distance: Float = 0.3) {
         guard let currentFrame = sceneView.session.currentFrame else { return }
         
-        node.simdTransform = transformFrom(camera: currentFrame.camera, x: 0, y: 0, z: -0.3)
+        node.simdTransform = transformFrom(camera: currentFrame.camera, x: 0, y: 0, z: -distance)
         makePlacement(of: node, on: sceneView.scene.rootNode)
     }
     
@@ -304,6 +311,24 @@ private extension MainViewController {
         planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
         planeGeometry.width = CGFloat(planeAnchor.extent.x)
         planeGeometry.height = CGFloat(planeAnchor.extent.z)
+    }
+    
+    
+    func planeContactPoint(from touch: UITouch) -> SCNVector3? {
+        let touchPoint = touch.location(in: sceneView)
+        let hitTestResults = sceneView.hitTest(touchPoint, types: [.existingPlaneUsingExtent])
+        
+        if let match = hitTestResults.first {
+            let worldTransform = match.worldTransform
+
+            return SCNVector3(
+                x: worldTransform.columns.3.x,
+                y: worldTransform.columns.3.y,
+                z: worldTransform.columns.3.z
+            )
+        }
+        
+        return nil
     }
 }
 
