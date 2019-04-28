@@ -29,6 +29,7 @@
 		F328CE812271BA0A003D4F6F /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE802271BA0A003D4F6F /* TableViewDataSource.swift */; };
 		F328CE832271CBB2003D4F6F /* SceneSelectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CE822271CBB2003D4F6F /* SceneSelectionItem.swift */; };
 		F3ECDDF622744A2B00C67293 /* PlaneVizibilityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECDDF522744A2B00C67293 /* PlaneVizibilityMode.swift */; };
+		F3ECDDF822745C7A00C67293 /* SCNVector3+DistanceBetweenPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECDDF722745C7A00C67293 /* SCNVector3+DistanceBetweenPoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		F328CE802271BA0A003D4F6F /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		F328CE822271CBB2003D4F6F /* SceneSelectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSelectionItem.swift; sourceTree = "<group>"; };
 		F3ECDDF522744A2B00C67293 /* PlaneVizibilityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneVizibilityMode.swift; sourceTree = "<group>"; };
+		F3ECDDF722745C7A00C67293 /* SCNVector3+DistanceBetweenPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+DistanceBetweenPoints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		F328CE7B227055E4003D4F6F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F3ECDDF722745C7A00C67293 /* SCNVector3+DistanceBetweenPoints.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F328CE33226E74A6003D4F6F /* OptionsMenuDelegate.swift in Sources */,
+				F3ECDDF822745C7A00C67293 /* SCNVector3+DistanceBetweenPoints.swift in Sources */,
 				F328CE3E226ED02B003D4F6F /* SelectSceneViewController.swift in Sources */,
 				F328CDE9226C31E1003D4F6F /* MainViewController.swift in Sources */,
 				F328CE38226E7A9B003D4F6F /* OptionsMenuTableViewDataSource.swift in Sources */,

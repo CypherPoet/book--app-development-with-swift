@@ -16,21 +16,46 @@ class MainViewController: UIViewController {
     lazy var worldTrackingConfig = ARWorldTrackingConfiguration()
     
     var currentObjectPlacementMode: ObjectPlacementMode = .freeform {
-        didSet { setWorldTrackingConfig() }
+        didSet { objectPlacementModeChanged() }
     }
     
     var currentPlaneVisibilityMode: PlaneVisibilityMode = .visible {
         didSet {
             planeNodes.forEach {
-                $0.isHidden = currentPlaneVisibilityMode == .visible ? true : false
+                $0.isHidden = currentPlaneVisibilityMode == .hidden ? true : false
             }
         }
     }
     
     var selectedNode: SCNNode?
+    var lastNodePlacementPoint: SCNVector3?
     
-    private var placedNodes: [SCNNode] = []
+    var nodeDragPlacementThreshold = CGFloat(10.2)
+    var lastDragPlacementPoint: SCNVector3?
+    
     private var planeNodes: [SCNNode] = []
+    private var placedNodes: [SCNNode] = []
+}
+
+
+// MARK: - Computed Properties
+
+extension MainViewController {
+    var sceneRootNode: SCNNode {
+        return sceneView.scene.rootNode
+    }
+    
+    var detectionReferenceImages: Set<ARReferenceImage>? {
+        if currentObjectPlacementMode == .image {
+            return ARReferenceImage.referenceImages(
+                // inGroupNamed: R.ARReferenceImages,
+                inGroupNamed: "AR Resources",
+                bundle: nil
+            )
+        } else {
+            return nil
+        }
+    }
 }
 
 
@@ -50,8 +75,7 @@ extension MainViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setWorldTrackingConfig()
-        sceneView.session.run(worldTrackingConfig)
+        reloadSessionConfig()
     }
     
     
@@ -73,9 +97,7 @@ extension MainViewController {
         guard
             let nodeToPlace = selectedNode,
             let touch = touches.first
-        else {
-            return
-        }
+        else { return }
         
         switch currentObjectPlacementMode {
         case .freeform:
@@ -85,9 +107,38 @@ extension MainViewController {
         case .plane:
             if let contactPoint = planeContactPoint(from: touch) {
                 nodeToPlace.position = contactPoint
-                makePlacement(of: nodeToPlace, on: sceneView.scene.rootNode)
+                makePlacement(of: nodeToPlace, on: sceneRootNode)
             }
         }
+    }
+    
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        
+        guard
+            currentObjectPlacementMode == .plane,
+            let nodeToPlace = selectedNode,
+            let touch = touches.first
+        else { return }
+        
+        if let contactPoint = planeContactPoint(from: touch) {
+            if
+                lastDragPlacementPoint == nil ||
+                SCNVector3.distanceBetween(contactPoint, and: lastDragPlacementPoint!) > nodeDragPlacementThreshold
+            {
+                nodeToPlace.position = contactPoint
+                lastDragPlacementPoint = contactPoint
+                makePlacement(of: nodeToPlace, on: sceneRootNode)
+            }
+        }
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
+        lastDragPlacementPoint = nil
     }
     
     
@@ -229,6 +280,8 @@ extension MainViewController: OptionsMenuDelegate {
         
         planeNodes.forEach { $0.removeFromParentNode() }
         planeNodes.removeAll(keepingCapacity: true)
+        
+        reloadSessionConfig(options: [.removeExistingAnchors])
     }
 }
 
@@ -240,22 +293,14 @@ private extension MainViewController {
     func setupSceneView() {
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [.showWorldOrigin]
     }
     
     
-    func setWorldTrackingConfig() {
+    func reloadSessionConfig(options: ARSession.RunOptions = []) {
         worldTrackingConfig.planeDetection = [.horizontal]
+        worldTrackingConfig.detectionImages = detectionReferenceImages
         
-        if currentObjectPlacementMode == .image {
-            worldTrackingConfig.detectionImages = ARReferenceImage.referenceImages(
-//                inGroupNamed: R.ARReferenceImages,
-                inGroupNamed: "AR Resources",
-                bundle: nil
-            )
-        } else {
-            worldTrackingConfig.detectionImages = nil
-        }
+        sceneView.session.run(worldTrackingConfig, options: options)
     }
     
     
@@ -267,7 +312,7 @@ private extension MainViewController {
         guard let currentFrame = sceneView.session.currentFrame else { return }
         
         node.simdTransform = transformFrom(camera: currentFrame.camera, x: 0, y: 0, z: -distance)
-        makePlacement(of: node, on: sceneView.scene.rootNode)
+        makePlacement(of: node, on: sceneRootNode)
     }
     
     
@@ -329,6 +374,18 @@ private extension MainViewController {
         }
         
         return nil
+    }
+    
+    
+    func objectPlacementModeChanged() {
+        reloadSessionConfig()
+        
+        switch currentObjectPlacementMode {
+        case .freeform, .image:
+            currentPlaneVisibilityMode = .hidden
+        case .plane:
+            currentPlaneVisibilityMode = .visible
+        }
     }
 }
 
