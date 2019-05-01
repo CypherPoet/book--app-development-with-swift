@@ -22,6 +22,7 @@ extension EmojiListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.leftBarButtonItem = editButtonItem
         setupData()
     }
 }
@@ -30,7 +31,20 @@ extension EmojiListViewController {
 // MARK: - Computeds
 
 extension EmojiListViewController {
+    var viewModel: EmojiListViewModel {
+        return emojiListModelController.viewModel
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension EmojiListViewController {
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+
 }
 
 
@@ -45,7 +59,7 @@ private extension EmojiListViewController {
                 cellReuseIdentifier: StoryboardID.ReuseIdentifier.emojiTableCell,
                 cellConfigurator: { (emoji, cell) in
 //                    cell.configure(with: emoji.tableCellViewModel)   // 🔑 MVVM for custom cells might have us doing something like this
-                    cell.textLabel?.text = emoji.name
+                    cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name)"
                     cell.detailTextLabel?.text = emoji.description
                 }
             )
@@ -57,20 +71,4 @@ private extension EmojiListViewController {
             }
         }
     }
-    
-    
-//    func loadEmojis() {
-//        emojiManager.load() { [weak self] (emojis) in
-//            let dataSource = TableViewDataSource(
-//                models: emojis,
-//                cellReuseIdentifier: StoryboardID.ReuseIdentifier.emojiTableCell,
-//                cellConfigurator: { (emoji, cell) in
-//
-//                }
-//            )
-//
-//            self?.dataSource = dataSource
-//            self?.tableView.dataSource = dataSource
-//        }
-//    }
 }

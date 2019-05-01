@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Emoji Dictionary-->
         <scene sceneID="acF-vR-79f">
             <objects>
                 <tableViewController id="3lY-pY-vXM" customClass="EmojiListViewController" customModule="EmojiDictionary" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Emoji Table Cell" textLabel="Esp-e4-93y" detailTextLabel="cNA-mR-fxR" style="IBUITableViewCellStyleSubtitle" id="sF4-GL-D1z">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="Emoji Table Cell" textLabel="Esp-e4-93y" detailTextLabel="cNA-mR-fxR" style="IBUITableViewCellStyleSubtitle" id="sF4-GL-D1z">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sF4-GL-D1z" id="gYm-Ok-lgT">
@@ -48,7 +48,7 @@
                             <outlet property="delegate" destination="3lY-pY-vXM" id="hAg-bb-776"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="PQr-bJ-tu3"/>
+                    <navigationItem key="navigationItem" title="Emoji Dictionary" largeTitleDisplayMode="always" id="PQr-bJ-tu3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cI2-PV-MGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

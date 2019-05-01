@@ -41,4 +41,11 @@ class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
         
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedModel = models.remove(at: sourceIndexPath.row)
+        
+        models.insert(movedModel, at: destinationIndexPath.row)
+    }
 }

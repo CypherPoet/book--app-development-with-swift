@@ -26,7 +26,7 @@ class EmojiListModelController {
         emojiManager.load { [weak self] (emojis) in
             self?.viewModel.emojis = emojis
             
-            completionHandler(emojis)
+            completionHandler(emojis)
         }
     }
 }
