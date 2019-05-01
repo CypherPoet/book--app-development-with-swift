@@ -1,0 +1,74 @@
+[
+    {
+        "symbol": "😍",
+        "name": "Heart-Eyes",
+        "description": "A smiling face with hearts for eyes",
+        "usages": ["Infatuation", "Adoration of something aesthetically attractive"],
+    },
+    {
+        "symbol": "🧝‍♂️",
+        "name": "Elf",
+        "description": "A creature with pointed ears and a human-like face",
+        "usages": ["Cleverness and elegance", "Tolkienesque fantasy role-playing"],
+    },
+    {
+        "symbol": "🦁",
+        "name": "Lion",
+        "description": "The face of a lion in a cute, cartoon style",
+        "usages": ["Courage", "Dominance of an ecosystem"],
+    },
+    {
+        "symbol": "🦡",
+        "name": "Badger",
+        "description": "The body of a badger, sometimes associated with a honeybadger.",
+        "usages": ["Little concern for threats or FUD"],
+    },
+    {
+        "symbol": "🙃",
+        "name": "Upside-down Smiley",
+        "description": "A classic smiley, turned upside-down",
+        "usages": ["Irony", "Goofiness", "Absurdity of a situation"],
+    },
+    {
+        "symbol": "🛹",
+        "name": "Skateboard",
+        "description": "A skateboard with green wheels",
+        "usages": ["Method of transportation"],
+    },
+    {
+        "symbol": "🧬",
+        "name": "DNA",
+        "description": "The genetic blueprint for life",
+        "usages": ["Evoking the process of life and evolution"],
+    },
+    {
+        "symbol": "🏴‍☠️",
+        "name": "Pirate Flag",
+        "description": "A skull-and-crossbones on a black flag (AKA \"The Jolly Rodger\").",
+        "usages": ["Indicating a disregard for authority", "freedom"]
+    },
+    {
+        "symbol": "🧲",
+        "name": "Magnet",
+        "description": "A horseshoe-shaped magnet with a red handle and silver tips.",
+        "usages": ["Attractive forces", "Things that stick"],
+    },
+    {
+        "symbol": "♟",
+        "name": "Chess Pawn",
+        "description": "A piece used a pawn in the game of chess",
+        "usages": ["Clever operation", "Manipulation"],
+    },
+    {
+        "symbol": "⚡️",
+        "name": "Lightning Bolt",
+        "description": "A symbol of a high-voltage electrical charge.",
+        "usages": ["Electricity", "Dynamic action"],
+    },
+    {
+        "symbol": "📱",
+        "name": "Cellular device",
+        "description": "A hand-held supercomputer.",
+        "usages": ["Creating magic", "Acquiring information", "Communication"],
+    },
+]
