@@ -11,7 +11,7 @@ import UIKit
 class EmojiListViewController: UITableViewController {
     lazy var emojiListModelController = EmojiListModelController()
     
-    var dataSource: TableViewDataSource<Emoji>!
+    var dataSource: SectionedTableViewDataSource!
 }
 
 
@@ -34,6 +34,11 @@ extension EmojiListViewController {
     var viewModel: EmojiListViewModel {
         return emojiListModelController.viewModel
     }
+    
+    
+    var emojiDataSources: [TableViewDataSource<Emoji>] {
+        return viewModel.emojiSections.map { .make(for: $0) }
+    }
 }
 
 
@@ -53,21 +58,18 @@ extension EmojiListViewController {
 private extension EmojiListViewController {
     
     func setupData() {
-        emojiListModelController.start { [weak self] (emojis) in
-            let dataSource = TableViewDataSource(
-                models: emojis,
-                cellReuseIdentifier: StoryboardID.ReuseIdentifier.emojiTableCell,
-                cellConfigurator: { (emoji, cell) in
-//                    cell.configure(with: emoji.tableCellViewModel)   // 🔑 MVVM for custom cells might have us doing something like this
-                    cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name)"
-                    cell.detailTextLabel?.text = emoji.description
-                }
+        emojiListModelController.start { [weak self] _ in
+            guard let self = self else { return }
+            
+            let dataSource = SectionedTableViewDataSource(
+                dataSources: self.emojiDataSources,
+                sectionHeaderTitles: self.viewModel.emojiSectionHeaderTitles
             )
             
             DispatchQueue.main.async {
-                self?.dataSource = dataSource
-                self?.tableView.dataSource = dataSource
-                self?.tableView.reloadData()
+                self.dataSource = dataSource
+                self.tableView.dataSource = dataSource
+                self.tableView.reloadData()
             }
         }
     }

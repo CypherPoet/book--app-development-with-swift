@@ -14,7 +14,22 @@ struct Emoji {
     var name: String
     var description: String
     var usages: [String] = []
+    var category: String
 }
 
 
 extension Emoji: Codable {}
+
+
+extension Emoji {
+    enum Category {
+        static let smileysAndPeople = "Smileys & People"
+        static let animalsAndNature = "Animals & Nature"
+        static let foodAndDrink = "Food & Drink"
+        static let activity = "Activities"
+        static let travelAndPlaces = "Travel & Places"
+        static let objects = "Objects"
+        static let symbols = "Symbols"
+        static let flags = "Flags"
+    }
+}
