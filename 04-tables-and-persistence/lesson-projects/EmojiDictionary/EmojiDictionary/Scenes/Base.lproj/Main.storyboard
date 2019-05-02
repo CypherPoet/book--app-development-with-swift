@@ -6,53 +6,66 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Emoji Dictionary-->
-        <scene sceneID="acF-vR-79f">
+        <scene sceneID="bzl-Fu-nDa">
             <objects>
-                <tableViewController id="3lY-pY-vXM" customClass="EmojiListViewController" customModule="EmojiDictionary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Gka-K3-M69">
+                <viewController id="gln-ry-NEW" customClass="EmojiListViewController" customModule="EmojiDictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Iuq-1x-rVD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="Emoji Table Cell" textLabel="Esp-e4-93y" detailTextLabel="cNA-mR-fxR" style="IBUITableViewCellStyleSubtitle" id="sF4-GL-D1z">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sF4-GL-D1z" id="gYm-Ok-lgT">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Esp-e4-93y">
-                                            <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-Rx-uWf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="Emoji Table Cell" textLabel="EJW-RX-JXa" detailTextLabel="OKy-S1-Fed" style="IBUITableViewCellStyleSubtitle" id="Nlx-7t-wRd">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nlx-7t-wRd" id="eSJ-ZR-t2y">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cNA-mR-fxR">
-                                            <rect key="frame" x="20" y="25.5" width="33" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3lY-pY-vXM" id="8wg-1q-T3K"/>
-                            <outlet property="delegate" destination="3lY-pY-vXM" id="hAg-bb-776"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Emoji Dictionary" largeTitleDisplayMode="always" id="PQr-bJ-tu3"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cI2-PV-MGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EJW-RX-JXa">
+                                                    <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OKy-S1-Fed">
+                                                    <rect key="frame" x="20" y="25.5" width="33" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lm8-Rx-uWf" firstAttribute="trailing" secondItem="N3J-nJ-ide" secondAttribute="trailing" id="BtD-J6-h3l"/>
+                            <constraint firstItem="lm8-Rx-uWf" firstAttribute="leading" secondItem="N3J-nJ-ide" secondAttribute="leading" id="N6K-kx-l09"/>
+                            <constraint firstAttribute="bottom" secondItem="lm8-Rx-uWf" secondAttribute="bottom" id="Vje-WE-2Zf"/>
+                            <constraint firstItem="lm8-Rx-uWf" firstAttribute="top" secondItem="Iuq-1x-rVD" secondAttribute="top" id="ihr-yv-0sD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="N3J-nJ-ide"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Emoji Dictionary" largeTitleDisplayMode="always" id="IUm-Wy-Oj1"/>
+                    <connections>
+                        <outlet property="tableView" destination="lm8-Rx-uWf" id="5ya-am-n9S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u3w-UK-V0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-471" y="21"/>
+            <point key="canvasLocation" x="-362" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yrE-hf-0ZC">
@@ -63,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="3lY-pY-vXM" kind="relationship" relationship="rootViewController" id="pPk-XV-Zxd"/>
+                        <segue destination="gln-ry-NEW" kind="relationship" relationship="rootViewController" id="8fU-ac-U6T"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKb-w8-fYH" userLabel="First Responder" sceneMemberID="firstResponder"/>

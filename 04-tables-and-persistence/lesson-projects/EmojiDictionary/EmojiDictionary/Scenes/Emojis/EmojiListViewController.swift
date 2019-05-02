@@ -8,7 +8,9 @@
 
 import UIKit
 
-class EmojiListViewController: UITableViewController {
+class EmojiListViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+    
     lazy var emojiListModelController = EmojiListModelController()
     
     var dataSource: SectionedTableViewDataSource!
@@ -24,7 +26,21 @@ extension EmojiListViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
         setupData()
+        setupTableView()
     }
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        tableView.setEditing(editing, animated: true)
+    }
+    
 }
 
 
@@ -44,9 +60,9 @@ extension EmojiListViewController {
 
 // MARK: - UITableViewDelegate
 
-extension EmojiListViewController {
+extension EmojiListViewController: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 
@@ -72,5 +88,10 @@ private extension EmojiListViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    
+    func setupTableView() {
+        tableView.delegate = self
     }
 }
