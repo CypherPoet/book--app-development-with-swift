@@ -45,5 +45,12 @@ extension SectionedTableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionHeaderTitles[section]
     }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let dataSource = dataSources[indexPath.section]
+        
+        dataSource.tableView?(tableView, commit: editingStyle, forRowAt: indexPath)
+    }
 }
 

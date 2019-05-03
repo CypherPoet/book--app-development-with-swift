@@ -22,6 +22,8 @@
 		F3ECDF0A2279FC3900C67293 /* emoji-data.json in Resources */ = {isa = PBXBuildFile; fileRef = F3ECDF092279FC3900C67293 /* emoji-data.json */; };
 		F3ECDF0C227A277700C67293 /* SectionedTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECDF0B227A277700C67293 /* SectionedTableViewDataSource.swift */; };
 		F3ECDF0F227A2ACC00C67293 /* TableViewDataSource+MakeForEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECDF0E227A2ACC00C67293 /* TableViewDataSource+MakeForEmojis.swift */; };
+		F3ECDF15227BAA0600C67293 /* EmojiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECDF14227BAA0500C67293 /* EmojiTableViewCell.swift */; };
+		F3ECDF18227BAE2F00C67293 /* EmojiTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECDF17227BAE2F00C67293 /* EmojiTableCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		F3ECDF092279FC3900C67293 /* emoji-data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "emoji-data.json"; sourceTree = "<group>"; };
 		F3ECDF0B227A277700C67293 /* SectionedTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedTableViewDataSource.swift; sourceTree = "<group>"; };
 		F3ECDF0E227A2ACC00C67293 /* TableViewDataSource+MakeForEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewDataSource+MakeForEmojis.swift"; sourceTree = "<group>"; };
+		F3ECDF14227BAA0500C67293 /* EmojiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewCell.swift; sourceTree = "<group>"; };
+		F3ECDF17227BAE2F00C67293 /* EmojiTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 		F3ECDEFB22799B8700C67293 /* Emojis */ = {
 			isa = PBXGroup;
 			children = (
+				F3ECDF16227BAAAC00C67293 /* Cell */,
 				F3ECDEF922799B8200C67293 /* EmojiListViewController.swift */,
 				F3ECDF012279B77000C67293 /* EmojiManager.swift */,
 				F3ECDF052279EBEB00C67293 /* EmojiListViewModel.swift */,
@@ -148,6 +153,15 @@
 				F3ECDF0E227A2ACC00C67293 /* TableViewDataSource+MakeForEmojis.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F3ECDF16227BAAAC00C67293 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F3ECDF14227BAA0500C67293 /* EmojiTableViewCell.swift */,
+				F3ECDF17227BAE2F00C67293 /* EmojiTableCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,11 +241,13 @@
 				F3ECDEE222798D6000C67293 /* AppDelegate.swift in Sources */,
 				F3ECDEFD22799BE100C67293 /* TableViewDataSource.swift in Sources */,
 				F3ECDF022279B77000C67293 /* EmojiManager.swift in Sources */,
+				F3ECDF18227BAE2F00C67293 /* EmojiTableCellViewModel.swift in Sources */,
 				F3ECDF0C227A277700C67293 /* SectionedTableViewDataSource.swift in Sources */,
 				F3ECDF082279EE4200C67293 /* EmojiListModelController.swift in Sources */,
 				F3ECDF0F227A2ACC00C67293 /* TableViewDataSource+MakeForEmojis.swift in Sources */,
 				F3ECDEFA22799B8200C67293 /* EmojiListViewController.swift in Sources */,
 				F3ECDF002279B24100C67293 /* StoryboardID.swift in Sources */,
+				F3ECDF15227BAA0600C67293 /* EmojiTableViewCell.swift in Sources */,
 				F3ECDF062279EBEB00C67293 /* EmojiListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

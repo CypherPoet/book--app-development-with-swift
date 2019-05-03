@@ -25,11 +25,15 @@ extension TableViewDataSource where Model == Emoji {
             models: emojis,
             cellReuseIdentifier: StoryboardID.ReuseIdentifier.emojiTableCell,
             cellConfigurator: { (emoji, cell) in
-                // 🔑 MVVM for custom cells might have us doing something like this:
-                // cell.configure(with: emoji.tableCellViewModel)
-
-                cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name)"
-                cell.detailTextLabel?.text = emoji.description
+                guard let emojiCell = cell as? EmojiTableViewCell else {
+                    preconditionFailure("Unknown cell returned for table view configuration: \(cell)")
+                }
+                
+                emojiCell.configure(with: EmojiTableCellViewModel(
+                    symbol: emoji.symbol,
+                    name: emoji.name,
+                    description: emoji.description
+                ))
             }
         )
     }
