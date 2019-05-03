@@ -13,7 +13,7 @@ struct Emoji {
     var symbol: String
     var name: String
     var description: String
-    var usages: [String] = []
+    var usage: String
     var category: String
 }
 
