@@ -9,8 +9,8 @@
 import UIKit
 
 class SectionedTableViewDataSource: NSObject {
-    private let dataSources: [UITableViewDataSource]
-    private let sectionHeaderTitles: [String]
+    private var dataSources: [UITableViewDataSource]
+    private var sectionHeaderTitles: [String]
     
     
     init(dataSources: [UITableViewDataSource], sectionHeaderTitles: [String]) {
@@ -51,6 +51,25 @@ extension SectionedTableViewDataSource: UITableViewDataSource {
         let dataSource = dataSources[indexPath.section]
         
         dataSource.tableView?(tableView, commit: editingStyle, forRowAt: indexPath)
+    }
+}
+
+
+// MARK: - Core Methods
+
+extension SectionedTableViewDataSource {
+    func dataSourceForSection(at indexPath: IndexPath) -> UITableViewDataSource? {
+        guard dataSources.count > indexPath.section else {
+            return nil
+        }
+        
+        return dataSources[indexPath.section]
+    }
+    
+    
+    func add(_ newDataSource: UITableViewDataSource, at index: Int, usingHeader sectionHeaderTitle: String) {
+        dataSources.insert(newDataSource, at: index)
+        sectionHeaderTitles.insert(sectionHeaderTitle, at: index)
     }
 }
 

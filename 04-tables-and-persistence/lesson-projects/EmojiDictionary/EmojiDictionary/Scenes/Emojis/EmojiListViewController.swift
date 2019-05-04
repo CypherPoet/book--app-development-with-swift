@@ -58,6 +58,40 @@ extension EmojiListViewController {
 }
 
 
+// MARK: - Navigation
+
+extension EmojiListViewController {
+    
+    @IBAction func cancelAddEditEmojiChanges(unwindSegue: UIStoryboardSegue) {}
+    
+    @IBAction func saveAddEditEmojiChanges(unwindSegue: UIStoryboardSegue) {
+        guard
+            let addEditEmojiVC = unwindSegue.source as? AddEditEmojiViewController,
+            let emoji = addEditEmojiVC.emoji
+        else { return }
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            update(emoji, at: selectedIndexPath)
+        } else {
+            add(emoji)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == StoryboardID.Segue.editEmoji,
+            let addEditEmojiVC = segue.destination.children.first as? AddEditEmojiViewController,
+            let indexPath = tableView.indexPathForSelectedRow,
+            let sectionDataSource = dataSource.dataSourceForSection(at: indexPath) as? TableViewDataSource<Emoji>
+        else { return }
+        
+        addEditEmojiVC.emoji = sectionDataSource.models[indexPath.row]
+    }
+    
+}
+
+
 // MARK: - UITableViewDelegate
 
 extension EmojiListViewController: UITableViewDelegate {
@@ -97,5 +131,42 @@ private extension EmojiListViewController {
     
     func setupTableView() {
         tableView.delegate = self
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    
+    func update(_ emoji: Emoji, at selectedIndexPath: IndexPath) {
+        let absoluteIndex = tableView.absoluteIndex(forRow: selectedIndexPath.row, inSection: selectedIndexPath.section)
+        
+        emojiListModelController.update(emoji, at: absoluteIndex) { [weak self] in
+            guard let self = self else { return }
+
+            let dataSource = self.dataSource.dataSourceForSection(at: selectedIndexPath) as! TableViewDataSource<Emoji>
+                
+            dataSource.models[selectedIndexPath.row] = emoji
+            self.tableView.reloadRows(at: [selectedIndexPath], with: .none)
+        }
+    }
+    
+    
+    func add(_ emoji: Emoji) {
+        emojiListModelController.add(emoji) { [weak self] (sectionAddedTo, rowAddedAt) in
+            guard let self = self else { return }
+            
+            let newIndexPath = IndexPath(row: rowAddedAt, section: sectionAddedTo)
+            
+            if let sectionDataSource = self.dataSource.dataSourceForSection(at: newIndexPath) as? TableViewDataSource<Emoji> {
+                sectionDataSource.models.insert(emoji, at: newIndexPath.row)
+                self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                
+            } else {
+                let newDataSource: TableViewDataSource<Emoji> = .make(for: [emoji])
+                
+                self.dataSource.add(newDataSource, at: sectionAddedTo, usingHeader: emoji.category)
+                self.tableView.insertSections(IndexSet([sectionAddedTo]), with: .automatic)
+            }
+        }
+
     }
 }

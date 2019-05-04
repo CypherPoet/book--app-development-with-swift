@@ -22,14 +22,14 @@ extension Emoji: Codable {}
 
 
 extension Emoji {
-    enum Category {
-        static let smileysAndPeople = "Smileys & People"
-        static let animalsAndNature = "Animals & Nature"
-        static let foodAndDrink = "Food & Drink"
-        static let activity = "Activities"
-        static let travelAndPlaces = "Travel & Places"
-        static let objects = "Objects"
-        static let symbols = "Symbols"
-        static let flags = "Flags"
+    enum Category: String, CaseIterable {
+        case smileysAndPeople = "Smileys & People"
+        case animalsAndNature = "Animals & Nature"
+        case foodAndDrink = "Food & Drink"
+        case activity = "Activities"
+        case travelAndPlaces = "Travel & Places"
+        case objects = "Objects"
+        case symbols = "Symbols"
+        case flags = "Flags"
     }
 }

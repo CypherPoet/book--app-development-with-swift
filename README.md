@@ -86,4 +86,13 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 | 3A - Building AR Apps with Xcode | [AR Shots](./3A%20-%20-Building%20AR%20Apps%20with%20Xcode/lesson-projects/ARShots/): Shooting hoops with AR Objects and tap detection | Translating user taps into real-world positions ---- Placing 3D objects when discovered planes are selected ---- Adding physics to an AR scene ---- Positioning new objects relative to the camera's current position. | ✅ |
 | 3A - Building AR Apps with Xcode | [AR Image Finder](./3A%20-%20-Building%20AR%20Apps%20with%20Xcode/lesson-projects/ARImageFinder/): Designing a treasure hunt game based upon pre-loaded reference images | Enabling image detection ---- Specifying which images to locate in the physical world ---- Responding to the discovery of an image ---- Performing simple animations with SceneKit objects | ✅ |
 | 3A - Building AR Apps with Xcode | [AR Drawing](./3A%20-%20-Building%20AR%20Apps%20with%20Xcode/unit-project/ARKitDrawing/): Allow users to choose SceneKit shapes and models from menus and place them in their own scene. | Creating nodes from primitive shape settings ---- Loading nodes from a directory of `.scn` files ---- Changing rendering logic according to user control settings ---- Removing previously added nodes to "Undo" actions  | ✅ |
-| 4 - Tables and Persistence | [](): |  | ✅ |
+| 4 - Tables and Persistence | [Emoji Dictionary](./04-tables-and-persistence/lesson-projects/EmojiDictionary)| Creating grouped table with data sources and static tables via Storyboards ---- Allowing add/edit/delete functionality in a grouped table | ✅ |
+
+
+<br/>
+<br/>
+
+<div style="text-align: center;">
+  <img src="./04-tables-and-persistence/lesson-projects/EmojiDictionary/Screenshots/recording-1.gif" width="40%"/>
+  <img src="./04-tables-and-persistence/lesson-projects/EmojiDictionary/Screenshots/recording-2.gif" width="40%"/>
+</div>
