@@ -11,6 +11,12 @@ import Foundation
 
 class EmojiListViewModel {
     var emojis: [Emoji] = []
+    var emojiManager: EmojiManager
+
+    
+    init(emojiManager: EmojiManager = EmojiManager()) {
+        self.emojiManager = emojiManager
+    }
 }
 
 
@@ -48,18 +54,29 @@ extension EmojiListViewModel {
     }
     
     
-    func update(_ emoji: Emoji, at index: Int) {
-        emojis[index] = emoji
+    func start(then completionHandler: @escaping ([Emoji]) -> Void) {
+        emojiManager.load { [weak self] (emojis) in
+            self?.emojis = emojis
+
+            completionHandler(emojis)
+        }
     }
     
     
-    func add(_ emoji: Emoji) -> (sectionAddedTo: Int, rowAddedAt: Int) {
+    func update(_ emoji: Emoji, at index: Int, then completionHandler: @escaping () -> Void) {
+        emojis[index] = emoji
+        
+        completionHandler()
+    }
+    
+    
+    func add(_ emoji: Emoji, then completionHandler: @escaping ((sectionAddedTo: Int, rowAddedAt: Int)) -> Void) {
         emojis.append(emoji)
         
-        let sectionNumber = self.sectionNumber(for: emoji)
-        let rowNumber = emojiSections[sectionNumber].lastIndex { $0.name == emoji.name }!
+        let sectionAddedTo = self.sectionNumber(for: emoji)
+        let rowAddedAt = emojiSections[sectionAddedTo].lastIndex { $0.name == emoji.name }!
         
-        return (sectionNumber, rowNumber)
+        return completionHandler((sectionAddedTo, rowAddedAt))
     }
     
 }

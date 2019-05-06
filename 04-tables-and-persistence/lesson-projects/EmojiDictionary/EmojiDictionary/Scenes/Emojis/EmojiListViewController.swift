@@ -11,7 +11,7 @@ import UIKit
 class EmojiListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var emojiListModelController = EmojiListModelController()
+    lazy var viewModel = EmojiListViewModel()
     
     var dataSource: SectionedTableViewDataSource!
 }
@@ -46,12 +46,7 @@ extension EmojiListViewController {
 
 // MARK: - Computeds
 
-extension EmojiListViewController {
-    var viewModel: EmojiListViewModel {
-        return emojiListModelController.viewModel
-    }
-    
-    
+extension EmojiListViewController {    
     var emojiDataSources: [TableViewDataSource<Emoji>] {
         return viewModel.emojiSections.map { .make(for: $0) }
     }
@@ -112,7 +107,7 @@ extension EmojiListViewController: UITableViewDelegate {
 private extension EmojiListViewController {
     
     func setupData() {
-        emojiListModelController.start { [weak self] _ in
+        viewModel.start { [weak self] _ in
             guard let self = self else { return }
             
             let dataSource = SectionedTableViewDataSource(
@@ -139,7 +134,7 @@ private extension EmojiListViewController {
     func update(_ emoji: Emoji, at selectedIndexPath: IndexPath) {
         let absoluteIndex = tableView.absoluteIndex(forRow: selectedIndexPath.row, inSection: selectedIndexPath.section)
         
-        emojiListModelController.update(emoji, at: absoluteIndex) { [weak self] in
+        viewModel.update(emoji, at: absoluteIndex) { [weak self] in
             guard let self = self else { return }
 
             let dataSource = self.dataSource.dataSourceForSection(at: selectedIndexPath) as! TableViewDataSource<Emoji>
@@ -151,7 +146,7 @@ private extension EmojiListViewController {
     
     
     func add(_ emoji: Emoji) {
-        emojiListModelController.add(emoji) { [weak self] (sectionAddedTo, rowAddedAt) in
+        viewModel.add(emoji) { [weak self] (sectionAddedTo, rowAddedAt) in
             guard let self = self else { return }
             
             let newIndexPath = IndexPath(row: rowAddedAt, section: sectionAddedTo)

@@ -13,7 +13,7 @@ class EmojiManager {
         on queue: DispatchQueue = .global(qos: .userInitiated),
         completionHandler: @escaping ([Emoji]) -> Void
     ) {
-        let dataURL = Endpoint.Emoji.url
+        let dataURL = Endpoint.Emoji.initialData
         
         queue.async {
             do {

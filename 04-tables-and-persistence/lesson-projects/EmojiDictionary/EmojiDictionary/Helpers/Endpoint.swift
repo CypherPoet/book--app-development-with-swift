@@ -12,12 +12,20 @@ enum Endpoint {
     
     enum Emoji {
     
-        static var url: URL {
+        static var initialData: URL {
             guard let url = Bundle.main.url(forResource: "emoji-data", withExtension: "json") else {
                 preconditionFailure("Failed to find URL to emoji data")
             }
             
             return url
+        }
+        
+        
+        static var savedData: URL {
+            return FileManager
+                .userDocumentsDirectory
+                .appendingPathComponent("saved-emojis")
+                .appendingPathExtension("json")
         }
         
     }
