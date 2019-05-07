@@ -34,6 +34,9 @@ extension TableViewDataSource where Model == Emoji {
                     name: emoji.name,
                     description: emoji.description
                 ))
+            },
+            modelDeleter: { (model, indexPath) in
+                
             }
         )
     }

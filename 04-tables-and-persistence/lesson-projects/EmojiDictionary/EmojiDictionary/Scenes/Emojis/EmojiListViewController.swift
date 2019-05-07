@@ -46,9 +46,28 @@ extension EmojiListViewController {
 
 // MARK: - Computeds
 
-extension EmojiListViewController {    
+extension EmojiListViewController {
     var emojiDataSources: [TableViewDataSource<Emoji>] {
-        return viewModel.emojiSections.map { .make(for: $0) }
+        return viewModel.sectionedEmojis.map { emojis in
+            return TableViewDataSource(
+                models: emojis,
+                cellReuseIdentifier: StoryboardID.ReuseIdentifier.emojiTableCell,
+                cellConfigurator: { (emoji, cell) in
+                    guard let emojiCell = cell as? EmojiTableViewCell else {
+                        preconditionFailure("Unknown cell returned for table view configuration: \(cell)")
+                    }
+                    
+                    emojiCell.configure(with: EmojiTableCellViewModel(
+                        symbol: emoji.symbol,
+                        name: emoji.name,
+                        description: emoji.description
+                    ))
+                },
+                modelDeleter: { [weak self] (deletedEmoji, absoluteIndex) in
+                    self?.viewModel.delete(deletedEmoji, at: absoluteIndex)
+                }
+            )
+        }
     }
 }
 
@@ -98,7 +117,6 @@ extension EmojiListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
-    
 }
 
 

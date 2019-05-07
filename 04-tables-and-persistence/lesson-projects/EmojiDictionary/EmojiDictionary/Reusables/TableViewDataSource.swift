@@ -8,21 +8,25 @@ import UIKit
 
 class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
     typealias CellConfigurator = (Model, UITableViewCell) -> Void
+    typealias ModelDeleter = ((Model, Int) -> Void)?
     
     var models: [Model]
     
     private let cellReuseIdentifier: String
     private let cellConfigurator: CellConfigurator
+    private let modelDeleter: ModelDeleter
     
     
     init(
         models: [Model],
         cellReuseIdentifier: String,
-        cellConfigurator: @escaping CellConfigurator
+        cellConfigurator: @escaping CellConfigurator,
+        modelDeleter: ModelDeleter = nil
     ) {
         self.models = models
         self.cellReuseIdentifier = cellReuseIdentifier
         self.cellConfigurator = cellConfigurator
+        self.modelDeleter = modelDeleter
     }
     
     
@@ -57,8 +61,12 @@ class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let model = models[indexPath.row]
+            
             models.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            modelDeleter?(model, tableView.absoluteIndex(forRow: indexPath.row, inSection: indexPath.section))
         }
     }
 }

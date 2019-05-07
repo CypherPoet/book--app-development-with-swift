@@ -9,12 +9,27 @@
 import Foundation
 
 
-struct Emoji {
+final class Emoji {
     var symbol: String
     var name: String
     var description: String
     var usage: String
     var category: String
+    
+
+    init(
+        symbol: String,
+        name: String,
+        description: String,
+        usage: String,
+        category: String
+    ) {
+        self.symbol = symbol
+        self.name = name
+        self.description = description
+        self.usage = usage
+        self.category = category
+    }
 }
 
 

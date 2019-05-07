@@ -24,7 +24,7 @@ class EmojiListViewModel {
 
 extension EmojiListViewModel {
 
-    var emojiSections: [[Emoji]] {
+    var sectionedEmojis: [[Emoji]] {
         return Dictionary(grouping: emojis, by: { $0.category })
             .sorted { $0.key < $1.key }
             .map {
@@ -36,7 +36,7 @@ extension EmojiListViewModel {
     
     
     var emojiSectionHeaderTitles: [String] {
-        return emojiSections.map { $0.first!.category }
+        return sectionedEmojis.map { $0.first!.category }
     }
 }
 
@@ -55,18 +55,43 @@ extension EmojiListViewModel {
     
     
     func start(then completionHandler: @escaping ([Emoji]) -> Void) {
-        emojiManager.load { [weak self] (emojis) in
-            self?.emojis = emojis
-
-            completionHandler(emojis)
+        emojiManager.loadSavedEmojis { [weak self] (emojis) in
+            guard let self = self else { return }
+            
+            if emojis.isEmpty {
+                self.emojiManager.loadDefaultEmojis { (emojis) in
+                    self.emojis = emojis
+                    self.save() {
+                        completionHandler(emojis)
+                    }
+                }
+            } else {
+                self.emojis = emojis
+                completionHandler(emojis)
+            }
         }
     }
     
     
     func update(_ emoji: Emoji, at index: Int, then completionHandler: @escaping () -> Void) {
-        emojis[index] = emoji
+        var currentEmojiList = sectionedEmojis.flatMap { $0 }
         
-        completionHandler()
+        currentEmojiList[index] = emoji
+        emojis = currentEmojiList
+        
+        save {
+            completionHandler()
+        }
+    }
+    
+    
+    func delete(_ deletedEmoji: Emoji, at index: Int) {
+        var currentEmojiList = sectionedEmojis.flatMap { $0 }
+        
+        currentEmojiList.remove(at: index)
+        emojis = currentEmojiList
+        
+        save()
     }
     
     
@@ -74,9 +99,17 @@ extension EmojiListViewModel {
         emojis.append(emoji)
         
         let sectionAddedTo = self.sectionNumber(for: emoji)
-        let rowAddedAt = emojiSections[sectionAddedTo].lastIndex { $0.name == emoji.name }!
+        let rowAddedAt = sectionedEmojis[sectionAddedTo].lastIndex { $0.name == emoji.name }!
         
-        return completionHandler((sectionAddedTo, rowAddedAt))
+        save {
+            return completionHandler((sectionAddedTo, rowAddedAt))
+        }
+    }
+    
+    
+    func save(then completionHandler: (() -> Void)? = nil) {
+        emojiManager.save(emojis)
+        completionHandler?()
     }
     
 }

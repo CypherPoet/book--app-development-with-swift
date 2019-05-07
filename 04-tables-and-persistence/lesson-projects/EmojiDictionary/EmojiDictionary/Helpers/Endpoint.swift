@@ -24,7 +24,8 @@ enum Endpoint {
         static var savedData: URL {
             return FileManager
                 .userDocumentsDirectory
-                .appendingPathComponent("saved-emojis")
+//                .appendingPathComponent("data", isDirectory: true)
+                .appendingPathComponent("emojis", isDirectory: false)
                 .appendingPathExtension("json")
         }
         
