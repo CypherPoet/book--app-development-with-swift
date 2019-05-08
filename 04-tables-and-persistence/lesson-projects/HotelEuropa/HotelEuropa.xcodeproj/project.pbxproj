@@ -12,6 +12,10 @@
 		F3BFF625228264D700AF8363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3BFF623228264D700AF8363 /* Main.storyboard */; };
 		F3BFF627228264D800AF8363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3BFF626228264D800AF8363 /* Assets.xcassets */; };
 		F3BFF62A228264D800AF8363 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3BFF628228264D800AF8363 /* LaunchScreen.storyboard */; };
+		F3BFF63622826CC000AF8363 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF63522826CC000AF8363 /* Booking.swift */; };
+		F3BFF63822826CCD00AF8363 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF63722826CCD00AF8363 /* Room.swift */; };
+		F3BFF63B22826DBC00AF8363 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF63A22826DBC00AF8363 /* RoomType.swift */; };
+		F3BFF63E2282752E00AF8363 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF63D2282752E00AF8363 /* Guest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		F3BFF626228264D800AF8363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3BFF629228264D800AF8363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3BFF62B228264D800AF8363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3BFF63522826CC000AF8363 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		F3BFF63722826CCD00AF8363 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		F3BFF63A22826DBC00AF8363 /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
+		F3BFF63D2282752E00AF8363 /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		F3BFF61E228264D700AF8363 /* HotelEuropa */ = {
 			isa = PBXGroup;
 			children = (
+				F3BFF63922826CD800AF8363 /* Helpers */,
 				F3BFF6342282664D00AF8363 /* Extensions */,
 				F3BFF6332282664800AF8363 /* Models */,
 				F3BFF6322282664000AF8363 /* Scenes */,
@@ -85,6 +94,10 @@
 		F3BFF6332282664800AF8363 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F3BFF63522826CC000AF8363 /* Booking.swift */,
+				F3BFF63722826CCD00AF8363 /* Room.swift */,
+				F3BFF63A22826DBC00AF8363 /* RoomType.swift */,
+				F3BFF63D2282752E00AF8363 /* Guest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -94,6 +107,13 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F3BFF63922826CD800AF8363 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +188,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3BFF622228264D700AF8363 /* MainViewController.swift in Sources */,
+				F3BFF63622826CC000AF8363 /* Booking.swift in Sources */,
+				F3BFF63E2282752E00AF8363 /* Guest.swift in Sources */,
+				F3BFF63B22826DBC00AF8363 /* RoomType.swift in Sources */,
+				F3BFF63822826CCD00AF8363 /* Room.swift in Sources */,
 				F3BFF620228264D700AF8363 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
