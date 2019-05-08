@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="SystemViewControllers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tH9-p3-Zg4">
+                                <rect key="frame" x="12" y="44" width="390" height="416"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nyc-skyline" translatesAutoresizingMaskIntoConstraints="NO" id="sPO-6q-8wI">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="368"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GTk-wl-hO5">
+                                        <rect key="frame" x="0.0" y="368" width="390" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUg-Ij-Arn">
+                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="7bV-wD-bR9"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="geR-oy-4vR"/>
+                                                </constraints>
+                                                <state key="normal" title="Share"/>
+                                                <connections>
+                                                    <action selector="shareButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dvJ-ic-qlN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8J-ju-CCo">
+                                                <rect key="frame" x="97.5" y="0.0" width="97.5" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="KSi-wY-ppE"/>
+                                                    <constraint firstAttribute="height" constant="48" id="vN9-Z8-FJ4"/>
+                                                </constraints>
+                                                <state key="normal" title="Safari"/>
+                                                <connections>
+                                                    <action selector="safariButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXK-pP-CuZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxo-bs-WAl">
+                                                <rect key="frame" x="195" y="0.0" width="97.5" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="USG-oH-cBP"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="skx-wK-Riu"/>
+                                                </constraints>
+                                                <state key="normal" title="Camera"/>
+                                                <connections>
+                                                    <action selector="photosButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ucj-fS-fZr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exK-Od-gFs">
+                                                <rect key="frame" x="292.5" y="0.0" width="97.5" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Bes-9W-9fz"/>
+                                                    <constraint firstAttribute="height" constant="48" id="QPW-kI-RuW"/>
+                                                </constraints>
+                                                <state key="normal" title="Email"/>
+                                                <connections>
+                                                    <action selector="emailButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WHD-pC-NbF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.4443453316" blue="0.45344745139999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sPO-6q-8wI" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.45" id="8fy-vo-WdS"/>
+                            <constraint firstItem="tH9-p3-Zg4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="H9w-Va-253"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tH9-p3-Zg4" secondAttribute="trailing" constant="12" id="Vbe-6D-pGh"/>
+                            <constraint firstItem="tH9-p3-Zg4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WAD-Z1-K3m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tH9-p3-Zg4" secondAttribute="bottom" id="XVH-1w-0rS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="sPO-6q-8wI" id="6qp-h2-c8g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="18.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="nyc-skyline" width="3756" height="2504"/>
+    </resources>
+</document>
