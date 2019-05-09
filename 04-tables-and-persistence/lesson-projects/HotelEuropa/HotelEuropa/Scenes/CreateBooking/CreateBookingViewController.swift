@@ -13,6 +13,11 @@ class CreateBookingViewController: UITableViewController {
     @IBOutlet private weak var lastNameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     
+    @IBOutlet private weak var checkInDateCell: UITableViewCell!
+    @IBOutlet private weak var checkInDatePickerCell: UITableViewCell!
+    @IBOutlet private weak var checkOutDateCell: UITableViewCell!
+    @IBOutlet private weak var checkOutDatePickerCell: UITableViewCell!
+    
     @IBOutlet private weak var checkInDateValueLabel: UILabel!
     @IBOutlet private weak var checkInDatePicker: UIDatePicker!
     @IBOutlet private weak var checkOutDateValueLabel: UILabel!
@@ -23,6 +28,32 @@ class CreateBookingViewController: UITableViewController {
     
     var modelController: CreateBookingModelController!
     var booking: Booking?
+
+    private lazy var checkInDateIndexPath = IndexPath(row: 0, section: 1)
+    private lazy var checkInDatePickerIndexPath = IndexPath(row: 1, section: 1)
+    
+    private lazy var checkOutDateIndexPath = IndexPath(row: 2, section: 1)
+    private lazy var checkOutDatePickerIndexPath = IndexPath(row: 3, section: 1)
+    
+    private lazy var visibleDatePickerHeight = CGFloat(212)
+    
+    private var isCheckInPickerVisible = false {
+        didSet {
+            tableView.beginUpdates()
+            checkInDatePicker.isHidden = !isCheckInPickerVisible
+            checkOutDatePicker.isHidden = isCheckInPickerVisible
+            tableView.endUpdates()
+        }
+    }
+    
+    private var isCheckOutPickerVisible = false {
+        didSet {
+            tableView.beginUpdates()
+            checkOutDatePicker.isHidden = !isCheckOutPickerVisible
+            checkInDatePicker.isHidden = isCheckOutPickerVisible
+            tableView.endUpdates()
+        }
+    }
 }
 
 
@@ -48,7 +79,6 @@ extension CreateBookingViewController {
         
         return checkInDatePicker.date.addingTimeInterval(TimeInterval(secondsInDay))
     }
-    
 }
 
 
@@ -97,6 +127,37 @@ extension CreateBookingViewController {
 }
 
 
+// MARK: - UITableViewDelegate
+
+extension CreateBookingViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath.row, indexPath.section) {
+        case (checkInDatePickerIndexPath.row, checkInDatePickerIndexPath.section):
+            return isCheckInPickerVisible ? visibleDatePickerHeight : 0.0
+        case (checkOutDatePickerIndexPath.row, checkOutDatePickerIndexPath.section):
+            return isCheckOutPickerVisible ? visibleDatePickerHeight : 0.0
+        default:
+            return UITableView.automaticDimension
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.row, indexPath.section) {
+        case (checkInDateIndexPath.row, checkInDateIndexPath.section):
+            isCheckInPickerVisible.toggle()
+            isCheckOutPickerVisible = false
+        case (checkOutDateIndexPath.row, checkOutDateIndexPath.section):
+            isCheckInPickerVisible = false
+            isCheckOutPickerVisible.toggle()
+        default:
+            break
+        }
+    }
+}
+
+
 // MARK: - Private Helper Methods
 
 private extension CreateBookingViewController {
@@ -107,4 +168,5 @@ private extension CreateBookingViewController {
         checkOutDateValueLabel.text = checkOutDatePicker.date.pickerDisplayFormat
     }
 }
+
 

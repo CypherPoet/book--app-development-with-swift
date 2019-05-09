@@ -254,9 +254,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="checkInDateCell" destination="KfW-dq-mKj" id="tXY-yZ-HJQ"/>
                         <outlet property="checkInDatePicker" destination="TbU-Nm-Kzs" id="SIh-0v-ieh"/>
+                        <outlet property="checkInDatePickerCell" destination="c1m-PR-EbV" id="48l-PA-akF"/>
                         <outlet property="checkInDateValueLabel" destination="bwZ-8Q-CDW" id="MVB-UW-7M5"/>
+                        <outlet property="checkOutDateCell" destination="Ft3-tw-sm6" id="bP3-zs-GAp"/>
                         <outlet property="checkOutDatePicker" destination="fwK-70-U6p" id="Wx2-QF-CNK"/>
+                        <outlet property="checkOutDatePickerCell" destination="7FG-KW-f4X" id="Mha-bh-xmW"/>
                         <outlet property="checkOutDateValueLabel" destination="XzC-ip-3T7" id="BHx-kG-8uc"/>
                         <outlet property="doneButton" destination="sSR-E7-WBg" id="AUM-EI-wfK"/>
                         <outlet property="emailTextField" destination="cZA-8K-qQx" id="oZY-Vc-8jQ"/>
