@@ -9,12 +9,41 @@
 import UIKit
 
 class MainViewController: UIViewController {
+}
+
+
+// MARK: - Lifecycle
+
+extension MainViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
+
+// MARK: - Navigation
+
+extension MainViewController {
+    
+    @IBAction func unwindFromCancelCreateBooking(unwindSegue: UIStoryboardSegue) {}
+    
+    @IBAction func unwindFromSaveCreateBooking(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // TODO: Use R.Swift to get id
+        guard
+            segue.identifier == "Present Create Booking Form",
+            let navigationController = segue.destination as? UINavigationController,
+            let createBookingVC = navigationController.children.first as? CreateBookingViewController
+        else { return }
+        
+        let modelController = CreateBookingModelController()
+        
+        createBookingVC.modelController = modelController    
+    }
+}
