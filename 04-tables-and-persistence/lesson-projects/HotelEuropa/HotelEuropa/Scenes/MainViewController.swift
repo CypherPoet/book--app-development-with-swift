@@ -37,7 +37,7 @@ extension MainViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // TODO: Use R.Swift to get id
         guard
-            segue.identifier == "Present Create Booking Form",
+            segue.identifier == R.segue.mainViewController.presentCreateBookingForm.identifier,
             let navigationController = segue.destination as? UINavigationController,
             let createBookingVC = navigationController.children.first as? CreateBookingViewController
         else { return }

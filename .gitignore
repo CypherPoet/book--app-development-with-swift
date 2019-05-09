@@ -106,4 +106,8 @@ iOSInjectionProject/
 # End of https://www.gitignore.io/api/swift,macos
 
 
+# R.Swift (https://github.com/mac-cain13/R.swift)
+*.generated.swift
+
+
 vendor/

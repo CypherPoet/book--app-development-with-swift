@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F322D8D82283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322D8D72283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift */; };
+		F322D8DB2283DB53006D96DC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322D8DA2283DB53006D96DC /* R.generated.swift */; };
+		F322D8DD2283FF1D006D96DC /* Date+pickerDisplayFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322D8DC2283FF1D006D96DC /* Date+pickerDisplayFormat.swift */; };
 		F3BFF620228264D700AF8363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF61F228264D700AF8363 /* AppDelegate.swift */; };
 		F3BFF622228264D700AF8363 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF621228264D700AF8363 /* MainViewController.swift */; };
 		F3BFF625228264D700AF8363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3BFF623228264D700AF8363 /* Main.storyboard */; };
@@ -19,10 +21,16 @@
 		F3BFF63E2282752E00AF8363 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF63D2282752E00AF8363 /* Guest.swift */; };
 		F3BFF64122828B6100AF8363 /* CreateBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF64022828B6100AF8363 /* CreateBookingViewController.swift */; };
 		F3BFF64322829AA400AF8363 /* CreateBookingModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF64222829AA400AF8363 /* CreateBookingModelController.swift */; };
+		F7FA6328252B6B01ECA924DF /* Pods_HotelEuropa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC61935B7771301149B6F34 /* Pods_HotelEuropa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BC3E349A26AA8F596BE2816 /* Pods-HotelEuropa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelEuropa.release.xcconfig"; path = "Target Support Files/Pods-HotelEuropa/Pods-HotelEuropa.release.xcconfig"; sourceTree = "<group>"; };
+		7EBDC790DE2CFDB437F2FFA4 /* Pods-HotelEuropa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelEuropa.debug.xcconfig"; path = "Target Support Files/Pods-HotelEuropa/Pods-HotelEuropa.debug.xcconfig"; sourceTree = "<group>"; };
+		EFC61935B7771301149B6F34 /* Pods_HotelEuropa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelEuropa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F322D8D72283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DisplayAlertMessage.swift"; sourceTree = "<group>"; };
+		F322D8DA2283DB53006D96DC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		F322D8DC2283FF1D006D96DC /* Date+pickerDisplayFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+pickerDisplayFormat.swift"; sourceTree = "<group>"; };
 		F3BFF61C228264D700AF8363 /* HotelEuropa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelEuropa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BFF61F228264D700AF8363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3BFF621228264D700AF8363 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -43,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7FA6328252B6B01ECA924DF /* Pods_HotelEuropa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B1A375F4525BDFFE59A56A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFC61935B7771301149B6F34 /* Pods_HotelEuropa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1920F5970D5666507CE75B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7EBDC790DE2CFDB437F2FFA4 /* Pods-HotelEuropa.debug.xcconfig */,
+				5BC3E349A26AA8F596BE2816 /* Pods-HotelEuropa.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F3BFF613228264D700AF8363 = {
 			isa = PBXGroup;
 			children = (
 				F3BFF61E228264D700AF8363 /* HotelEuropa */,
 				F3BFF61D228264D700AF8363 /* Products */,
+				F1920F5970D5666507CE75B1 /* Pods */,
+				4B1A375F4525BDFFE59A56A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +103,7 @@
 				F3BFF6312282663B00AF8363 /* Content */,
 				F3BFF61F228264D700AF8363 /* AppDelegate.swift */,
 				F3BFF62B228264D800AF8363 /* Info.plist */,
+				F322D8DA2283DB53006D96DC /* R.generated.swift */,
 			);
 			path = HotelEuropa;
 			sourceTree = "<group>";
@@ -113,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				F322D8D72283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift */,
+				F322D8DC2283FF1D006D96DC /* Date+pickerDisplayFormat.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -140,9 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3BFF62E228264D800AF8363 /* Build configuration list for PBXNativeTarget "HotelEuropa" */;
 			buildPhases = (
+				4AA090A7134C23FBC2FCAE2A /* [CP] Check Pods Manifest.lock */,
+				F322D8D92283D9E2006D96DC /* ShellScript */,
 				F3BFF618228264D700AF8363 /* Sources */,
 				F3BFF619228264D700AF8363 /* Frameworks */,
 				F3BFF61A228264D700AF8363 /* Resources */,
+				E338351483E3EA2A8A023BAD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,18 +232,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4AA090A7134C23FBC2FCAE2A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HotelEuropa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E338351483E3EA2A8A023BAD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HotelEuropa/Pods-HotelEuropa-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HotelEuropa/Pods-HotelEuropa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F322D8D92283D9E2006D96DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F3BFF618228264D700AF8363 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F3BFF622228264D700AF8363 /* MainViewController.swift in Sources */,
+				F322D8DD2283FF1D006D96DC /* Date+pickerDisplayFormat.swift in Sources */,
 				F322D8D82283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift in Sources */,
 				F3BFF63622826CC000AF8363 /* Booking.swift in Sources */,
 				F3BFF64322829AA400AF8363 /* CreateBookingModelController.swift in Sources */,
 				F3BFF64122828B6100AF8363 /* CreateBookingViewController.swift in Sources */,
 				F3BFF63E2282752E00AF8363 /* Guest.swift in Sources */,
 				F3BFF63B22826DBC00AF8363 /* RoomType.swift in Sources */,
+				F322D8DB2283DB53006D96DC /* R.generated.swift in Sources */,
 				F3BFF63822826CCD00AF8363 /* Room.swift in Sources */,
 				F3BFF620228264D700AF8363 /* AppDelegate.swift in Sources */,
 			);
@@ -356,6 +457,7 @@
 		};
 		F3BFF62F228264D800AF8363 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EBDC790DE2CFDB437F2FFA4 /* Pods-HotelEuropa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -374,6 +476,7 @@
 		};
 		F3BFF630228264D800AF8363 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BC3E349A26AA8F596BE2816 /* Pods-HotelEuropa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

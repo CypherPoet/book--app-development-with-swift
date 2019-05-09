@@ -15,6 +15,13 @@ class CreateBookingModelController {
 }
 
 
+// MARK: - Computed Properties
+
+extension CreateBookingModelController {
+
+}
+
+
 // MARK: - Core Methods
 
 extension CreateBookingModelController {
@@ -24,11 +31,29 @@ extension CreateBookingModelController {
         emailAddress: String
     )
     
+    enum NewBookingError: Error {
+        case invalidGuest
+    }
     
-//    func createBooking(with changes: Changes, then completionHandler: @escaping (Result<Booking, Error>) -> Void) {
-    func createBooking(with changes: Changes, then completionHandler: @escaping (Result<String, Error>) -> Void) {
-//        let newBooking = Booking(guest: <#T##Guest#>, room: <#T##Room#>, checkInDate: <#T##Date#>, checkOutDate: <#T##Date#>)
+    func createBooking(with changes: Changes, then completionHandler: @escaping (Result<Booking, NewBookingError>) -> Void) {
+        let (firstName, lastName, emailAddress) = changes
         
-        completionHandler(.success("Test Booking"))
+        guard [firstName, lastName, emailAddress].allSatisfy({ !$0.isEmpty }) else {
+            return completionHandler(.failure(.invalidGuest))
+        }
+        
+        
+        let guest = Guest(firstName: firstName, lastName: lastName, emailAddress: emailAddress)
+        let roomType = RoomType(id: UUID().uuidString, name: .suite, nameCode: .suite, price: 1_000_000)
+        let room  = Room(number: 0, type: roomType, hasValetBot: true)
+        
+        let newBooking = Booking(
+            guest: guest,
+            room: room,
+            checkInDate: Date(),
+            checkOutDate: Date()
+        )
+        
+        completionHandler(.success(newBooking))
     }
 }

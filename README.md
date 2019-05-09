@@ -9,7 +9,7 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
 | 1 - Getting Started | [Light](./01-getting-started/unit-project/Light): A minimalist flashlight app 🔦 | Xcode, Interface Builder, and connecting outlets and actions between them | ✅ |
-| 2 - Intro to UIKit |  [Hello](./02-introduction-to-uikit/lesson-projects/Hello): An app for introducing someone. | Configuring views in Interface Builder :::: Customizing labels :::: Customizing image views | ✅ |
+| 2 - Intro to UIKit |  [Hello](./02-introduction-to-uikit/lesson-projects/Hello): An app for introducing someone. | Configuring views in Interface Builder :::: Customizing labels :::: Customizing image views | 🚧 |
 | 2 - Intro to UIKit |  [Auto-Layout Calculator](./02-introduction-to-uikit/lesson-projects/Calculator) | Using nested vertical and horizontal stack views to display a calculator that fits lays out cleanly across size classes | ✅ |
 
 <br>
@@ -103,3 +103,14 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
 | 4 - Tables and Persistence | [Hotel Europa](./04-tables-and-persistence/lesson-projects/HotelEuropa): An app for hotel staff to register guests. | Building custom, intuitive, user-friendly forms to create new model objects and/or track important information. :::: Using custom protocols to pass data between view controllers. :::: How and when to use certain controls for collecting data. :::: Dynamically resizing table view cells. | 🚧 |
+
+<br/>
+<br/>
+
+<div style="text-align: center;">
+  <img src="" width="40%"/>
+  <img src="" width="40%"/>
+</div>
+
+<br/>
+<br/>

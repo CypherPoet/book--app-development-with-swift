@@ -19,3 +19,15 @@ struct Guest {
     let numberOfAdults: Int
     let numberOfChildren: Int
 }
+
+
+extension Guest {
+    init(firstName: String, lastName: String, emailAddress: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.emailAddress = emailAddress
+        
+        self.numberOfAdults = 1
+        self.numberOfChildren = 0
+    }
+}

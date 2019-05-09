@@ -13,7 +13,13 @@ class CreateBookingViewController: UITableViewController {
     @IBOutlet private weak var lastNameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet private weak var checkInDateValueLabel: UILabel!
+    @IBOutlet private weak var checkInDatePicker: UIDatePicker!
+    @IBOutlet private weak var checkOutDateValueLabel: UILabel!
+    @IBOutlet private weak var checkOutDatePicker: UIDatePicker!
+    
+    
+    @IBOutlet private weak var doneButton: UIBarButtonItem!
     
     var modelController: CreateBookingModelController!
     var booking: Booking?
@@ -26,13 +32,24 @@ extension CreateBookingViewController {
     
     var bookingChanges: CreateBookingModelController.Changes {
         return (
-            firstName: "",
-            lastName: "",
-            emailAddress: ""
+            firstName: firstNameTextField.text ?? "",
+            lastName: lastNameTextField.text ?? "",
+            emailAddress: emailTextField.text ?? ""
         )
     }
+    
+    var minimumCheckInDate: Date {
+        return Calendar.current.startOfDay(for: Date())
+    }
+    
+    
+    var minimumCheckOutDate: Date {
+        let secondsInDay = 60 * 60 * 24
+        
+        return checkInDatePicker.date.addingTimeInterval(TimeInterval(secondsInDay))
+    }
+    
 }
-
 
 
 // MARK: - Lifecycle
@@ -45,13 +62,23 @@ extension CreateBookingViewController {
         guard modelController != nil else {
             preconditionFailure("Model controller not set")
         }
+        
+        checkInDatePicker.minimumDate = minimumCheckInDate
+        checkInDatePicker.date = minimumCheckInDate
+        updateDateViews()
     }
+    
 }
 
 
 // MARK: - Event handling
 
 extension CreateBookingViewController {
+    
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        updateDateViews()
+    }
+    
     
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         modelController.createBooking(with: bookingChanges) { [weak self] (result) in
@@ -60,13 +87,24 @@ extension CreateBookingViewController {
             switch result {
             case .success(let booking):
                 print("Created booking: \(booking)")
-//                self.booking = booking
-                self.performSegue(withIdentifier: "Unwind From Save New Booking", sender: self)
+                self.booking = booking
+                self.performSegue(withIdentifier: R.segue.createBookingViewController.unwindFromSaveNewBooking, sender: self)
             case .failure(let error):
                 self.display(alertMessage: error.localizedDescription, title: "Failed to save new registration")
             }
         }
     }
-    
+}
+
+
+// MARK: - Private Helper Methods
+
+private extension CreateBookingViewController {
+    func updateDateViews() {
+        checkOutDatePicker.minimumDate = minimumCheckOutDate
+        
+        checkInDateValueLabel.text = checkInDatePicker.date.pickerDisplayFormat
+        checkOutDateValueLabel.text = checkOutDatePicker.date.pickerDisplayFormat
+    }
 }
 

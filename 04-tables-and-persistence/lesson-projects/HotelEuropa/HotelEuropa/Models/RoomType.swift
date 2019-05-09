@@ -10,11 +10,18 @@ import Foundation
 
 struct RoomType {
     let id: String
-    let name: String
-    let shortName: RoomType.RoomTypeCode
+    let name: RoomType.Name
+    let nameCode: RoomType.NameCode
     var price: Int
     
-    enum RoomTypeCode: String, Codable {
+    
+    enum Name: String, Codable {
+        case twoQueen = "Two Queen Beds"
+        case oneKing = "One King Bed"
+        case suite = "Suite"
+    }
+    
+    enum NameCode: String, Codable {
         case twoQueen = "QQ"
         case oneKing = "K"
         case suite = "KK"
