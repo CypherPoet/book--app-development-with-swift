@@ -28,7 +28,7 @@ class CreateBookingViewController: UITableViewController {
     @IBOutlet private weak var numberOfChildrenLabel: UILabel!
     @IBOutlet private weak var numberOfChildrenStepper: UIStepper!
     
-    
+    @IBOutlet private weak var valetBotSwitch: UISwitch!
     
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     
@@ -75,7 +75,8 @@ extension CreateBookingViewController {
             checkInDate: checkInDatePicker.date,
             checkOutDate: checkOutDatePicker.date,
             numberOfAdults: Int(numberOfAdultsStepper.value),
-            numberOfChildren: Int(numberOfChildrenStepper.value)
+            numberOfChildren: Int(numberOfChildrenStepper.value),
+            hasValetBot: valetBotSwitch.isOn
         )
     }
     
@@ -124,6 +125,11 @@ extension CreateBookingViewController {
     
     @IBAction func guestStepperValueChanged(_ sender: UIStepper) {
         updateNumberOfGuests()
+    }
+    
+    
+    @IBAction func valetBotSwitchFlipped(_ sender: UISwitch) {
+        // TODO: Implement
     }
     
     

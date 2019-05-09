@@ -319,6 +319,47 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Qt4-MO-6yu">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZH5-Fr-SrV">
+                                        <rect key="frame" x="0.0" y="883" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZH5-Fr-SrV" id="YZU-ki-oiI">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="wty-Vi-wVR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In-Room ValetBot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iry-TZ-e4z">
+                                                            <rect key="frame" x="12" y="11.5" width="246" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="3 sat/day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgG-0D-yVf">
+                                                            <rect key="frame" x="270" y="11.5" width="71" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HyK-dA-fXw">
+                                                            <rect key="frame" x="353" y="8" width="51" height="27.5"/>
+                                                        </switch>
+                                                    </subviews>
+                                                    <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="12" bottom="8" trailing="12"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wty-Vi-wVR" firstAttribute="top" secondItem="YZU-ki-oiI" secondAttribute="top" id="13D-dj-4Ca"/>
+                                                <constraint firstAttribute="bottom" secondItem="wty-Vi-wVR" secondAttribute="bottom" id="7NM-Wf-CbY"/>
+                                                <constraint firstItem="wty-Vi-wVR" firstAttribute="leading" secondItem="YZU-ki-oiI" secondAttribute="leading" id="Nhx-ll-4Uj"/>
+                                                <constraint firstAttribute="trailing" secondItem="wty-Vi-wVR" secondAttribute="trailing" id="Qzg-tK-sPS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="sbv-dn-Tvl" id="SNN-fL-Qap"/>
@@ -354,6 +395,7 @@
                         <outlet property="numberOfAdultsStepper" destination="Afc-OC-bNz" id="nLU-by-rSl"/>
                         <outlet property="numberOfChildrenLabel" destination="dvg-a6-uw5" id="EkZ-b7-3eJ"/>
                         <outlet property="numberOfChildrenStepper" destination="wh8-yY-OHe" id="XBc-RM-vvp"/>
+                        <outlet property="valetBotSwitch" destination="HyK-dA-fXw" id="Kfs-0D-tfZ"/>
                         <segue destination="oBY-gs-Ywz" kind="unwind" identifier="Unwind From Save New Booking" unwindAction="unwindFromSaveCreateBookingWithUnwindSegue:" id="Hat-dE-5cH"/>
                     </connections>
                 </tableViewController>

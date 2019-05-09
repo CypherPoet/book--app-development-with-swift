@@ -30,7 +30,8 @@ extension CreateBookingModelController {
         checkInDate: Date,
         checkOutDate: Date,
         numberOfAdults: Int,
-        numberOfChildren: Int
+        numberOfChildren: Int,
+        hasValetBot: Bool
     )
     
     enum NewBookingError: Error {
@@ -60,8 +61,14 @@ extension CreateBookingModelController {
             numberOfChildren: numberOfChildren
         )
         
-        let roomType = RoomType(id: UUID().uuidString, name: .suite, nameCode: .suite, price: 1_000_000)
-        let room  = Room(number: 0, type: roomType, hasValetBot: true)
+        let roomType = RoomType(
+            id: UUID().uuidString,
+            name: .suite,
+            nameCode: .suite,
+            price: 100
+        )
+        
+        let room  = Room(number: 0, type: roomType, hasValetBot: changes.hasValetBot)
         
         let newBooking = Booking(
             guest: guest,
