@@ -65,7 +65,9 @@ extension CreateBookingViewController {
         return (
             firstName: firstNameTextField.text ?? "",
             lastName: lastNameTextField.text ?? "",
-            emailAddress: emailTextField.text ?? ""
+            emailAddress: emailTextField.text ?? "",
+            checkInDate: checkInDatePicker.date,
+            checkOutDate: checkOutDatePicker.date
         )
     }
     

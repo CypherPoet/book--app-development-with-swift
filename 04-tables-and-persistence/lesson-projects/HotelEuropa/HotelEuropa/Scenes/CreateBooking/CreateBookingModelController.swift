@@ -9,9 +9,7 @@
 import Foundation
 
 class CreateBookingModelController {
-    var firstName: String = ""
-    var lastName: String = ""
-    var emailAddress: String = ""
+
 }
 
 
@@ -28,7 +26,9 @@ extension CreateBookingModelController {
     typealias Changes = (
         firstName: String,
         lastName: String,
-        emailAddress: String
+        emailAddress: String,
+        checkInDate: Date,
+        checkOutDate: Date
     )
     
     enum NewBookingError: Error {
@@ -36,7 +36,7 @@ extension CreateBookingModelController {
     }
     
     func createBooking(with changes: Changes, then completionHandler: @escaping (Result<Booking, NewBookingError>) -> Void) {
-        let (firstName, lastName, emailAddress) = changes
+        let (firstName, lastName, emailAddress) = (changes.0, changes.1, changes.2)
         
         guard [firstName, lastName, emailAddress].allSatisfy({ !$0.isEmpty }) else {
             return completionHandler(.failure(.invalidGuest))
@@ -50,8 +50,8 @@ extension CreateBookingModelController {
         let newBooking = Booking(
             guest: guest,
             room: room,
-            checkInDate: Date(),
-            checkOutDate: Date()
+            checkInDate: changes.checkInDate,
+            checkOutDate: changes.checkOutDate
         )
         
         completionHandler(.success(newBooking))
