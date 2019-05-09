@@ -23,6 +23,12 @@ class CreateBookingViewController: UITableViewController {
     @IBOutlet private weak var checkOutDateValueLabel: UILabel!
     @IBOutlet private weak var checkOutDatePicker: UIDatePicker!
     
+    @IBOutlet private weak var numberOfAdultsLabel: UILabel!
+    @IBOutlet private weak var numberOfAdultsStepper: UIStepper!
+    @IBOutlet private weak var numberOfChildrenLabel: UILabel!
+    @IBOutlet private weak var numberOfChildrenStepper: UIStepper!
+    
+    
     
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     
@@ -67,7 +73,9 @@ extension CreateBookingViewController {
             lastName: lastNameTextField.text ?? "",
             emailAddress: emailTextField.text ?? "",
             checkInDate: checkInDatePicker.date,
-            checkOutDate: checkOutDatePicker.date
+            checkOutDate: checkOutDatePicker.date,
+            numberOfAdults: Int(numberOfAdultsStepper.value),
+            numberOfChildren: Int(numberOfChildrenStepper.value)
         )
     }
     
@@ -97,7 +105,9 @@ extension CreateBookingViewController {
         
         checkInDatePicker.minimumDate = minimumCheckInDate
         checkInDatePicker.date = minimumCheckInDate
+        
         updateDateViews()
+        updateNumberOfGuests()
     }
     
 }
@@ -109,6 +119,11 @@ extension CreateBookingViewController {
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
+    }
+    
+    
+    @IBAction func guestStepperValueChanged(_ sender: UIStepper) {
+        updateNumberOfGuests()
     }
     
     
@@ -163,11 +178,17 @@ extension CreateBookingViewController {
 // MARK: - Private Helper Methods
 
 private extension CreateBookingViewController {
+    
     func updateDateViews() {
         checkOutDatePicker.minimumDate = minimumCheckOutDate
         
         checkInDateValueLabel.text = checkInDatePicker.date.pickerDisplayFormat
         checkOutDateValueLabel.text = checkOutDatePicker.date.pickerDisplayFormat
+    }
+
+    func updateNumberOfGuests() {
+        numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
+        numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
     }
 }
 

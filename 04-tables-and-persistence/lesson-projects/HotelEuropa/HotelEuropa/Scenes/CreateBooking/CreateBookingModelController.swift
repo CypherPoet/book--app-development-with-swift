@@ -28,22 +28,38 @@ extension CreateBookingModelController {
         lastName: String,
         emailAddress: String,
         checkInDate: Date,
-        checkOutDate: Date
+        checkOutDate: Date,
+        numberOfAdults: Int,
+        numberOfChildren: Int
     )
     
     enum NewBookingError: Error {
-        case invalidGuest
+        case invalidGuest(_ reason: String)
     }
     
     func createBooking(with changes: Changes, then completionHandler: @escaping (Result<Booking, NewBookingError>) -> Void) {
         let (firstName, lastName, emailAddress) = (changes.0, changes.1, changes.2)
         
         guard [firstName, lastName, emailAddress].allSatisfy({ !$0.isEmpty }) else {
-            return completionHandler(.failure(.invalidGuest))
+            return completionHandler(.failure(.invalidGuest("Names and email can't be empty")))
         }
         
+        let (numberOfAdults, numberOfChildren) = (changes.numberOfAdults, changes.numberOfChildren)
         
-        let guest = Guest(firstName: firstName, lastName: lastName, emailAddress: emailAddress)
+        guard [numberOfAdults, numberOfChildren].allSatisfy( { $0 >= 0 }) else {
+            return completionHandler(
+                .failure(.invalidGuest("Number of adults and children can't be negative"))
+            )
+        }
+    
+        let guest = Guest(
+            firstName: firstName,
+            lastName: lastName,
+            emailAddress: emailAddress,
+            numberOfAdults: numberOfAdults,
+            numberOfChildren: numberOfChildren
+        )
+        
         let roomType = RoomType(id: UUID().uuidString, name: .suite, nameCode: .suite, price: 1_000_000)
         let room  = Room(number: 0, type: roomType, hasValetBot: true)
         

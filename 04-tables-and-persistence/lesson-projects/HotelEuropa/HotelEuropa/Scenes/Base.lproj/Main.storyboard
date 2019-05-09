@@ -235,6 +235,90 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Rhj-hI-hvf">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="et2-1K-9va">
+                                        <rect key="frame" x="0.0" y="759" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="et2-1K-9va" id="JNO-74-nxu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="oEK-J6-WiL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9a-2f-EXE">
+                                                            <rect key="frame" x="12" y="11.5" width="261.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhT-Wm-XAS">
+                                                            <rect key="frame" x="285.5" y="11.5" width="10.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-OC-bNz">
+                                                            <rect key="frame" x="308" y="8" width="94" height="29"/>
+                                                            <connections>
+                                                                <action selector="guestStepperValueChanged:" destination="sbv-dn-Tvl" eventType="valueChanged" id="Qgw-J9-MyT"/>
+                                                            </connections>
+                                                        </stepper>
+                                                    </subviews>
+                                                    <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="12" bottom="8" trailing="12"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="oEK-J6-WiL" secondAttribute="trailing" id="8Sh-ML-hgs"/>
+                                                <constraint firstAttribute="bottom" secondItem="oEK-J6-WiL" secondAttribute="bottom" id="JXq-bh-uk4"/>
+                                                <constraint firstItem="oEK-J6-WiL" firstAttribute="leading" secondItem="JNO-74-nxu" secondAttribute="leading" id="Oob-Mo-MLl"/>
+                                                <constraint firstItem="oEK-J6-WiL" firstAttribute="top" secondItem="JNO-74-nxu" secondAttribute="top" id="vNN-Rh-h6T"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8v2-Uc-cEa">
+                                        <rect key="frame" x="0.0" y="803" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8v2-Uc-cEa" id="gNe-aH-y6a">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="rmz-Fh-zl5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Children" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aak-5u-Jsw">
+                                                            <rect key="frame" x="12" y="11.5" width="261.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvg-a6-uw5">
+                                                            <rect key="frame" x="285.5" y="11.5" width="10.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wh8-yY-OHe">
+                                                            <rect key="frame" x="308" y="8" width="94" height="29"/>
+                                                            <connections>
+                                                                <action selector="guestStepperValueChanged:" destination="sbv-dn-Tvl" eventType="valueChanged" id="4dn-bY-CBv"/>
+                                                            </connections>
+                                                        </stepper>
+                                                    </subviews>
+                                                    <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="12" bottom="8" trailing="12"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="rmz-Fh-zl5" secondAttribute="trailing" id="3eI-89-xx8"/>
+                                                <constraint firstAttribute="bottom" secondItem="rmz-Fh-zl5" secondAttribute="bottom" id="7nV-Vu-qtU"/>
+                                                <constraint firstItem="rmz-Fh-zl5" firstAttribute="leading" secondItem="gNe-aH-y6a" secondAttribute="leading" id="9U3-8N-Iul"/>
+                                                <constraint firstItem="rmz-Fh-zl5" firstAttribute="top" secondItem="gNe-aH-y6a" secondAttribute="top" id="DDZ-2N-JoL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="sbv-dn-Tvl" id="SNN-fL-Qap"/>
@@ -266,6 +350,10 @@
                         <outlet property="emailTextField" destination="cZA-8K-qQx" id="oZY-Vc-8jQ"/>
                         <outlet property="firstNameTextField" destination="uVR-g2-Mhf" id="qLP-me-aat"/>
                         <outlet property="lastNameTextField" destination="p3s-hB-b3y" id="anu-Kx-yDt"/>
+                        <outlet property="numberOfAdultsLabel" destination="RhT-Wm-XAS" id="xDF-qI-xwZ"/>
+                        <outlet property="numberOfAdultsStepper" destination="Afc-OC-bNz" id="nLU-by-rSl"/>
+                        <outlet property="numberOfChildrenLabel" destination="dvg-a6-uw5" id="EkZ-b7-3eJ"/>
+                        <outlet property="numberOfChildrenStepper" destination="wh8-yY-OHe" id="XBc-RM-vvp"/>
                         <segue destination="oBY-gs-Ywz" kind="unwind" identifier="Unwind From Save New Booking" unwindAction="unwindFromSaveCreateBookingWithUnwindSegue:" id="Hat-dE-5cH"/>
                     </connections>
                 </tableViewController>
