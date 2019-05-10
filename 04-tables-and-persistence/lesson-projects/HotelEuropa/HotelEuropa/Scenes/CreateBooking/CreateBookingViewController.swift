@@ -30,10 +30,19 @@ class CreateBookingViewController: UITableViewController {
     
     @IBOutlet private weak var valetBotSwitch: UISwitch!
     
+    @IBOutlet private weak var selectedRoomTypeLabel: UILabel!
+    
+    
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     
     var modelController: CreateBookingModelController!
     var booking: Booking?
+    
+    var selectedRoomType: RoomType? {
+        didSet {
+            selectedRoomTypeLabel.text = selectedRoomType?.name ?? "Not Set"
+        }
+    }
 
     private lazy var checkInDateIndexPath = IndexPath(row: 0, section: 1)
     private lazy var checkInDatePickerIndexPath = IndexPath(row: 1, section: 1)
@@ -76,7 +85,8 @@ extension CreateBookingViewController {
             checkOutDate: checkOutDatePicker.date,
             numberOfAdults: Int(numberOfAdultsStepper.value),
             numberOfChildren: Int(numberOfChildrenStepper.value),
-            hasValetBot: valetBotSwitch.isOn
+            hasValetBot: valetBotSwitch.isOn,
+            roomChoice: selectedRoomType
         )
     }
     
@@ -109,6 +119,7 @@ extension CreateBookingViewController {
         
         updateDateViews()
         updateNumberOfGuests()
+        selectedRoomType = nil
     }
     
 }
@@ -150,6 +161,23 @@ extension CreateBookingViewController {
 }
 
 
+// MARK: - Navigation
+
+extension CreateBookingViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == R.segue.createBookingViewController.showRoomTypeSelectionView.identifier,
+            let selectRoomTypeViewController = segue.destination as? SelectRoomTypeViewController
+        else { return }
+        
+        selectRoomTypeViewController.delegate = self
+        selectRoomTypeViewController.selectedRoomType = selectedRoomType
+    }
+    
+}
+
+
 // MARK: - UITableViewDelegate
 
 extension CreateBookingViewController {
@@ -177,6 +205,19 @@ extension CreateBookingViewController {
         default:
             break
         }
+    }
+}
+
+
+// MARK: - SelectRoomTypeTableViewControllerDelegate
+
+extension CreateBookingViewController: SelectRoomTypeViewControllerDelegate {
+    
+    func selectRoomTypeViewController(
+        _ controller: SelectRoomTypeViewController,
+        didSelectRoomType roomType: RoomType
+    ) {
+        selectedRoomType = roomType
     }
 }
 

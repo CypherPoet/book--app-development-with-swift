@@ -31,11 +31,13 @@ extension CreateBookingModelController {
         checkOutDate: Date,
         numberOfAdults: Int,
         numberOfChildren: Int,
-        hasValetBot: Bool
+        hasValetBot: Bool,
+        roomChoice: RoomType?
     )
     
     enum NewBookingError: Error {
         case invalidGuest(_ reason: String)
+        case missingRoomChoice
     }
     
     func createBooking(with changes: Changes, then completionHandler: @escaping (Result<Booking, NewBookingError>) -> Void) {
@@ -52,6 +54,10 @@ extension CreateBookingModelController {
                 .failure(.invalidGuest("Number of adults and children can't be negative"))
             )
         }
+        
+        guard let roomType = changes.roomChoice else {
+            return completionHandler(.failure(.missingRoomChoice))
+        }
     
         let guest = Guest(
             firstName: firstName,
@@ -59,13 +65,6 @@ extension CreateBookingModelController {
             emailAddress: emailAddress,
             numberOfAdults: numberOfAdults,
             numberOfChildren: numberOfChildren
-        )
-        
-        let roomType = RoomType(
-            id: UUID().uuidString,
-            name: .suite,
-            nameCode: .suite,
-            price: 100
         )
         
         let room  = Room(number: 0, type: roomType, hasValetBot: changes.hasValetBot)
