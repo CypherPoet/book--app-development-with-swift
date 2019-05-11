@@ -31,3 +31,6 @@ extension Guest {
         self.numberOfChildren = 0
     }
 }
+
+
+extension Guest: Codable {}

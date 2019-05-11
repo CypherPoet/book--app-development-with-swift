@@ -45,3 +45,6 @@ extension RoomType: Equatable {
     }
     
 }
+
+
+extension RoomType: Codable {}

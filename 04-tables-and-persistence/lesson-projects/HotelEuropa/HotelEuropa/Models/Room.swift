@@ -11,6 +11,7 @@ import Foundation
 struct Room {
     let number: Int
     let type: RoomType
-    
     var hasValetBot: Bool
 }
+
+extension Room: Codable {}

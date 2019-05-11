@@ -14,3 +14,35 @@ struct Booking {
     var checkInDate: Date
     var checkOutDate: Date
 }
+
+
+// MARK: - Computed Properties
+
+extension Booking {
+    
+    static var defaultDecoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        return decoder
+    }
+    
+    
+    static var defaultEncoder: JSONEncoder {
+        let encoder = JSONEncoder()
+        
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        
+        return encoder
+    }
+    
+}
+
+
+// MARK: - Codable
+
+extension Booking: Codable {}
+
+
+

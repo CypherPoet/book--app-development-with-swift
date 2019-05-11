@@ -14,8 +14,13 @@
 		F32A0C922285531500EC1A3F /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0C912285531500EC1A3F /* TableViewDataSource.swift */; };
 		F32A0C952285549E00EC1A3F /* RoomType+SelectionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0C942285549E00EC1A3F /* RoomType+SelectionOptions.swift */; };
 		F32A0C9822856A2800EC1A3F /* SelectRoomTypeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0C9722856A2800EC1A3F /* SelectRoomTypeViewControllerDelegate.swift */; };
+		F32A0C9A2286387800EC1A3F /* BookingsListModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0C992286387800EC1A3F /* BookingsListModelController.swift */; };
+		F32A0C9C22863FF400EC1A3F /* BookingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0C9B22863FF400EC1A3F /* BookingsManager.swift */; };
+		F32A0C9E2286421B00EC1A3F /* FileManager+UserDocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0C9D2286421B00EC1A3F /* FileManager+UserDocumentsDirectory.swift */; };
+		F32A0CA0228664E900EC1A3F /* BookingsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0C9F228664E900EC1A3F /* BookingsListTableViewCell.swift */; };
+		F32A0CA3228692B600EC1A3F /* BookingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A0CA2228692B600EC1A3F /* BookingCellViewModel.swift */; };
 		F3BFF620228264D700AF8363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF61F228264D700AF8363 /* AppDelegate.swift */; };
-		F3BFF622228264D700AF8363 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF621228264D700AF8363 /* MainViewController.swift */; };
+		F3BFF622228264D700AF8363 /* BookingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF621228264D700AF8363 /* BookingsListViewController.swift */; };
 		F3BFF625228264D700AF8363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3BFF623228264D700AF8363 /* Main.storyboard */; };
 		F3BFF627228264D800AF8363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3BFF626228264D800AF8363 /* Assets.xcassets */; };
 		F3BFF62A228264D800AF8363 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3BFF628228264D800AF8363 /* LaunchScreen.storyboard */; };
@@ -39,9 +44,14 @@
 		F32A0C912285531500EC1A3F /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		F32A0C942285549E00EC1A3F /* RoomType+SelectionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomType+SelectionOptions.swift"; sourceTree = "<group>"; };
 		F32A0C9722856A2800EC1A3F /* SelectRoomTypeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeViewControllerDelegate.swift; sourceTree = "<group>"; };
+		F32A0C992286387800EC1A3F /* BookingsListModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsListModelController.swift; sourceTree = "<group>"; };
+		F32A0C9B22863FF400EC1A3F /* BookingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsManager.swift; sourceTree = "<group>"; };
+		F32A0C9D2286421B00EC1A3F /* FileManager+UserDocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+UserDocumentsDirectory.swift"; sourceTree = "<group>"; };
+		F32A0C9F228664E900EC1A3F /* BookingsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsListTableViewCell.swift; sourceTree = "<group>"; };
+		F32A0CA2228692B600EC1A3F /* BookingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCellViewModel.swift; sourceTree = "<group>"; };
 		F3BFF61C228264D700AF8363 /* HotelEuropa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelEuropa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BFF61F228264D700AF8363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F3BFF621228264D700AF8363 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F3BFF621228264D700AF8363 /* BookingsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsListViewController.swift; sourceTree = "<group>"; };
 		F3BFF624228264D700AF8363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3BFF626228264D800AF8363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3BFF629228264D800AF8363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,6 +110,19 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		F32A0CA12286902300EC1A3F /* Bookings */ = {
+			isa = PBXGroup;
+			children = (
+				F3BFF621228264D700AF8363 /* BookingsListViewController.swift */,
+				F32A0C992286387800EC1A3F /* BookingsListModelController.swift */,
+				F32A0C9B22863FF400EC1A3F /* BookingsManager.swift */,
+				F32A0C9F228664E900EC1A3F /* BookingsListTableViewCell.swift */,
+				F32A0CA2228692B600EC1A3F /* BookingCellViewModel.swift */,
+				F3BFF63F22828B3F00AF8363 /* CreateBooking */,
+			);
+			path = Bookings;
+			sourceTree = "<group>";
+		};
 		F3BFF613228264D700AF8363 = {
 			isa = PBXGroup;
 			children = (
@@ -145,8 +168,7 @@
 		F3BFF6322282664000AF8363 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F3BFF63F22828B3F00AF8363 /* CreateBooking */,
-				F3BFF621228264D700AF8363 /* MainViewController.swift */,
+				F32A0CA12286902300EC1A3F /* Bookings */,
 				F3BFF623228264D700AF8363 /* Main.storyboard */,
 				F3BFF628228264D800AF8363 /* LaunchScreen.storyboard */,
 			);
@@ -169,6 +191,7 @@
 			children = (
 				F322D8D72283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift */,
 				F322D8DC2283FF1D006D96DC /* Date+pickerDisplayFormat.swift */,
+				F32A0C9D2286421B00EC1A3F /* FileManager+UserDocumentsDirectory.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,7 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3BFF622228264D700AF8363 /* MainViewController.swift in Sources */,
+				F3BFF622228264D700AF8363 /* BookingsListViewController.swift in Sources */,
 				F322D8DD2283FF1D006D96DC /* Date+pickerDisplayFormat.swift in Sources */,
 				F322D8D82283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift in Sources */,
 				F32A0C8E2285467A00EC1A3F /* SelectRoomTypeViewController.swift in Sources */,
@@ -341,10 +364,15 @@
 				F3BFF63E2282752E00AF8363 /* Guest.swift in Sources */,
 				F3BFF63B22826DBC00AF8363 /* RoomType.swift in Sources */,
 				F322D8DB2283DB53006D96DC /* R.generated.swift in Sources */,
+				F32A0CA0228664E900EC1A3F /* BookingsListTableViewCell.swift in Sources */,
+				F32A0C9C22863FF400EC1A3F /* BookingsManager.swift in Sources */,
 				F3BFF63822826CCD00AF8363 /* Room.swift in Sources */,
+				F32A0C9A2286387800EC1A3F /* BookingsListModelController.swift in Sources */,
+				F32A0C9E2286421B00EC1A3F /* FileManager+UserDocumentsDirectory.swift in Sources */,
 				F32A0C922285531500EC1A3F /* TableViewDataSource.swift in Sources */,
 				F32A0C9822856A2800EC1A3F /* SelectRoomTypeViewControllerDelegate.swift in Sources */,
 				F32A0C952285549E00EC1A3F /* RoomType+SelectionOptions.swift in Sources */,
+				F32A0CA3228692B600EC1A3F /* BookingCellViewModel.swift in Sources */,
 				F3BFF620228264D700AF8363 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,45 +10,68 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Bookings-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="HotelEuropa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BookingsListViewController" customModule="HotelEuropa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel Europa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCf-ut-IMu">
-                                <rect key="frame" x="124" y="206" width="166" height="36"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="textColor" red="0.45880425499999999" green="0.42457667529999998" blue="0.85103040929999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2L4-x3-YWd">
-                                <rect key="frame" x="107" y="794" width="200" height="60"/>
-                                <color key="backgroundColor" red="0.45880425499999999" green="0.42457667529999998" blue="0.85103040929999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="4RL-XP-uRc"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Npu-IP-NfT"/>
-                                </constraints>
-                                <state key="normal" title="New Booking">
-                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="4lD-tE-qij" kind="presentation" identifier="Present Create Booking Form" id="DZi-Uq-q8W"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v2o-vf-YK1">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Booking Cell" textLabel="xtC-MR-f2S" detailTextLabel="SxG-JO-IHN" style="IBUITableViewCellStyleSubtitle" id="nqL-dK-BAp" customClass="BookingsListTableViewCell" customModule="HotelEuropa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nqL-dK-BAp" id="8SU-gU-YCe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xtC-MR-f2S">
+                                                    <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SxG-JO-IHN">
+                                                    <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="subtitleLabel" destination="SxG-JO-IHN" id="Bpl-EL-Xy7"/>
+                                            <outlet property="titleLabel" destination="xtC-MR-f2S" id="zEH-hn-m5e"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kCf-ut-IMu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="RXV-Pa-5Im"/>
-                            <constraint firstItem="2L4-x3-YWd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-8" id="W0V-rC-2Ro"/>
-                            <constraint firstItem="2L4-x3-YWd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fAO-7C-gOG"/>
-                            <constraint firstItem="kCf-ut-IMu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q9w-ou-uSK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v2o-vf-YK1" secondAttribute="trailing" id="CsM-Ic-42w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="v2o-vf-YK1" secondAttribute="bottom" id="JG5-4a-7XJ"/>
+                            <constraint firstItem="v2o-vf-YK1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cYI-Ej-fuB"/>
+                            <constraint firstItem="v2o-vf-YK1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ci5-UV-olf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Dy3-Ln-Hwy"/>
+                    <navigationItem key="navigationItem" title="Bookings" id="Dy3-Ln-Hwy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="VO6-wM-2xI">
+                            <connections>
+                                <segue destination="4lD-tE-qij" kind="presentation" identifier="Present Add Booking View" id="ogb-7R-pK6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="v2o-vf-YK1" id="p7f-Pm-j6K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -513,8 +536,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DSF-4c-v4g" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CB6-75-0Ed">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="CB6-75-0Ed">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
