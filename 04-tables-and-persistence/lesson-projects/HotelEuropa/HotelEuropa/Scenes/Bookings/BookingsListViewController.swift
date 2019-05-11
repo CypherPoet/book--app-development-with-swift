@@ -51,16 +51,26 @@ extension BookingsListViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // TODO: Use R.Swift to get id
-        guard
-            segue.identifier == R.segue.bookingsListViewController.presentAddBookingView.identifier,
-            let navigationController = segue.destination as? UINavigationController,
-            let createBookingVC = navigationController.children.first as? CreateBookingViewController
-        else { return }
-        
-        let modelController = CreateBookingModelController()
-        
-        createBookingVC.modelController = modelController    
+        switch segue.identifier {
+        case R.segue.bookingsListViewController.presentAddBookingView.identifier:
+            segueToAddBooking(segue)
+        case R.segue.bookingsListViewController.showBookingDetailsView.identifier:
+            segueToBookingDetails(segue)
+        default:
+            return
+        }
+    }
+}
+
+
+// MARK: - Delegate
+
+extension BookingsListViewController: BookingDetailsViewControllerDelegate {
+    func bookingDetailsViewController(
+        _ controller: BookingDetailsViewController,
+        didUpdateBooking booking: Booking
+    ) {
+        print("Updated booking: \(booking)")
     }
 }
 
@@ -105,5 +115,32 @@ private extension BookingsListViewController {
             self?.dataSource.models = bookings
             self?.tableView.reloadData()
         }
+    }
+    
+    
+    func segueToAddBooking(_ segue: UIStoryboardSegue) {
+        guard
+            let navigationController = segue.destination as? UINavigationController,
+            let createBookingVC = navigationController.children.first as? CreateBookingViewController
+        else { return }
+        
+        let modelController = CreateBookingModelController()
+        
+        createBookingVC.modelController = modelController
+    }
+    
+    
+    func segueToBookingDetails(_ segue: UIStoryboardSegue) {
+        guard
+            let bookingDetailsVC = segue.destination as? BookingDetailsViewController,
+            let selectedIndexPath = tableView.indexPathForSelectedRow
+        else {
+            preconditionFailure("Couldn't perform segue to booking details")
+        }
+        
+        let selectedBooking = dataSource.models[selectedIndexPath.row]
+        
+        bookingDetailsVC.booking = selectedBooking
+        bookingDetailsVC.delegate = self
     }
 }
