@@ -6,7 +6,7 @@
 //  Copyright © 2019 Brian Sipple. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct RoomType {
     let id: String
@@ -32,6 +32,26 @@ struct RoomType {
         static let oneKing = 109
         static let suite = 150
     }
+}
+
+
+// MARK: - Computed Properties
+
+extension RoomType {
+    
+    var cellHeaderImage: UIImage? {
+        switch name {
+        case Name.oneKing:
+            return R.image.oneKingRoomHeader()
+        case Name.suite:
+            return R.image.suiteRoomHeader()
+        case Name.twoQueen:
+            return R.image.twoQueenRoomHeader()
+        default:
+            return R.image.europaHeader()
+        }
+    }
+    
 }
 
 

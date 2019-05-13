@@ -18,13 +18,29 @@ final class BookingDatesTableViewCell: UITableViewCell {
         var checkOutDate: Date
     }
     
-    
-    func configure(with viewModel: ViewModel) {
-        checkInDateLabel.text = viewModel.formattedCheckInDate
-        checkOutDateLabel.text = viewModel.formattedCheckOutDate
+    var viewModel: ViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            configure(with: viewModel)
+        }
     }
 }
 
+
+
+// MARK: - ViewModel Configuration
+
+extension BookingDatesTableViewCell {
+    
+    private func configure(with viewModel: ViewModel) {
+        checkInDateLabel.text = viewModel.formattedCheckInDate
+        checkOutDateLabel.text = viewModel.formattedCheckOutDate
+    }
+    
+}
+
+
+// MARK: - ViewModel Computeds
 
 extension BookingDatesTableViewCell.ViewModel {
     var displayDateFormatter: DateFormatter {

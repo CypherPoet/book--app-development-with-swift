@@ -10,19 +10,19 @@ import UIKit
 
 
 class BookingDetailsViewController: UITableViewController {
-    @IBOutlet private weak var numberOfNightsLabel: UILabel!
-    @IBOutlet private weak var roomTypeShortCodeLabel: UILabel!
-    @IBOutlet private weak var roomNightlyRateLabel: UILabel!
-    @IBOutlet private weak var roomValetBotStatusLabel: UILabel!
-    @IBOutlet private weak var roomValetBotRateLabel: UILabel!
-    @IBOutlet private weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var guestCell: BookingDetailGuestTableViewCell!
+    @IBOutlet weak var datesCell: BookingDatesTableViewCell!
+    @IBOutlet weak var roomImageCell: BookingRoomImageTableViewCell!
+    @IBOutlet weak var numberOfNightsCell: BookingChargesTableViewCell!
+    @IBOutlet weak var roomTypeCell: BookingChargesTableViewCell!
+    @IBOutlet weak var valetBotCell: BookingChargesTableViewCell!
+    @IBOutlet weak var totalPriceCell: BookingChargesTableViewCell!
+    
     
     weak var delegate: BookingDetailsViewControllerDelegate?
     
     var booking: Booking!
     var bookingChargesTableViewModel: BookingChargesTableViewModel!
-
-    var detailsTableDataSource: BookingDetailsTableDataSource!
 }
 
 
@@ -85,49 +85,25 @@ private extension BookingDetailsViewController {
             valetBotRate: 4
         )
         
-        detailsTableDataSource = makeDetailsTableDataSource(with: booking)
-        
-        tableView.dataSource = detailsTableDataSource
+        setupBookingInfoCells(with: booking)
         tableView.reloadData()
     }
     
-    
-    func makeDetailsTableDataSource(with booking: Booking) -> BookingDetailsTableDataSource {
-        return BookingDetailsTableDataSource(
-            booking: booking,
-            cellConfigurator: { [weak self] (booking, cell) in
-                self?.configure(cell, with: booking)
-            }
-        )
-    }
-    
-    
-    // MARK: - Cell Configuration
-    
-    func configure(_ cell: UITableViewCell, with booking: Booking) {
-        switch cell {
-        case let chargesCell as BookingChargesTableViewCell:
-            configure(chargesCell, with: bookingChargesTableViewModel)
-        case let guestCell as BookingDetailGuestTableViewCell:
-            guestCell.configure(with: BookingDetailGuestTableViewCell.ViewModel(
-                guestFirstName: booking.guest.firstName,
-                guestLastName: booking.guest.lastName
-                )
-            )
-        case let datesCell as BookingDatesTableViewCell:
-            datesCell.configure(with: BookingDatesTableViewCell.ViewModel(
-                checkInDate: booking.checkInDate,
-                checkOutDate: booking.checkOutDate
-            )
-        )
-        default:
-            break
-        }
-    }
-    
-    
-    func configure(_ chargesCell: BookingChargesTableViewCell, with viewModel: BookingChargesTableViewModel) {
         
+    func setupBookingInfoCells(with booking: Booking) {
+        guestCell.viewModel = .init(
+            guestFirstName: booking.guest.firstName,
+            guestLastName: booking.guest.lastName,
+            numberOfAdults: booking.guest.numberOfAdults,
+            numberOfChildren: booking.guest.numberOfChildren
+        )
+
+        datesCell.viewModel = .init(
+            checkInDate: booking.checkInDate,
+            checkOutDate: booking.checkOutDate
+        )
+        
+        roomImageCell.roomImage = booking.room.type.cellHeaderImage
     }
     
 }

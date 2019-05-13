@@ -10,18 +10,12 @@ import UIKit
 
 class BookingRoomImageTableViewCell: UITableViewCell {
     @IBOutlet private weak var roomImageView: UIImageView!
-    @IBOutlet private weak var numberOfAdultsLabel: UILabel!
-    @IBOutlet private weak var numberOfChildrenLabel: UILabel!
     
     
-    struct ViewModel {
-        var numberOfAdults: Int
-        var numberOfChildren: Int
-        var roomImage: UIImage
-    }
-    
-    
-    func configure(with viewModel: ViewModel) {
-        
+    var roomImage: UIImage? {
+        didSet {
+            guard let roomImage = roomImage else { return }
+            roomImageView.image = roomImage
+        }
     }
 }
