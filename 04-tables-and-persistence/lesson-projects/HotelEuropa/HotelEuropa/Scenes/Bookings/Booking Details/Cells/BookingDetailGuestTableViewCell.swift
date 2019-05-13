@@ -8,9 +8,9 @@
 
 import UIKit
 
-class BookingDetailGuestTableViewCell: UITableViewCell {
-    @IBOutlet private weak var guestNameLabel: UILabel!
-
+final class BookingDetailGuestTableViewCell: UITableViewCell {
+    @IBOutlet private weak var guestNameLabel: UILabel?
+    
     struct ViewModel {
         var guestFirstName: String
         var guestLastName: String
@@ -18,7 +18,7 @@ class BookingDetailGuestTableViewCell: UITableViewCell {
     
     
     func configure(with viewModel: ViewModel) {
-        
+        guestNameLabel?.text = "\(viewModel.guestFirstName) \(viewModel.guestLastName)"
     }
 
 }

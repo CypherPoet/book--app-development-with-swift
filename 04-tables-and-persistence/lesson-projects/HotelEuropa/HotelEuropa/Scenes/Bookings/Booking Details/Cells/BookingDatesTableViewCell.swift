@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookingDatesTableViewCell: UITableViewCell {
+final class BookingDatesTableViewCell: UITableViewCell {
     @IBOutlet private weak var checkInDateLabel: UILabel!
     @IBOutlet private weak var checkOutDateLabel: UILabel!
     
@@ -20,8 +20,28 @@ class BookingDatesTableViewCell: UITableViewCell {
     
     
     func configure(with viewModel: ViewModel) {
-        
+        checkInDateLabel.text = viewModel.formattedCheckInDate
+        checkOutDateLabel.text = viewModel.formattedCheckOutDate
     }
+}
 
 
+extension BookingDatesTableViewCell.ViewModel {
+    var displayDateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .medium
+        
+        return formatter
+    }
+    
+    var formattedCheckInDate: String {
+        return displayDateFormatter.string(from: checkInDate)
+    }
+    
+    var formattedCheckOutDate: String {
+        return displayDateFormatter.string(from: checkOutDate)
+    }
+    
 }

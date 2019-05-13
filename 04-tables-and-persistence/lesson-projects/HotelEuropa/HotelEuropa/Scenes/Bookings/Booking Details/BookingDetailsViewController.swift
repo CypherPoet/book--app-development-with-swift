@@ -9,14 +9,27 @@
 import UIKit
 
 
-class BookingDetailsViewController: UIViewController {
-    @IBOutlet private weak var infoTableView: UITableView!
-    @IBOutlet weak var bookingChargesTableViewCell: BookingChargesTableViewCell!
+class BookingDetailsViewController: UITableViewController {
+    @IBOutlet private weak var numberOfNightsLabel: UILabel!
+    @IBOutlet private weak var roomTypeShortCodeLabel: UILabel!
+    @IBOutlet private weak var roomNightlyRateLabel: UILabel!
+    @IBOutlet private weak var roomValetBotStatusLabel: UILabel!
+    @IBOutlet private weak var roomValetBotRateLabel: UILabel!
+    @IBOutlet private weak var totalPriceLabel: UILabel!
     
     weak var delegate: BookingDetailsViewControllerDelegate?
     
-    var booking: Booking?
-    var infoTableViewDataSource: BookingInfoTableDataSource!
+    var booking: Booking!
+    var bookingChargesTableViewModel: BookingChargesTableViewModel!
+
+    var detailsTableDataSource: BookingDetailsTableDataSource!
+}
+
+
+// MARK: - Computed Properties
+
+extension BookingDetailsViewController {
+    
 }
 
 
@@ -34,7 +47,7 @@ extension BookingDetailsViewController {
             preconditionFailure("Attempted to load BookingDetailsViewController without necessary data")
         }
         
-        setupTableViews(with: booking)
+        setupTableView(with: booking)
     }
     
 }
@@ -53,7 +66,7 @@ extension BookingDetailsViewController {
         else { return }
         
         self.booking = booking
-        updateTableViews(with: booking)
+        tableView.reloadData()
         delegate?.bookingDetailsViewController(self, didUpdateBooking: booking)
     }
 }
@@ -62,25 +75,59 @@ extension BookingDetailsViewController {
 // MARK: - Private Helper Methods
 
 private extension BookingDetailsViewController {
-    
-    func setupTableViews(with booking: Booking) {
-        let infoTableViewDataSource = BookingInfoTableDataSource(booking: booking)
+
+    func setupTableView(with booking: Booking) {
+        bookingChargesTableViewModel = BookingChargesTableViewModel(
+            roomTypeCode: booking.room.type.nameCode,
+            roomNightlyRate: booking.room.type.price,
+            numberOfNights: booking.numberOfNights,
+            hasValetBot: booking.room.hasValetBot,
+            valetBotRate: 4
+        )
         
-        self.infoTableViewDataSource = infoTableViewDataSource
-        infoTableView.dataSource = infoTableViewDataSource
+        detailsTableDataSource = makeDetailsTableDataSource(with: booking)
+        
+        tableView.dataSource = detailsTableDataSource
+        tableView.reloadData()
     }
     
     
-    func updateTableViews(with booking: Booking) {
-        infoTableView.reloadData()
-        
-        bookingChargesTableViewCell.configure(
-            with: .init(
-                roomTypeCode: booking.room.type.nameCode,
-                roomNightlyRate: booking.room.type.price,
-                hasValetBot: booking.room.hasValetBot,
-                valetBotRate: 4
-            )
+    func makeDetailsTableDataSource(with booking: Booking) -> BookingDetailsTableDataSource {
+        return BookingDetailsTableDataSource(
+            booking: booking,
+            cellConfigurator: { [weak self] (booking, cell) in
+                self?.configure(cell, with: booking)
+            }
         )
     }
+    
+    
+    // MARK: - Cell Configuration
+    
+    func configure(_ cell: UITableViewCell, with booking: Booking) {
+        switch cell {
+        case let chargesCell as BookingChargesTableViewCell:
+            configure(chargesCell, with: bookingChargesTableViewModel)
+        case let guestCell as BookingDetailGuestTableViewCell:
+            guestCell.configure(with: BookingDetailGuestTableViewCell.ViewModel(
+                guestFirstName: booking.guest.firstName,
+                guestLastName: booking.guest.lastName
+                )
+            )
+        case let datesCell as BookingDatesTableViewCell:
+            datesCell.configure(with: BookingDatesTableViewCell.ViewModel(
+                checkInDate: booking.checkInDate,
+                checkOutDate: booking.checkOutDate
+            )
+        )
+        default:
+            break
+        }
+    }
+    
+    
+    func configure(_ chargesCell: BookingChargesTableViewCell, with viewModel: BookingChargesTableViewModel) {
+        
+    }
+    
 }
