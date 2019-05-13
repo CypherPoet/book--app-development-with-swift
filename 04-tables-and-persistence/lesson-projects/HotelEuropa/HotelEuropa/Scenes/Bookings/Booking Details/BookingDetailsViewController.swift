@@ -10,19 +10,31 @@ import UIKit
 
 
 class BookingDetailsViewController: UITableViewController {
-    @IBOutlet weak var guestCell: BookingDetailGuestTableViewCell!
-    @IBOutlet weak var datesCell: BookingDatesTableViewCell!
-    @IBOutlet weak var roomImageCell: BookingRoomImageTableViewCell!
-    @IBOutlet weak var numberOfNightsCell: BookingChargesTableViewCell!
-    @IBOutlet weak var roomTypeCell: BookingChargesTableViewCell!
-    @IBOutlet weak var valetBotCell: BookingChargesTableViewCell!
-    @IBOutlet weak var totalPriceCell: BookingChargesTableViewCell!
+    @IBOutlet private weak var guestCell: BookingDetailGuestTableViewCell!
+    @IBOutlet private weak var datesCell: BookingDatesTableViewCell!
+    @IBOutlet private weak var roomImageCell: BookingRoomImageTableViewCell!
+    
+    @IBOutlet private weak var numberOfNightsLabel: UILabel!
+    @IBOutlet private weak var roomTypeShortCodeLabel: UILabel!
+    @IBOutlet private weak var roomNightlyRateLabel: UILabel!
+    @IBOutlet private weak var roomValetBotStatusLabel: UILabel!
+    @IBOutlet private weak var roomValetBotRateLabel: UILabel!
+    @IBOutlet private weak var totalPriceLabel: UILabel!
     
     
     weak var delegate: BookingDetailsViewControllerDelegate?
     
     var booking: Booking!
-    var bookingChargesTableViewModel: BookingChargesTableViewModel!
+    
+    lazy var bookingChargesTableViewModel: BookingChargesTableViewModel = {
+        return BookingChargesTableViewModel(
+            roomTypeCode: booking.room.type.nameCode,
+            roomNightlyRate: booking.room.type.price,
+            numberOfNights: booking.numberOfNights,
+            hasValetBot: booking.room.hasValetBot,
+            valetBotRate: 4
+        )
+    }()
 }
 
 
@@ -77,15 +89,9 @@ extension BookingDetailsViewController {
 private extension BookingDetailsViewController {
 
     func setupTableView(with booking: Booking) {
-        bookingChargesTableViewModel = BookingChargesTableViewModel(
-            roomTypeCode: booking.room.type.nameCode,
-            roomNightlyRate: booking.room.type.price,
-            numberOfNights: booking.numberOfNights,
-            hasValetBot: booking.room.hasValetBot,
-            valetBotRate: 4
-        )
-        
         setupBookingInfoCells(with: booking)
+        setupBookingChargesCells(with: bookingChargesTableViewModel)
+        
         tableView.reloadData()
     }
     
@@ -100,10 +106,21 @@ private extension BookingDetailsViewController {
 
         datesCell.viewModel = .init(
             checkInDate: booking.checkInDate,
-            checkOutDate: booking.checkOutDate
+            checkOutDate: booking.checkOutDate,
+            numberOfNights: booking.numberOfNights
         )
         
         roomImageCell.roomImage = booking.room.type.cellHeaderImage
+        roomImageCell.roomTypeName = booking.room.type.name
     }
+
     
+    func setupBookingChargesCells(with viewModel: BookingChargesTableViewModel) {
+        numberOfNightsLabel.text = "\(viewModel.numberOfNights)"
+        roomTypeShortCodeLabel.text = viewModel.roomTypeText
+        roomNightlyRateLabel.text = viewModel.roomNightlyRateText
+        roomValetBotRateLabel.text = viewModel.valetBotRateText
+        roomValetBotStatusLabel.text = viewModel.valetBotStatusText
+        totalPriceLabel.text = viewModel.totalPriceText
+    }
 }

@@ -20,19 +20,28 @@ struct BookingChargesTableViewModel {
 
 
 extension BookingChargesTableViewModel {
-    var roomNightlyRateString: String {
+    var roomNightlyRateText: String {
         return "\(roomNightlyRate) Satoshis"
     }
     
-    var valetBotRatString: String {
+    var roomTypeText: String {
+        return "Room Type: \(roomTypeCode)"
+    }
+    
+    var valetBotRateText: String {
         return "\(valetBotRate) Satoshis"
+    }
+    
+    var valetBotStatusText: String {
+        return "Valet Bot: \(hasValetBot ? "Yes" : "No")"
     }
 
     var totalPrice: Int {
-        return 1
+        let botExpense = hasValetBot ? valetBotRate : 0
+        return (roomNightlyRate + botExpense) * numberOfNights
     }
 
-    var totalPriceString: String {
+    var totalPriceText: String {
         return "\(totalPrice) Satoshis"
     }
 }

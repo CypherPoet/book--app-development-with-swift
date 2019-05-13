@@ -10,12 +10,20 @@ import UIKit
 
 class BookingRoomImageTableViewCell: UITableViewCell {
     @IBOutlet private weak var roomImageView: UIImageView!
-    
+    @IBOutlet private weak var roomTypeNameLabel: UILabel!
+
     
     var roomImage: UIImage? {
         didSet {
             guard let roomImage = roomImage else { return }
+            
             roomImageView.image = roomImage
+        }
+    }
+    
+    var roomTypeName: String = "" {
+        didSet {
+            roomTypeNameLabel.text = roomTypeName
         }
     }
 }
