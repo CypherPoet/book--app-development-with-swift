@@ -131,12 +131,7 @@ extension AddEditBookingViewController {
         }
         
         booking = modelController.booking
-        checkInDatePicker.minimumDate = minimumCheckInDate
-        checkInDatePicker.date = minimumCheckInDate
-        
-        updateDateViews()
-        updateNumberOfGuests()
-        selectedRoomType = nil
+        configureUI(with: booking)
     }
     
 }
@@ -152,7 +147,7 @@ extension AddEditBookingViewController {
     
     
     @IBAction func guestStepperValueChanged(_ sender: UIStepper) {
-        updateNumberOfGuests()
+        updateNumberOfGuestsViews()
     }
     
     
@@ -173,7 +168,7 @@ extension AddEditBookingViewController {
             switch result {
             case .success(let booking):
                 self.booking = booking
-                print("Created booking: \(booking)")
+                print("Updated booking: \(booking)")
                 self.performSegue(withIdentifier: self.doneSegueIdentifier, sender: self)
             case .failure(let error):
                 self.display(alertMessage: error.localizedDescription, title: "Failed to save new registration")
@@ -261,6 +256,28 @@ extension AddEditBookingViewController: SelectRoomTypeViewControllerDelegate {
 
 private extension AddEditBookingViewController {
     
+    /**
+     📝 A View-Model-based approach might have us use the `booking` to
+     initialize a view model, and then call this function with said view model 🤔.
+     */
+    func configureUI(with booking: Booking?) {
+        firstNameTextField.text = booking?.guest.firstName
+        lastNameTextField.text = booking?.guest.lastName
+        emailTextField.text = booking?.guest.emailAddress
+        
+        checkInDatePicker.minimumDate = minimumCheckInDate
+        checkInDatePicker.date = booking?.checkInDate ?? minimumCheckInDate
+        
+        numberOfAdultsStepper.value = Double(booking?.guest.numberOfAdults ?? 1)
+        numberOfChildrenStepper.value = Double(booking?.guest.numberOfChildren ?? 0)
+        
+        selectedRoomType = booking?.room.type
+        
+        updateDateViews()
+        updateNumberOfGuestsViews()
+    }
+    
+    
     func updateDateViews() {
         checkOutDatePicker.minimumDate = minimumCheckOutDate
         
@@ -268,7 +285,8 @@ private extension AddEditBookingViewController {
         checkOutDateValueLabel.text = checkOutDatePicker.date.pickerDisplayFormat
     }
 
-    func updateNumberOfGuests() {
+    
+    func updateNumberOfGuestsViews() {
         numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
         numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
     }

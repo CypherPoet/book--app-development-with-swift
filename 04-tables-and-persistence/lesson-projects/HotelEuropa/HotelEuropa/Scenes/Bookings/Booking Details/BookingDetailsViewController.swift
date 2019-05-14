@@ -77,7 +77,7 @@ extension BookingDetailsViewController {
         else { return }
         
         self.booking = booking
-        tableView.reloadData()
+        self.setupTableView(with: booking)
         delegate?.bookingDetailsViewController(self, didUpdateBooking: booking)
     }
     

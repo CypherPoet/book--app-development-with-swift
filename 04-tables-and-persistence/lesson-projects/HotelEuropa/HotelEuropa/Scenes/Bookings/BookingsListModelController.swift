@@ -52,6 +52,19 @@ extension BookingsListModelController {
     }
     
     
+    func update(
+        _ booking: Booking,
+        at index: Int,
+        then completionHandler: CompletionHandler? = nil
+    ) {
+        bookings[index] = booking
+        bookingsManager.save(bookings)
+        
+        completionHandler?(bookings)
+    }
+    
+    
+    
     func deleteBooking(
         at index: Int,
         then completionHandler: CompletionHandler? = nil

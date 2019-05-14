@@ -72,7 +72,14 @@ extension BookingsListViewController: BookingDetailsViewControllerDelegate {
         _ controller: BookingDetailsViewController,
         didUpdateBooking booking: Booking
     ) {
-        print("Updated booking: \(booking)")
+        guard let selectedRow = tableView.indexPathForSelectedRow?.row else {
+            preconditionFailure("Unable to find selected row for updated booking")
+        }
+        
+        modelController.update(booking, at: selectedRow) { [weak self] (bookings) in
+            self?.dataSource.models = bookings
+            self?.tableView.reloadData()
+        }
     }
 }
 
