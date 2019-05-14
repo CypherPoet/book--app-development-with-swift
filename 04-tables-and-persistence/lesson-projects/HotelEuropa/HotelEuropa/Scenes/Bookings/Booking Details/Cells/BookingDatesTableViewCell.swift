@@ -52,10 +52,10 @@ extension BookingDatesTableViewCell {
     
     private func configure(with viewModel: ViewModel) {
         checkInDateLabel.text = viewModel.formattedCheckInDate
-        checkInTimeLabel.text = viewModel.formattedCheckInTime
+        checkInTimeLabel.text = viewModel.checkInTimeText
 
         checkOutDateLabel.text = viewModel.formattedCheckOutDate
-        checkOutTimeLabel.text = viewModel.formattedCheckOutTime
+        checkOutTimeLabel.text = viewModel.checkOutTimeText
         
         numberOfNightsLabel.text = viewModel.numberOfNightsText
     }
@@ -78,7 +78,7 @@ extension BookingDatesTableViewCell.ViewModel {
     var displayTimeFormatter: DateFormatter {
         let formatter = DateFormatter()
         
-        formatter.timeStyle = .medium
+        formatter.timeStyle = .short
         formatter.dateStyle = .none
         
         return formatter
@@ -89,16 +89,16 @@ extension BookingDatesTableViewCell.ViewModel {
         return displayDateFormatter.string(from: checkInDate)
     }
     
-    var formattedCheckInTime: String {
-        return displayTimeFormatter.string(from: checkInDate)
+    var checkInTimeText: String {
+        return "After 4:00 PM"
     }
     
     var formattedCheckOutDate: String {
         return displayDateFormatter.string(from: checkOutDate)
     }
     
-    var formattedCheckOutTime: String {
-        return displayTimeFormatter.string(from: checkOutDate)
+    var checkOutTimeText: String {
+        return "Before 12:00 PM"
     }
     
     var numberOfNightsText: String {

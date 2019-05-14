@@ -242,9 +242,15 @@ extension AddEditBookingViewController {
             return isCheckInPickerVisible ? visibleDatePickerHeight : 0.0
         case (checkOutDatePickerIndexPath.row, checkOutDatePickerIndexPath.section):
             return isCheckOutPickerVisible ? visibleDatePickerHeight : 0.0
+//        case (_, 0):
+//            return 66
         default:
             return UITableView.automaticDimension
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     

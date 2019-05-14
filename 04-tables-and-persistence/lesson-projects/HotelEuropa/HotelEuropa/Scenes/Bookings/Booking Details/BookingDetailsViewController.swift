@@ -98,6 +98,17 @@ extension BookingDetailsViewController {
 }
 
 
+// MARK: - UITableViewDelegate
+
+extension BookingDetailsViewController {
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? CGFloat.leastNonzeroMagnitude : UITableView.automaticDimension
+    }
+    
+}
+
+
 // MARK: - Private Helper Methods
 
 private extension BookingDetailsViewController {
