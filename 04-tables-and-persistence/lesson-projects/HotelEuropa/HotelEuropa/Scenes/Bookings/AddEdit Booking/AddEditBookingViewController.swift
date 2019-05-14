@@ -32,6 +32,13 @@ class AddEditBookingViewController: UITableViewController {
     
     @IBOutlet private weak var selectedRoomTypeLabel: UILabel!
     
+    @IBOutlet private weak var numberOfNightsLabel: UILabel!
+    @IBOutlet private weak var roomTypeShortCodeLabel: UILabel!
+    @IBOutlet private weak var totalRoomPriceLabel: UILabel!
+    @IBOutlet private weak var roomValetBotStatusLabel: UILabel!
+    @IBOutlet private weak var totalValetBotPriceLabel: UILabel!
+    @IBOutlet private weak var totalPriceLabel: UILabel!
+    
     
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     
@@ -92,6 +99,22 @@ extension AddEditBookingViewController {
     }
     
     
+    var chargesViewModel: BookingChargesTableViewModel {
+        return BookingChargesTableViewModel(
+            roomTypeCode: selectedRoomType?.nameCode,
+            roomNightlyRate: selectedRoomType?.price,
+            numberOfNights: numberOfNights,
+            hasValetBot: valetBotSwitch.isOn,
+            valetBotRate: Booking.valetBotRate
+        )
+    }
+    
+    
+    var numberOfNights: Int {
+        return checkInDatePicker.date.daysBetween(checkOutDatePicker.date)
+    }
+    
+    
     var minimumCheckInDate: Date {
         return Calendar.current.startOfDay(for: Date())
     }
@@ -143,6 +166,7 @@ extension AddEditBookingViewController {
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
+        updateChargesTable(with: chargesViewModel)
     }
     
     
@@ -152,7 +176,7 @@ extension AddEditBookingViewController {
     
     
     @IBAction func valetBotSwitchFlipped(_ sender: UISwitch) {
-        // TODO: Implement
+        updateChargesTable(with: chargesViewModel)
     }
     
     
@@ -248,6 +272,7 @@ extension AddEditBookingViewController: SelectRoomTypeViewControllerDelegate {
         didSelectRoomType roomType: RoomType
     ) {
         selectedRoomType = roomType
+        updateChargesTable(with: chargesViewModel)
     }
 }
 
@@ -277,6 +302,7 @@ private extension AddEditBookingViewController {
         
         updateDateViews()
         updateNumberOfGuestsViews()
+        updateChargesTable(with: chargesViewModel)
     }
     
     
@@ -291,6 +317,16 @@ private extension AddEditBookingViewController {
     func updateNumberOfGuestsViews() {
         numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
         numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
+    }
+    
+    
+    func updateChargesTable(with viewModel: BookingChargesTableViewModel) {
+        numberOfNightsLabel.text = viewModel.numberOfNightsText
+        roomTypeShortCodeLabel.text = viewModel.roomTypeText
+        totalRoomPriceLabel.text = viewModel.totalRoomPriceText
+        totalValetBotPriceLabel.text = viewModel.valetBotPriceText
+        roomValetBotStatusLabel.text = viewModel.valetBotStatusText
+        totalPriceLabel.text = viewModel.totalPriceText
     }
 }
 

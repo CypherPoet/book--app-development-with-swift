@@ -22,6 +22,7 @@ struct Booking {
 // MARK: - Computed Properties
 
 extension Booking {
+    
     static var defaultDecoder: JSONDecoder {
         let decoder = JSONDecoder()
         
@@ -41,21 +42,7 @@ extension Booking {
     
     
     var numberOfNights: Int {
-        let calendar = Calendar.current
-        let checkInStartDay = calendar.startOfDay(for: checkInDate)
-        let checkOutStartDay = calendar.startOfDay(for: checkOutDate)
-        
-        let comparisonComponents = calendar.dateComponents(
-            [.day],
-            from: checkInStartDay,
-            to: checkOutStartDay
-        )
-        
-        guard let nights = comparisonComponents.day else {
-            fatalError("Unable to compute number of nights between check-in and -out dates.")
-        }
-        
-        return nights
+        return checkInDate.daysBetween(checkOutDate)
     }
     
 }

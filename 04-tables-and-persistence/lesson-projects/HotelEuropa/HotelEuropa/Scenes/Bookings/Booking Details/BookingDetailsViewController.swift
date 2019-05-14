@@ -130,7 +130,7 @@ private extension BookingDetailsViewController {
 
     
     func setupBookingChargesCells(with viewModel: BookingChargesTableViewModel) {
-        numberOfNightsLabel.text = "\(viewModel.numberOfNights)"
+        numberOfNightsLabel.text = viewModel.numberOfNightsText
         roomTypeShortCodeLabel.text = viewModel.roomTypeText
         totalRoomPriceLabel.text = viewModel.totalRoomPriceText
         totalValetBotPriceLabel.text = viewModel.valetBotPriceText

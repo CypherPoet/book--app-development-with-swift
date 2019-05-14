@@ -36,6 +36,7 @@
 		F3BFF63E2282752E00AF8363 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF63D2282752E00AF8363 /* Guest.swift */; };
 		F3BFF64122828B6100AF8363 /* AddEditBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF64022828B6100AF8363 /* AddEditBookingViewController.swift */; };
 		F3BFF64322829AA400AF8363 /* AddEditBookingModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFF64222829AA400AF8363 /* AddEditBookingModelController.swift */; };
+		F3F366B9228B12670083D5A0 /* Date+DaysBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F366B8228B12670083D5A0 /* Date+DaysBetween.swift */; };
 		F7FA6328252B6B01ECA924DF /* Pods_HotelEuropa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC61935B7771301149B6F34 /* Pods_HotelEuropa.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		F3BFF63D2282752E00AF8363 /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		F3BFF64022828B6100AF8363 /* AddEditBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditBookingViewController.swift; sourceTree = "<group>"; };
 		F3BFF64222829AA400AF8363 /* AddEditBookingModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditBookingModelController.swift; sourceTree = "<group>"; };
+		F3F366B8228B12670083D5A0 /* Date+DaysBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DaysBetween.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				F322D8D72283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift */,
 				F322D8DC2283FF1D006D96DC /* Date+pickerDisplayFormat.swift */,
 				F32A0C9D2286421B00EC1A3F /* FileManager+UserDocumentsDirectory.swift */,
+				F3F366B8228B12670083D5A0 /* Date+DaysBetween.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3BFF622228264D700AF8363 /* BookingsListViewController.swift in Sources */,
+				F3F366B9228B12670083D5A0 /* Date+DaysBetween.swift in Sources */,
 				F32A0CA62286A35400EC1A3F /* BookingDetailsViewController.swift in Sources */,
 				F322D8DD2283FF1D006D96DC /* Date+pickerDisplayFormat.swift in Sources */,
 				F322D8D82283CB82006D96DC /* UIViewController+DisplayAlertMessage.swift in Sources */,
