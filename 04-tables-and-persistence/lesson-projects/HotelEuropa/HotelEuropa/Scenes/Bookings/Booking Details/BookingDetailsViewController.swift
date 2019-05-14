@@ -16,9 +16,9 @@ class BookingDetailsViewController: UITableViewController {
     
     @IBOutlet private weak var numberOfNightsLabel: UILabel!
     @IBOutlet private weak var roomTypeShortCodeLabel: UILabel!
-    @IBOutlet private weak var roomNightlyRateLabel: UILabel!
+    @IBOutlet private weak var totalRoomPriceLabel: UILabel!
     @IBOutlet private weak var roomValetBotStatusLabel: UILabel!
-    @IBOutlet private weak var roomValetBotRateLabel: UILabel!
+    @IBOutlet private weak var totalValetBotPriceLabel: UILabel!
     @IBOutlet private weak var totalPriceLabel: UILabel!
     
     
@@ -37,8 +37,8 @@ extension BookingDetailsViewController {
             roomTypeCode: booking.room.type.nameCode,
             roomNightlyRate: booking.room.type.price,
             numberOfNights: booking.numberOfNights,
-            hasValetBot: booking.room.hasValetBot,
-            valetBotRate: 4
+            hasValetBot: booking.hasValetBot,
+            valetBotRate: Booking.valetBotRate
         )
     }
 }
@@ -132,8 +132,8 @@ private extension BookingDetailsViewController {
     func setupBookingChargesCells(with viewModel: BookingChargesTableViewModel) {
         numberOfNightsLabel.text = "\(viewModel.numberOfNights)"
         roomTypeShortCodeLabel.text = viewModel.roomTypeText
-        roomNightlyRateLabel.text = viewModel.roomNightlyRateText
-        roomValetBotRateLabel.text = viewModel.valetBotRateText
+        totalRoomPriceLabel.text = viewModel.totalRoomPriceText
+        totalValetBotPriceLabel.text = viewModel.valetBotPriceText
         roomValetBotStatusLabel.text = viewModel.valetBotStatusText
         totalPriceLabel.text = viewModel.totalPriceText
     }

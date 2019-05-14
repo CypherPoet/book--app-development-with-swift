@@ -13,6 +13,9 @@ struct Booking {
     var room: Room
     var checkInDate: Date
     var checkOutDate: Date
+    var hasValetBot: Bool
+    
+    static let valetBotRate = 4
 }
 
 

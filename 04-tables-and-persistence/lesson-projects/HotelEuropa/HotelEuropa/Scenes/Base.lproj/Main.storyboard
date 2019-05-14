@@ -356,13 +356,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In-Room ValetBot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iry-TZ-e4z">
-                                                            <rect key="frame" x="12" y="11.5" width="246" height="20.5"/>
+                                                            <rect key="frame" x="12" y="11.5" width="234.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="3 sat/day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgG-0D-yVf">
-                                                            <rect key="frame" x="270" y="11.5" width="71" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="4 sat/night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgG-0D-yVf">
+                                                            <rect key="frame" x="258.5" y="11.5" width="82.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -760,29 +760,29 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Charges" id="Ue2-a5-DFB">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Booking Charges - Number of Nights" id="fW3-lV-d0g">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Booknig Charges - Number of Nights" id="k3s-nQ-Eih">
                                         <rect key="frame" x="0.0" y="598" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fW3-lV-d0g" id="tEc-qo-eSH">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k3s-nQ-Eih" id="Sy3-HG-w4T">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YnQ-AW-AlT">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iuo-9R-k1i">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Valet Bot: Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOb-uP-n3O">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Nights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMi-aL-23a">
                                                             <rect key="frame" x="16" y="8" width="127.5" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="-----" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="969-xS-2XS">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="-----" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eO1-jJ-ZJg">
                                                             <rect key="frame" x="143.5" y="8" width="127" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="4 Satoshis" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sn-Dl-cIa">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3B1-FC-gIS">
                                                             <rect key="frame" x="270.5" y="8" width="127.5" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -793,10 +793,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="YnQ-AW-AlT" firstAttribute="top" secondItem="tEc-qo-eSH" secondAttribute="top" id="Mxn-oj-Hfw"/>
-                                                <constraint firstItem="YnQ-AW-AlT" firstAttribute="leading" secondItem="tEc-qo-eSH" secondAttribute="leading" id="X9o-5u-24c"/>
-                                                <constraint firstAttribute="bottom" secondItem="YnQ-AW-AlT" secondAttribute="bottom" id="kxQ-vb-gPQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="YnQ-AW-AlT" secondAttribute="trailing" id="wYa-mW-WZY"/>
+                                                <constraint firstItem="iuo-9R-k1i" firstAttribute="top" secondItem="Sy3-HG-w4T" secondAttribute="top" id="9si-Re-nzQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="iuo-9R-k1i" secondAttribute="trailing" id="QS4-ot-Mcr"/>
+                                                <constraint firstAttribute="bottom" secondItem="iuo-9R-k1i" secondAttribute="bottom" id="g05-uK-19C"/>
+                                                <constraint firstItem="iuo-9R-k1i" firstAttribute="leading" secondItem="Sy3-HG-w4T" secondAttribute="leading" id="gI1-tt-ZlR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -842,29 +842,29 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Booknig Charges - Valet Bot" id="k3s-nQ-Eih">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Booking Charges - Valet Bot" id="fW3-lV-d0g">
                                         <rect key="frame" x="0.0" y="686" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k3s-nQ-Eih" id="Sy3-HG-w4T">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fW3-lV-d0g" id="tEc-qo-eSH">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iuo-9R-k1i">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YnQ-AW-AlT">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Nights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMi-aL-23a">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Valet Bot: Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOb-uP-n3O">
                                                             <rect key="frame" x="16" y="8" width="127.5" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="-----" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eO1-jJ-ZJg">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="-----" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="969-xS-2XS">
                                                             <rect key="frame" x="143.5" y="8" width="127" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3B1-FC-gIS">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="4 Satoshis" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sn-Dl-cIa">
                                                             <rect key="frame" x="270.5" y="8" width="127.5" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -875,10 +875,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="iuo-9R-k1i" firstAttribute="top" secondItem="Sy3-HG-w4T" secondAttribute="top" id="9si-Re-nzQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="iuo-9R-k1i" secondAttribute="trailing" id="QS4-ot-Mcr"/>
-                                                <constraint firstAttribute="bottom" secondItem="iuo-9R-k1i" secondAttribute="bottom" id="g05-uK-19C"/>
-                                                <constraint firstItem="iuo-9R-k1i" firstAttribute="leading" secondItem="Sy3-HG-w4T" secondAttribute="leading" id="gI1-tt-ZlR"/>
+                                                <constraint firstItem="YnQ-AW-AlT" firstAttribute="top" secondItem="tEc-qo-eSH" secondAttribute="top" id="Mxn-oj-Hfw"/>
+                                                <constraint firstItem="YnQ-AW-AlT" firstAttribute="leading" secondItem="tEc-qo-eSH" secondAttribute="leading" id="X9o-5u-24c"/>
+                                                <constraint firstAttribute="bottom" secondItem="YnQ-AW-AlT" secondAttribute="bottom" id="kxQ-vb-gPQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="YnQ-AW-AlT" secondAttribute="trailing" id="wYa-mW-WZY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -944,11 +944,11 @@
                         <outlet property="guestCell" destination="gLj-Ah-t0X" id="zlu-d5-YxF"/>
                         <outlet property="numberOfNightsLabel" destination="3B1-FC-gIS" id="b7V-el-UMz"/>
                         <outlet property="roomImageCell" destination="YjO-Pn-Egi" id="V5k-gE-TEW"/>
-                        <outlet property="roomNightlyRateLabel" destination="qWS-RT-W7y" id="Cnw-4C-lfV"/>
                         <outlet property="roomTypeShortCodeLabel" destination="C8u-pM-rbt" id="nyN-fm-3aA"/>
-                        <outlet property="roomValetBotRateLabel" destination="8Sn-Dl-cIa" id="njb-ba-vMN"/>
                         <outlet property="roomValetBotStatusLabel" destination="mOb-uP-n3O" id="by0-uc-bKT"/>
                         <outlet property="totalPriceLabel" destination="bM0-Lu-rMf" id="PPB-ef-wxD"/>
+                        <outlet property="totalRoomPriceLabel" destination="qWS-RT-W7y" id="Cnw-4C-lfV"/>
+                        <outlet property="totalValetBotPriceLabel" destination="8Sn-Dl-cIa" id="njb-ba-vMN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fF-lS-QyN" userLabel="First Responder" sceneMemberID="firstResponder"/>

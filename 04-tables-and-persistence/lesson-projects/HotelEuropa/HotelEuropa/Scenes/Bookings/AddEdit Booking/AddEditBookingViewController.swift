@@ -271,6 +271,8 @@ private extension AddEditBookingViewController {
         numberOfAdultsStepper.value = Double(booking?.guest.numberOfAdults ?? 1)
         numberOfChildrenStepper.value = Double(booking?.guest.numberOfChildren ?? 0)
         
+        valetBotSwitch.isOn = booking?.hasValetBot ?? false
+        
         selectedRoomType = booking?.room.type
         
         updateDateViews()

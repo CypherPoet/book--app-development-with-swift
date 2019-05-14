@@ -33,6 +33,7 @@ extension BookingsListModelController {
                 completionHandler(bookings)
             case .failure(let error):
                 print("Error while loading bookings:\n\n\(error.localizedDescription)")
+                completionHandler([Booking]())
             }
         }
     }

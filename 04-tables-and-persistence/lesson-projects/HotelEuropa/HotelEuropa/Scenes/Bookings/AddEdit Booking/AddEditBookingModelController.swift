@@ -72,13 +72,14 @@ extension AddEditBookingModelController {
             numberOfChildren: numberOfChildren
         )
         
-        let room  = Room(number: 0, type: roomType, hasValetBot: changes.hasValetBot)
+        let room  = Room(number: 0, type: roomType)
         
         let newBooking = Booking(
             guest: guest,
             room: room,
             checkInDate: changes.checkInDate,
-            checkOutDate: changes.checkOutDate
+            checkOutDate: changes.checkOutDate,
+            hasValetBot: changes.hasValetBot
         )
         
         booking = newBooking
