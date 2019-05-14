@@ -113,6 +113,7 @@ private extension BookingsListViewController {
                 )
             },
             cellDeletionHandler: { (booking, cell, indexPath) in
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self.bookingDeleted(at: indexPath)
             }
         )

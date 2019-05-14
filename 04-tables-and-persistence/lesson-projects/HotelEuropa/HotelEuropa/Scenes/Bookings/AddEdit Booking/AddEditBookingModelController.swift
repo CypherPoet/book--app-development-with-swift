@@ -18,13 +18,6 @@ class AddEditBookingModelController {
 }
 
 
-// MARK: - Computed Properties
-
-extension AddEditBookingModelController {
-
-}
-
-
 // MARK: - Update Functionality
 
 extension AddEditBookingModelController {
