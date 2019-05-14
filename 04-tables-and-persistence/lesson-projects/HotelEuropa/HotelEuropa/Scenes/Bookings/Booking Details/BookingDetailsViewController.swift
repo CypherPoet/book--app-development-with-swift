@@ -25,16 +25,6 @@ class BookingDetailsViewController: UITableViewController {
     weak var delegate: BookingDetailsViewControllerDelegate?
     
     var booking: Booking!
-    
-    lazy var bookingChargesTableViewModel: BookingChargesTableViewModel = {
-        return BookingChargesTableViewModel(
-            roomTypeCode: booking.room.type.nameCode,
-            roomNightlyRate: booking.room.type.price,
-            numberOfNights: booking.numberOfNights,
-            hasValetBot: booking.room.hasValetBot,
-            valetBotRate: 4
-        )
-    }()
 }
 
 
@@ -42,6 +32,15 @@ class BookingDetailsViewController: UITableViewController {
 
 extension BookingDetailsViewController {
     
+    var bookingChargesTableViewModel: BookingChargesTableViewModel {
+        return BookingChargesTableViewModel(
+            roomTypeCode: booking.room.type.nameCode,
+            roomNightlyRate: booking.room.type.price,
+            numberOfNights: booking.numberOfNights,
+            hasValetBot: booking.room.hasValetBot,
+            valetBotRate: 4
+        )
+    }
 }
 
 
@@ -73,13 +72,28 @@ extension BookingDetailsViewController {
 
     @IBAction func unwindFromSaveEditBooking(unwindSegue: UIStoryboardSegue) {
         guard
-            let editBookingVC = unwindSegue.source as? CreateBookingViewController,
+            let editBookingVC = unwindSegue.source as? AddEditBookingViewController,
             let booking = editBookingVC.booking
         else { return }
         
         self.booking = booking
         tableView.reloadData()
         delegate?.bookingDetailsViewController(self, didUpdateBooking: booking)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard
+            segue.identifier == R.segue.bookingDetailsViewController.presentEditView.identifier,
+            let navController = segue.destination as? UINavigationController,
+            let editBookingVC = navController.children.first as? AddEditBookingViewController
+        else {
+            preconditionFailure("Couldn't perform segue to edit booking view")
+        }
+        
+        editBookingVC.modelController = AddEditBookingModelController(booking: booking)
     }
 }
 

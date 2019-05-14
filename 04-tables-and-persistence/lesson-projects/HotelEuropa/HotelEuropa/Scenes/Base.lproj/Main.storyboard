@@ -48,7 +48,7 @@
                                         <connections>
                                             <outlet property="subtitleLabel" destination="SxG-JO-IHN" id="Bpl-EL-Xy7"/>
                                             <outlet property="titleLabel" destination="xtC-MR-f2S" id="zEH-hn-m5e"/>
-                                            <segue destination="EDq-r4-n1c" kind="show" identifier="Show Booking Details View" id="nwI-Z9-4ZW"/>
+                                            <segue destination="EDq-r4-n1c" kind="show" identifier="Show Booking  Details View" id="jRa-c7-7YN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -81,7 +81,7 @@
         <!--New Guest Registration-->
         <scene sceneID="niD-GP-3j6">
             <objects>
-                <tableViewController id="sbv-dn-Tvl" customClass="CreateBookingViewController" customModule="HotelEuropa" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sbv-dn-Tvl" customClass="AddEditBookingViewController" customModule="HotelEuropa" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Csi-e4-WD2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,7 +424,7 @@
                     <navigationItem key="navigationItem" title="New Guest Registration" id="SHI-ky-Pyx">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Lki-PU-Iog">
                             <connections>
-                                <segue destination="oBY-gs-Ywz" kind="unwind" unwindAction="unwindFromCancelCreateBookingWithUnwindSegue:" id="F5A-vX-65x"/>
+                                <action selector="cancelButtonTapped:" destination="sbv-dn-Tvl" id="9Dp-ta-Al9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="sSR-E7-WBg">
@@ -452,7 +452,10 @@
                         <outlet property="numberOfChildrenStepper" destination="wh8-yY-OHe" id="XBc-RM-vvp"/>
                         <outlet property="selectedRoomTypeLabel" destination="0UZ-Dg-JbX" id="THC-XL-x22"/>
                         <outlet property="valetBotSwitch" destination="HyK-dA-fXw" id="Kfs-0D-tfZ"/>
-                        <segue destination="oBY-gs-Ywz" kind="unwind" identifier="Unwind From Save New Booking" unwindAction="unwindFromSaveCreateBookingWithUnwindSegue:" id="Hat-dE-5cH"/>
+                        <segue destination="oBY-gs-Ywz" kind="unwind" identifier="Unwind From Save Add Booking" unwindAction="unwindFromSaveCreateBookingWithUnwindSegue:" id="Hat-dE-5cH"/>
+                        <segue destination="oBY-gs-Ywz" kind="unwind" identifier="Unwind From Cancel Edit" unwindAction="unwindFromCancelEditBookingWithUnwindSegue:" id="qNe-GK-BSb"/>
+                        <segue destination="oBY-gs-Ywz" kind="unwind" identifier="Unwind From Cancel Add" unwindAction="unwindFromCancelCreateBookingWithUnwindSegue:" id="cxM-V7-KRV"/>
+                        <segue destination="oBY-gs-Ywz" kind="unwind" identifier="Unwind From Save Edit Booking" unwindAction="unwindFromSaveEditBookingWithUnwindSegue:" id="SJE-R4-oDD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8h-Sz-JSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -929,6 +932,13 @@
                             <outlet property="delegate" destination="EDq-r4-n1c" id="csP-rr-Jd3"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="cUt-zd-4QZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Evz-wK-Obb">
+                            <connections>
+                                <segue destination="4lD-tE-qij" kind="presentation" identifier="Present Edit View" id="qQ8-Rh-gId"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="datesCell" destination="nLC-it-O9t" id="BGI-xF-1VT"/>
                         <outlet property="guestCell" destination="gLj-Ah-t0X" id="zlu-d5-YxF"/>
@@ -943,10 +953,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fF-lS-QyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2329" y="-144"/>
+            <point key="canvasLocation" x="2329" y="-147"/>
         </scene>
     </scenes>
     <resources>
         <image name="one-king-room" width="1920" height="1279"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qQ8-Rh-gId"/>
+    </inferredMetricsTieBreakers>
 </document>

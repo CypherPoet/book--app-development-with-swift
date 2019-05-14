@@ -1,5 +1,5 @@
 //
-//  CreateBookingViewController.swift
+//  AddEditBookingViewController.swift
 //  HotelEuropa
 //
 //  Created by Brian Sipple on 5/7/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateBookingViewController: UITableViewController {
+class AddEditBookingViewController: UITableViewController {
     @IBOutlet private weak var firstNameTextField: UITextField!
     @IBOutlet private weak var lastNameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -35,8 +35,9 @@ class CreateBookingViewController: UITableViewController {
     
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     
-    var modelController: CreateBookingModelController!
+    var modelController: AddEditBookingModelController!
     var booking: Booking?
+    var isNewBooking = false
     
     var selectedRoomType: RoomType? {
         didSet {
@@ -74,9 +75,9 @@ class CreateBookingViewController: UITableViewController {
 
 // MARK: - Computed Properties
 
-extension CreateBookingViewController {
+extension AddEditBookingViewController {
     
-    var bookingChanges: CreateBookingModelController.Changes {
+    var bookingChanges: AddEditBookingModelController.Changes {
         return (
             firstName: firstNameTextField.text ?? "",
             lastName: lastNameTextField.text ?? "",
@@ -90,6 +91,7 @@ extension CreateBookingViewController {
         )
     }
     
+    
     var minimumCheckInDate: Date {
         return Calendar.current.startOfDay(for: Date())
     }
@@ -100,12 +102,26 @@ extension CreateBookingViewController {
         
         return checkInDatePicker.date.addingTimeInterval(TimeInterval(secondsInDay))
     }
+    
+    
+    var cancelSegueIdentifier: String {
+        return isNewBooking ?
+            R.segue.addEditBookingViewController.unwindFromCancelAdd.identifier :
+            R.segue.addEditBookingViewController.unwindFromCancelEdit.identifier
+    }
+    
+    
+    var doneSegueIdentifier: String {
+        return isNewBooking ?
+            R.segue.addEditBookingViewController.unwindFromSaveAddBooking.identifier :
+            R.segue.addEditBookingViewController.unwindFromSaveEditBooking.identifier
+    }
 }
 
 
 // MARK: - Lifecycle
 
-extension CreateBookingViewController {
+extension AddEditBookingViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +130,7 @@ extension CreateBookingViewController {
             preconditionFailure("Model controller not set")
         }
         
+        booking = modelController.booking
         checkInDatePicker.minimumDate = minimumCheckInDate
         checkInDatePicker.date = minimumCheckInDate
         
@@ -127,7 +144,7 @@ extension CreateBookingViewController {
 
 // MARK: - Event handling
 
-extension CreateBookingViewController {
+extension AddEditBookingViewController {
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
@@ -144,15 +161,20 @@ extension CreateBookingViewController {
     }
     
     
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: cancelSegueIdentifier, sender: self)
+    }
+    
+    
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
-        modelController.createBooking(with: bookingChanges) { [weak self] (result) in
+        modelController.updateBooking(with: bookingChanges) { [weak self] (result) in
             guard let self = self else { return }
             
             switch result {
             case .success(let booking):
-                print("Created booking: \(booking)")
                 self.booking = booking
-                self.performSegue(withIdentifier: R.segue.createBookingViewController.unwindFromSaveNewBooking, sender: self)
+                print("Created booking: \(booking)")
+                self.performSegue(withIdentifier: self.doneSegueIdentifier, sender: self)
             case .failure(let error):
                 self.display(alertMessage: error.localizedDescription, title: "Failed to save new registration")
             }
@@ -163,13 +185,26 @@ extension CreateBookingViewController {
 
 // MARK: - Navigation
 
-extension CreateBookingViewController {
+extension AddEditBookingViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch segue.identifier {
+        case R.segue.addEditBookingViewController.showRoomTypeSelectionView.identifier:
+            handleSegueToRoomTypeSelection(segue)
+        default:
+            break
+        }
+    }
+    
+    
+    func handleSegueToRoomTypeSelection(_ segue: UIStoryboardSegue) {
         guard
-            segue.identifier == R.segue.createBookingViewController.showRoomTypeSelectionView.identifier,
             let selectRoomTypeViewController = segue.destination as? SelectRoomTypeViewController
-        else { return }
+        else {
+            return
+        }
         
         selectRoomTypeViewController.delegate = self
         selectRoomTypeViewController.selectedRoomType = selectedRoomType
@@ -180,7 +215,7 @@ extension CreateBookingViewController {
 
 // MARK: - UITableViewDelegate
 
-extension CreateBookingViewController {
+extension AddEditBookingViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.row, indexPath.section) {
@@ -211,7 +246,7 @@ extension CreateBookingViewController {
 
 // MARK: - SelectRoomTypeTableViewControllerDelegate
 
-extension CreateBookingViewController: SelectRoomTypeViewControllerDelegate {
+extension AddEditBookingViewController: SelectRoomTypeViewControllerDelegate {
     
     func selectRoomTypeViewController(
         _ controller: SelectRoomTypeViewController,
@@ -224,7 +259,7 @@ extension CreateBookingViewController: SelectRoomTypeViewControllerDelegate {
 
 // MARK: - Private Helper Methods
 
-private extension CreateBookingViewController {
+private extension AddEditBookingViewController {
     
     func updateDateViews() {
         checkOutDatePicker.minimumDate = minimumCheckOutDate

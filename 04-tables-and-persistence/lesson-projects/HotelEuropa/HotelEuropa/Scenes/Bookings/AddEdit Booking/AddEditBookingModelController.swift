@@ -1,5 +1,5 @@
 //
-//  CreateBookingModelController.swift
+//  AddEditBookingModelController.swift
 //  HotelEuropa
 //
 //  Created by Brian Sipple on 5/8/19.
@@ -8,21 +8,26 @@
 
 import Foundation
 
-class CreateBookingModelController {
-
+class AddEditBookingModelController {
+    var booking: Booking?
+    
+    
+    init(booking: Booking? = nil) {
+        self.booking = booking
+    }
 }
 
 
 // MARK: - Computed Properties
 
-extension CreateBookingModelController {
+extension AddEditBookingModelController {
 
 }
 
 
-// MARK: - Core Methods
+// MARK: - Update Functionality
 
-extension CreateBookingModelController {
+extension AddEditBookingModelController {
     typealias Changes = (
         firstName: String,
         lastName: String,
@@ -40,7 +45,7 @@ extension CreateBookingModelController {
         case missingRoomChoice
     }
     
-    func createBooking(with changes: Changes, then completionHandler: @escaping (Result<Booking, NewBookingError>) -> Void) {
+    func updateBooking(with changes: Changes, then completionHandler: @escaping (Result<Booking, NewBookingError>) -> Void) {
         let (firstName, lastName, emailAddress) = (changes.0, changes.1, changes.2)
         
         guard [firstName, lastName, emailAddress].allSatisfy({ !$0.isEmpty }) else {
@@ -76,6 +81,7 @@ extension CreateBookingModelController {
             checkOutDate: changes.checkOutDate
         )
         
+        booking = newBooking
         completionHandler(.success(newBooking))
     }
 }

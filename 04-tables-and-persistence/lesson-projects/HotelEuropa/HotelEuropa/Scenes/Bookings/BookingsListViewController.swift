@@ -40,7 +40,7 @@ extension BookingsListViewController {
     
     @IBAction func unwindFromSaveCreateBooking(unwindSegue: UIStoryboardSegue) {
         guard
-            let createBookingVC = unwindSegue.source as? CreateBookingViewController,
+            let createBookingVC = unwindSegue.source as? AddEditBookingViewController,
             let newBooking = createBookingVC.booking
         else {
             return assertionFailure("Performed unwindFromSaveCreateBooking segue without a newBooking")
@@ -51,6 +51,8 @@ extension BookingsListViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
         switch segue.identifier {
         case R.segue.bookingsListViewController.presentAddBookingView.identifier:
             segueToAddBooking(segue)
@@ -83,7 +85,6 @@ private extension BookingsListViewController {
     
     func setupTableView(with bookings: [Booking]) {
         setupBookingsDataSource(with: bookings)
-        
     }
 
     
@@ -131,12 +132,11 @@ private extension BookingsListViewController {
     func segueToAddBooking(_ segue: UIStoryboardSegue) {
         guard
             let navigationController = segue.destination as? UINavigationController,
-            let createBookingVC = navigationController.children.first as? CreateBookingViewController
+            let createBookingVC = navigationController.children.first as? AddEditBookingViewController
         else { return }
         
-        let modelController = CreateBookingModelController()
-        
-        createBookingVC.modelController = modelController
+        createBookingVC.modelController = AddEditBookingModelController()
+        createBookingVC.isNewBooking = true
     }
     
     
