@@ -41,12 +41,24 @@ extension BookingsListModelController {
     func add(
         _ booking: Booking,
         at index: Int? = nil,
-        then completionHandler: @escaping CompletionHandler
+        then completionHandler: CompletionHandler? = nil
     ) {
         let index = index ?? bookings.count
+
         bookings.insert(booking, at: index)
-        
         bookingsManager.save(bookings)
-        completionHandler(bookings)
+        
+        completionHandler?(bookings)
+    }
+    
+    
+    func deleteBooking(
+        at index: Int,
+        then completionHandler: CompletionHandler? = nil
+    ) {
+        bookings.remove(at: index)
+        bookingsManager.save(bookings)
+        
+        completionHandler?(bookings)
     }
 }

@@ -63,7 +63,7 @@ extension BookingsListViewController {
 }
 
 
-// MARK: - Delegate
+// MARK: - BookingDetailsViewControllerDelegate
 
 extension BookingsListViewController: BookingDetailsViewControllerDelegate {
     func bookingDetailsViewController(
@@ -73,6 +73,8 @@ extension BookingsListViewController: BookingDetailsViewControllerDelegate {
         print("Updated booking: \(booking)")
     }
 }
+
+
 
 
 // MARK: - Private Helper Methods
@@ -101,6 +103,9 @@ private extension BookingsListViewController {
                     checkOutDate: booking.checkOutDate,
                     roomTypeName: booking.room.type.name
                 )
+            },
+            cellDeletionHandler: { (booking, cell, indexPath) in
+                self.bookingDeleted(at: indexPath)
             }
         )
         
@@ -115,6 +120,11 @@ private extension BookingsListViewController {
             self?.dataSource.models = bookings
             self?.tableView.reloadData()
         }
+    }
+    
+    
+    func bookingDeleted(at indexPath: IndexPath) {
+        modelController.deleteBooking(at: indexPath.row)
     }
     
     
