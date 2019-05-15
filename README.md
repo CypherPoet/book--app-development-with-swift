@@ -108,8 +108,8 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 <br/>
 
 <div style="text-align: center;">
-  <img src="./04-tables-and-persistence/lesson-projects/HotelEuropa/Screenshots/recording-1.gif" width="40%"/>
-  <img src="./04-tables-and-persistence/lesson-projects/HotelEuropa/Screenshots/recording-2.gif" width="40%"/>
+  <img src="./04-tables-and-persistence/lesson-projects/HotelEuropa/Screenshots/gif-recording.gif" width="40%"/>
+  <img src="./04-tables-and-persistence/lesson-projects/HotelEuropa/Screenshots/gif-recording-2.gif" width="40%"/>
 </div>
 
 <br/>
