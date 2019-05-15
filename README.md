@@ -102,7 +102,7 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
-| 4 - Tables and Persistence | [Hotel Europa](./04-tables-and-persistence/lesson-projects/HotelEuropa): An app for hotel staff to register guests. | Building custom, intuitive, user-friendly forms to create new model objects and/or track important information. :::: Using custom protocols to pass data between view controllers. :::: How and when to use certain controls for collecting data. :::: Dynamically resizing table view cells. | 🚧 |
+| 4 - Tables and Persistence | [Hotel Europa](./04-tables-and-persistence/lesson-projects/HotelEuropa): An app for hotel staff to register guests. | Building custom, intuitive, user-friendly forms to create new model objects and/or track important information. :::: Using custom protocols to pass data between view controllers. :::: How and when to use certain controls for collecting data. :::: Dynamically resizing table view cells. | ✅ |
 
 <br/>
 <br/>
