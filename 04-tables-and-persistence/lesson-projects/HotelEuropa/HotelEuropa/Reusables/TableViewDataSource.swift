@@ -11,21 +11,25 @@ import UIKit
 
 class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
     typealias CellConfigurator = (Model, UITableViewCell) -> Void
+    typealias CellDeletionHandler = (Model, UITableViewCell, IndexPath) -> Void
     
     var models: [Model]
     
     private let cellReuseIdentifier: String
-    private let cellConfigurator: CellConfigurator
+    private let cellConfigurator: CellConfigurator?
+    private let cellDeletionHandler: CellDeletionHandler?
     
     
     init(
         models: [Model],
         cellReuseIdentifier: String,
-        cellConfigurator: @escaping CellConfigurator
+        cellConfigurator: CellConfigurator? = nil,
+        cellDeletionHandler: CellDeletionHandler? = nil
     ) {
         self.models = models
         self.cellReuseIdentifier = cellReuseIdentifier
         self.cellConfigurator = cellConfigurator
+        self.cellDeletionHandler = cellDeletionHandler
     }
     
     
@@ -45,7 +49,7 @@ class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let model = models[indexPath.row]
         
-        cellConfigurator(model, cell)
+        cellConfigurator?(model, cell)
         
         return cell
     }
@@ -58,10 +62,17 @@ class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        let model = models[indexPath.row]
+        
         if editingStyle == .delete {
             models.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            cellDeletionHandler?(model, cell, indexPath)
         }
     }
 }

@@ -40,7 +40,7 @@ extension BookingsListViewController {
     
     @IBAction func unwindFromSaveCreateBooking(unwindSegue: UIStoryboardSegue) {
         guard
-            let createBookingVC = unwindSegue.source as? CreateBookingViewController,
+            let createBookingVC = unwindSegue.source as? AddEditBookingViewController,
             let newBooking = createBookingVC.booking
         else {
             return assertionFailure("Performed unwindFromSaveCreateBooking segue without a newBooking")
@@ -51,6 +51,8 @@ extension BookingsListViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
         switch segue.identifier {
         case R.segue.bookingsListViewController.presentAddBookingView.identifier:
             segueToAddBooking(segue)
@@ -63,16 +65,25 @@ extension BookingsListViewController {
 }
 
 
-// MARK: - Delegate
+// MARK: - BookingDetailsViewControllerDelegate
 
 extension BookingsListViewController: BookingDetailsViewControllerDelegate {
     func bookingDetailsViewController(
         _ controller: BookingDetailsViewController,
         didUpdateBooking booking: Booking
     ) {
-        print("Updated booking: \(booking)")
+        guard let selectedRow = tableView.indexPathForSelectedRow?.row else {
+            preconditionFailure("Unable to find selected row for updated booking")
+        }
+        
+        modelController.update(booking, at: selectedRow) { [weak self] (bookings) in
+            self?.dataSource.models = bookings
+            self?.tableView.reloadData()
+        }
     }
 }
+
+
 
 
 // MARK: - Private Helper Methods
@@ -81,7 +92,6 @@ private extension BookingsListViewController {
     
     func setupTableView(with bookings: [Booking]) {
         setupBookingsDataSource(with: bookings)
-        
     }
 
     
@@ -101,6 +111,10 @@ private extension BookingsListViewController {
                     checkOutDate: booking.checkOutDate,
                     roomTypeName: booking.room.type.name
                 )
+            },
+            cellDeletionHandler: { (booking, cell, indexPath) in
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.bookingDeleted(at: indexPath)
             }
         )
         
@@ -118,15 +132,19 @@ private extension BookingsListViewController {
     }
     
     
+    func bookingDeleted(at indexPath: IndexPath) {
+        modelController.deleteBooking(at: indexPath.row)
+    }
+    
+    
     func segueToAddBooking(_ segue: UIStoryboardSegue) {
         guard
             let navigationController = segue.destination as? UINavigationController,
-            let createBookingVC = navigationController.children.first as? CreateBookingViewController
+            let createBookingVC = navigationController.children.first as? AddEditBookingViewController
         else { return }
         
-        let modelController = CreateBookingModelController()
-        
-        createBookingVC.modelController = modelController
+        createBookingVC.modelController = AddEditBookingModelController()
+        createBookingVC.isNewBooking = true
     }
     
     

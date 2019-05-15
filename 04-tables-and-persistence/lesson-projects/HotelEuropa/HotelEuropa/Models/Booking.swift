@@ -13,6 +13,9 @@ struct Booking {
     var room: Room
     var checkInDate: Date
     var checkOutDate: Date
+    var hasValetBot: Bool
+    
+    static let valetBotRate = 4
 }
 
 
@@ -35,6 +38,11 @@ extension Booking {
         encoder.keyEncodingStrategy = .convertToSnakeCase
         
         return encoder
+    }
+    
+    
+    var numberOfNights: Int {
+        return checkInDate.daysBetween(checkOutDate)
     }
     
 }
