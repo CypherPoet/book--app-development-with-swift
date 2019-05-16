@@ -131,3 +131,17 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 <br/>
 <br/>
 
+
+| Unit | Project | Topics Covered | Progress |
+| :--: | :--------------------------: | :--------------: | :--------: |
+| 5 - Leveraging the Web | [ContestEntry](./05-leveraging-the-web/lesson-projects/ContestEntry): Animate based upon the current state of a form. | Animating a text field &mdash; or seguing if it has text | ✅ |
+
+<br/>
+<br/>
+
+<div style="text-align: center;">
+  <img src="./05-leveraging-the-web/lesson-projects/ContestEntry/Screenshots/animation-recording-1.gif" width="500px"/>
+</div>
+
+<br/>
+<br/>
