@@ -114,3 +114,20 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 <br/>
 <br/>
+
+
+
+| Unit | Project | Topics Covered | Progress |
+| :--: | :--------------------------: | :--------------: | :--------: |
+| 5 - Leveraging the Web | [MusicWireframe](./05-leveraging-the-web/lesson-projects/MusicWireframe): Wireframe of the Apple music app to implement button and player image animations. | Animating as a response to user interaction | ✅ |
+
+<br/>
+<br/>
+
+<div style="text-align: center;">
+  <img src="./05-leveraging-the-web/lesson-projects/MusicWireframe/Screenshots/animation-recording-1.gif" width="500px"/>
+</div>
+
+<br/>
+<br/>
+
