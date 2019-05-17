@@ -7,6 +7,7 @@ page.needsIndefiniteExecution = true
 
 
 extension URL {
+    
     func withQueries(_ queries: [String: String]) -> URL? {
         var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
         
@@ -16,9 +17,11 @@ extension URL {
         
         return components?.url
     }
+    
 }
 
-func performFetch(with url: URL) {
+
+func performFetch(with url: URL, then completionHandler: @escaping ([StoreItem]?) -> Void) {
     let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
         if let error = error {
             fatalError("Error while performing fetch: \(error.localizedDescription)")
@@ -28,13 +31,28 @@ func performFetch(with url: URL) {
             fatalError("No data found in fetch to \(url)")
         }
         
-        let dataString = String(decoding: data, as: UTF8.self)
-        print(dataString)
+//        print(String(decoding: data, as: UTF8.self))
+        completionHandler(decodeStoreItem(from: data))
         
         page.finishExecution()
     }
     
     dataTask.resume()
+}
+
+
+func decodeStoreItem(from data: Data) -> [StoreItem]? {
+    let decoder = JSONDecoder()
+    
+    do {
+        let storeItems = try decoder.decode(StoreItems.self, from: data)
+        
+        return storeItems.results
+    } catch {
+        print("Error while decoding StoreItem data:\n\n\(error.localizedDescription)")
+    }
+    
+    return nil
 }
 
 
@@ -45,4 +63,17 @@ let fullURL = baseURL.withQueries([
     "media": "podcast"
 ])
 
-performFetch(with: fullURL!)
+
+performFetch(with: fullURL!) { storeItems in
+    guard
+        let storeItems = storeItems,
+        let firstItem = storeItems.first
+    else {
+        preconditionFailure("Failed to fetch store item data")
+    }
+    
+    print(firstItem.artistName)
+    print(firstItem.artworkURL)
+    
+    firstItem.artworkURL
+}
