@@ -18,8 +18,7 @@ extension URL {
 }
 
 
-
-func performFetch(with url: URL) {
+func performFetch(with url: URL, then completionHandler: @escaping (PhotoInfo?) -> Void) {
     let dataTask = URLSession.shared.dataTask(with: url) {
         (data, response, error) in
         
@@ -31,11 +30,24 @@ func performFetch(with url: URL) {
             fatalError("No data in response")
         }
         
-        print(String(decoding: data, as: UTF8.self))
+        completionHandler(decodePhotoInfo(from: data))
         PlaygroundPage.current.finishExecution()
     }
     
     dataTask.resume()
+}
+
+
+func decodePhotoInfo(from data: Data) -> PhotoInfo? {
+    let decoder = JSONDecoder()
+    
+    do {
+        return try decoder.decode(PhotoInfo.self, from: data)
+    } catch {
+        print("Error while trying to decode photoInfo:\n\n\(error.localizedDescription)")
+    }
+        
+    return nil
 }
 
 
@@ -47,6 +59,14 @@ let fullURL = baseURL.withQueries([
     "date": "2018-01-08"
 ])
 
-performFetch(with: fullURL!)
+
+
+performFetch(with: fullURL!) { photoInfo in
+    guard let photoInfo = photoInfo else {
+        return print("No photo info found")
+    }
+    
+    print(photoInfo.description)
+}
 
 //: [Next](@next)
