@@ -10,38 +10,38 @@ import Foundation
 
 
 struct StoreItem {
-    var name: String
+    var trackName: String?
     var description: String?
-    var kind: String
     var artistName: String
     var collectionName: String?
     var artworkURL: URL
-    var genres: [String]
+    var genres: [String]?
+    var primaryGenreName: String?
 }
 
 
 extension StoreItem: Codable {
     
     enum CodingKeys: String, CodingKey {
-        case name = "trackName"
+        case trackName = "trackName"
         case description
-        case kind
         case artistName
         case collectionName
         case artworkURL = "artworkUrl100"
         case genres
+        case primaryGenreName
     }
     
     
     init(from decoder: Decoder) throws {
         let rootContainer = try decoder.container(keyedBy: CodingKeys.self)
 
-        name = try rootContainer.decode(String.self, forKey: .name)
+        trackName = try? rootContainer.decode(String.self, forKey: .trackName)
         description = try? rootContainer.decode(String.self, forKey: .description)
-        kind = try rootContainer.decode(String.self, forKey: .kind)
         artistName = try rootContainer.decode(String.self, forKey: .artistName)
         collectionName = try? rootContainer.decode(String.self, forKey: .collectionName)
         artworkURL = try rootContainer.decode(URL.self, forKey: .artworkURL)
-        genres = try rootContainer.decode([String].self, forKey: .genres)
+        genres = try? rootContainer.decode([String].self, forKey: .genres)
+        primaryGenreName = try? rootContainer.decode(String.self, forKey: .primaryGenreName)
     }
 }

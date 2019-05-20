@@ -106,7 +106,6 @@
 		F3C4BC6422907D1E00F9B202 /* iTunesSearch */ = {
 			isa = PBXGroup;
 			children = (
-				F3C4BC932290C6BB00F9B202 /* Protocols */,
 				F3C4BC8C2290942C00F9B202 /* Models */,
 				F3C4BC7C229082DD00F9B202 /* Helpers */,
 				F3C4BC7A2290826100F9B202 /* Content */,
@@ -185,13 +184,6 @@
 				F3C4BC9A2290D40000F9B202 /* StoreItems.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		F3C4BC932290C6BB00F9B202 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

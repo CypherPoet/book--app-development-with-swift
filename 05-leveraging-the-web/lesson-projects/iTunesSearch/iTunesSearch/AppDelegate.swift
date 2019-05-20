@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupURLCache()
+        
         return true
     }
 
@@ -41,6 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
 
+
+// MARK: - Private Helper Methods
+
+private extension AppDelegate {
+    func setupURLCache() {
+        let temporaryDirectoryPath = NSTemporaryDirectory()
+        let urlCache = URLCache(memoryCapacity: 25_000_000, diskCapacity: 50_000_000, diskPath: temporaryDirectoryPath)
+        
+        URLCache.shared = urlCache
+    }
+    
+}

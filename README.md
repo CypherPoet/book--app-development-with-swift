@@ -164,4 +164,4 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 | Unit | Project | Topics Covered | Progress |
 | :--: | :--------------------------: | :--------------: | :--------: |
-| 5 - Leveraging the Web | [iTunes Search API](./05-leveraging-the-web/lesson-projects/iTunesSearch): Allow users to search the iTunes Search API for different media types and view their results in a table view. | Using segmented controls to facilitate search filters. ::::   Updating the size of the URL cache to temporarily save images | ✅ |
+| 5 - Leveraging the Web | [iTunes Search API](./05-leveraging-the-web/lesson-projects/iTunesSearch): Allow users to search the iTunes Search API for different media types and view their results in a table view. | Using `UISearchController` and scopes for filtering requests. :::: Architecting networking logic :::: Debouncing search tasks to allow for continuous typing in a search bar. :::: Updating the size of the URL cache to temporarily save images. | ✅ |

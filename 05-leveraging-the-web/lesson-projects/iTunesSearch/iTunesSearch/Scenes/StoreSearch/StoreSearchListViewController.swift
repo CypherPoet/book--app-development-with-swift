@@ -13,7 +13,6 @@ class StoreSearchListViewController: UIViewController {
     
     private var dataSource: TableViewDataSource<StoreItem>!
     
-//    lazy var modelController = StoreSearchListModelController()
     private lazy var storeItemLoader = StoreItemLoader()
     private lazy var searchController = UISearchController(searchResultsController: nil)
     
@@ -120,7 +119,7 @@ private extension StoreSearchListViewController {
     
     func configure(_ storeItemCell: StoreItemTableViewCell, with storeItem: StoreItem) {
         storeItemCell.viewModel = StoreItemTableCellViewModel(
-            title: storeItem.name,
+            title: storeItem.trackName ?? storeItem.collectionName ?? "",
             subtitle: storeItem.description ?? storeItem.collectionName ?? "",
             image: UIImage(named: R.image.storeIconThumbnail.name)!
         )
