@@ -17,6 +17,9 @@
 		F3C4BCCC22933BB900F9B202 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCCB22933BB900F9B202 /* R.generated.swift */; };
 		F3C4BCCE2293410500F9B202 /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCCD2293410500F9B202 /* MenuListViewController.swift */; };
 		F3C4BCD12293413900F9B202 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCD02293413900F9B202 /* MenuItemDetailViewController.swift */; };
+		F3C4BCD622934BB200F9B202 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCD522934BB200F9B202 /* APIResource.swift */; };
+		F3C4BCD922934C0100F9B202 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCD822934C0100F9B202 /* Transport.swift */; };
+		F3C4BCDE22934CFB00F9B202 /* URLSession+Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCDD22934CFB00F9B202 /* URLSession+Transport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		F3C4BCCB22933BB900F9B202 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		F3C4BCCD2293410500F9B202 /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
 		F3C4BCD02293413900F9B202 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
+		F3C4BCD522934BB200F9B202 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
+		F3C4BCD822934C0100F9B202 /* Transport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
+		F3C4BCDD22934CFB00F9B202 /* URLSession+Transport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Transport.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +92,10 @@
 		F3C4BCAE2292601A00F9B202 /* RestaurantMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F3C4BCD722934BF300F9B202 /* Protocols */,
+				F3C4BCC322932C7000F9B202 /* Extensions */,
 				F3C4BCC722932CF500F9B202 /* Content */,
 				F3C4BCC422932C7C00F9B202 /* Reusables */,
-				F3C4BCC322932C7000F9B202 /* Extensions */,
 				F3C4BCC222932C6B00F9B202 /* Models */,
 				F3C4BCC122932C6500F9B202 /* Scenes */,
 				F3C4BCAF2292601A00F9B202 /* AppDelegate.swift */,
@@ -119,6 +126,7 @@
 		F3C4BCC322932C7000F9B202 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F3C4BCDD22934CFB00F9B202 /* URLSession+Transport.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 		F3C4BCC422932C7C00F9B202 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				F3C4BCD522934BB200F9B202 /* APIResource.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -162,6 +171,14 @@
 				F3C4BCD02293413900F9B202 /* MenuItemDetailViewController.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		F3C4BCD722934BF300F9B202 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F3C4BCD822934C0100F9B202 /* Transport.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,12 +321,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C4BCDE22934CFB00F9B202 /* URLSession+Transport.swift in Sources */,
 				F3C4BCB22292601A00F9B202 /* CategoriesListViewController.swift in Sources */,
 				F3C4BCD12293413900F9B202 /* MenuItemDetailViewController.swift in Sources */,
 				F3C4BCB02292601A00F9B202 /* AppDelegate.swift in Sources */,
 				F3C4BCC9229331BB00F9B202 /* PendingOrderListViewController.swift in Sources */,
+				F3C4BCD622934BB200F9B202 /* APIResource.swift in Sources */,
 				F3C4BCCC22933BB900F9B202 /* R.generated.swift in Sources */,
 				F3C4BCCE2293410500F9B202 /* MenuListViewController.swift in Sources */,
+				F3C4BCD922934C0100F9B202 /* Transport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
