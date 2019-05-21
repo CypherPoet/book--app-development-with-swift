@@ -20,6 +20,12 @@
 		F3C4BCD622934BB200F9B202 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCD522934BB200F9B202 /* APIResource.swift */; };
 		F3C4BCD922934C0100F9B202 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCD822934C0100F9B202 /* Transport.swift */; };
 		F3C4BCDE22934CFB00F9B202 /* URLSession+Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCDD22934CFB00F9B202 /* URLSession+Transport.swift */; };
+		F3C4BCE0229387EC00F9B202 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCDF229387EC00F9B202 /* MenuItem.swift */; };
+		F3C4BCE222938BFC00F9B202 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCE122938BFC00F9B202 /* Category.swift */; };
+		F3C4BCE422938DD300F9B202 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCE322938DD300F9B202 /* Categories.swift */; };
+		F3C4BCE622938DEA00F9B202 /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCE522938DEA00F9B202 /* MenuItems.swift */; };
+		F3C4BCE8229399EE00F9B202 /* PreparationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCE7229399EE00F9B202 /* PreparationTime.swift */; };
+		F3C4BCEA22939A8000F9B202 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCE922939A8000F9B202 /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,12 @@
 		F3C4BCD522934BB200F9B202 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		F3C4BCD822934C0100F9B202 /* Transport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
 		F3C4BCDD22934CFB00F9B202 /* URLSession+Transport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Transport.swift"; sourceTree = "<group>"; };
+		F3C4BCDF229387EC00F9B202 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		F3C4BCE122938BFC00F9B202 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F3C4BCE322938DD300F9B202 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		F3C4BCE522938DEA00F9B202 /* MenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
+		F3C4BCE7229399EE00F9B202 /* PreparationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationTime.swift; sourceTree = "<group>"; };
+		F3C4BCE922939A8000F9B202 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +131,12 @@
 		F3C4BCC222932C6B00F9B202 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F3C4BCDF229387EC00F9B202 /* MenuItem.swift */,
+				F3C4BCE522938DEA00F9B202 /* MenuItems.swift */,
+				F3C4BCE122938BFC00F9B202 /* Category.swift */,
+				F3C4BCE322938DD300F9B202 /* Categories.swift */,
+				F3C4BCE7229399EE00F9B202 /* PreparationTime.swift */,
+				F3C4BCE922939A8000F9B202 /* Order.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,10 +344,16 @@
 				F3C4BCD12293413900F9B202 /* MenuItemDetailViewController.swift in Sources */,
 				F3C4BCB02292601A00F9B202 /* AppDelegate.swift in Sources */,
 				F3C4BCC9229331BB00F9B202 /* PendingOrderListViewController.swift in Sources */,
+				F3C4BCE422938DD300F9B202 /* Categories.swift in Sources */,
+				F3C4BCE8229399EE00F9B202 /* PreparationTime.swift in Sources */,
+				F3C4BCE622938DEA00F9B202 /* MenuItems.swift in Sources */,
 				F3C4BCD622934BB200F9B202 /* APIResource.swift in Sources */,
 				F3C4BCCC22933BB900F9B202 /* R.generated.swift in Sources */,
 				F3C4BCCE2293410500F9B202 /* MenuListViewController.swift in Sources */,
 				F3C4BCD922934C0100F9B202 /* Transport.swift in Sources */,
+				F3C4BCEA22939A8000F9B202 /* Order.swift in Sources */,
+				F3C4BCE0229387EC00F9B202 /* MenuItem.swift in Sources */,
+				F3C4BCE222938BFC00F9B202 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
