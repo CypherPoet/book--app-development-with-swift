@@ -11,13 +11,25 @@ import UIKit
 class StoreSearchListViewController: UIViewController {
     @IBOutlet private weak var searchResultsTableView: UITableView!
     
+    enum LoadingState {
+        case inactive
+        case loadingStoreItems
+    }
+    
     private var dataSource: TableViewDataSource<StoreItem>!
     
     private lazy var storeItemLoader = StoreItemLoader()
     private lazy var searchController = UISearchController(searchResultsController: nil)
+    private lazy var loadingController = LoadingViewController()
     
     private var searchTask = DispatchWorkItem(block: {})
     private var searchScopes: [MediaType] = [.book, .podcast, .app, .music]
+    
+    private var currentLoadingState: LoadingState = .inactive {
+        didSet {
+            DispatchQueue.main.async { [weak self] in self?.loadingStateChanged() }
+        }
+    }
 }
 
 
@@ -68,8 +80,12 @@ extension StoreSearchListViewController {
 private extension StoreSearchListViewController {
     
     func performSearch(for term: String, in scope: MediaType) {
+        currentLoadingState = .loadingStoreItems
+        
         storeItemLoader.performSearch(for: term, in: scope) { [weak self] (result) in
             DispatchQueue.main.async {
+                self?.currentLoadingState = .inactive
+                
                 switch result {
                 case .success(let storeItems):
                     self?.dataSource.models = storeItems.results
@@ -166,5 +182,15 @@ extension StoreSearchListViewController: UISearchResultsUpdating {
         }
         
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.25, execute: searchTask)
+    }
+    
+    
+    func loadingStateChanged() {
+        switch currentLoadingState {
+        case .loadingStoreItems:
+            add(child: loadingController)
+        case .inactive:
+            loadingController.performRemoval()
+        }
     }
 }

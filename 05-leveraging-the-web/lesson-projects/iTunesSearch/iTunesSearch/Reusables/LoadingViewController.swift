@@ -12,7 +12,8 @@ class LoadingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupUI()
         setupSpinner()
     }
 
@@ -23,8 +24,13 @@ class LoadingViewController: UIViewController {
 
 private extension LoadingViewController {
     
+    func setupUI() {
+        view.backgroundColor = .black
+        view.alpha = 0.25
+    }
+    
     func setupSpinner() {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .whiteLarge)
         
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
