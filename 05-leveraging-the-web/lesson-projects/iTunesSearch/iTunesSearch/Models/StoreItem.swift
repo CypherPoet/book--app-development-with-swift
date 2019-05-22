@@ -6,7 +6,7 @@
 //  Copyright © 2019 Brian Sipple. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 struct StoreItem {
@@ -17,6 +17,8 @@ struct StoreItem {
     var artworkURL: URL
     var genres: [String]?
     var primaryGenreName: String?
+    var artworkImage: UIImage?
+    var placeholderImage: UIImage?
 }
 
 
@@ -43,5 +45,8 @@ extension StoreItem: Codable {
         artworkURL = try rootContainer.decode(URL.self, forKey: .artworkURL)
         genres = try? rootContainer.decode([String].self, forKey: .genres)
         primaryGenreName = try? rootContainer.decode(String.self, forKey: .primaryGenreName)
+        
+        artworkImage = nil
+        placeholderImage = R.image.storeIconThumbnail()
     }
 }

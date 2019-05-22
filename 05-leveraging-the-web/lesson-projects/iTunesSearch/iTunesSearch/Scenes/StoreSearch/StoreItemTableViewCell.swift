@@ -17,7 +17,7 @@ class StoreItemTableViewCell: UITableViewCell {
             
             textLabel?.text = viewModel.title
             detailTextLabel?.text = viewModel.subtitle
-            imageView?.image = viewModel.image
+            imageView?.image = viewModel.thumbnailImage
         }
     }
 

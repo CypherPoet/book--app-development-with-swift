@@ -114,7 +114,6 @@ private extension StoreSearchListViewController {
     }
     
     
-    
     func setupResultsTable() {
         let dataSource = TableViewDataSource(
             models: [StoreItem](),
@@ -130,6 +129,7 @@ private extension StoreSearchListViewController {
         
         self.dataSource = dataSource
         searchResultsTableView.dataSource = dataSource
+        searchResultsTableView.delegate = self
     }
     
     
@@ -137,14 +137,34 @@ private extension StoreSearchListViewController {
         storeItemCell.viewModel = StoreItemTableCellViewModel(
             title: storeItem.trackName ?? storeItem.collectionName ?? "",
             subtitle: storeItem.description ?? storeItem.collectionName ?? "",
-            image: UIImage(named: R.image.storeIconThumbnail.name)!
+            thumbnailImage: storeItem.artworkImage ?? storeItem.placeholderImage
         )
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension StoreSearchListViewController: UITableViewDelegate {
+    
+    /**
+     If the "real" image hasn't been fetched yet, we'll do it now that the cell is actually being shown.
+     */
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        var storeItem = dataSource.models[indexPath.row]
         
-        URLSession.shared.load(with: URLRequest(url: storeItem.artworkURL)) { [weak storeItemCell] result in
+        if storeItem.artworkImage != nil {
+            return
+        }
+        
+        URLSession.shared.load(with: URLRequest(url: storeItem.artworkURL)) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    storeItemCell?.viewModel?.image = UIImage(data: data)
+                    storeItem.artworkImage = UIImage(data: data)
+                    
+                    self?.dataSource.models[indexPath.row] = storeItem
+                    self?.searchResultsTableView.reloadRows(at: [indexPath], with: .fade)
                 case .failure(let error):
                     print("Error while attempting to fetch store item image:\n\(error.localizedDescription)")
                 }

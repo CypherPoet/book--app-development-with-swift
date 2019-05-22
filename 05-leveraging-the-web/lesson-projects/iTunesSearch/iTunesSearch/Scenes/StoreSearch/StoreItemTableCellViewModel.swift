@@ -11,5 +11,6 @@ import UIKit
 struct StoreItemTableCellViewModel {
     var title: String
     var subtitle: String
-    var image: UIImage?
+    var thumbnailImage: UIImage?
 }
+
