@@ -130,13 +130,78 @@
                     <view key="view" contentMode="scaleToFill" id="NU3-Ta-7C2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turkish-coffee" translatesAutoresizingMaskIntoConstraints="NO" id="mCl-2E-6Cg">
+                                <rect key="frame" x="0.0" y="88" width="414" height="269"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCV-6U-yXx">
+                                <rect key="frame" x="0.0" y="365" width="414" height="36.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Item Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0K-fw-9V4">
+                                        <rect key="frame" x="16" y="8" width="124" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price sats" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieF-kC-cVQ">
+                                        <rect key="frame" x="319.5" y="8" width="78.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="16" bottom="8" trailing="16"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a short description of the item, perhaps with some color to really sell it." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZK-UN-GvV">
+                                <rect key="frame" x="16" y="409.5" width="382" height="38"/>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uk-uB-Qz7">
+                                <rect key="frame" x="16" y="761" width="382" height="44"/>
+                                <color key="backgroundColor" red="0.45880425499999999" green="0.42457667529999998" blue="0.85103040929999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="pyJ-8C-14S"/>
+                                </constraints>
+                                <state key="normal" title="Add to Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="orderButtonTapped:" destination="X8b-4a-4C2" eventType="touchUpInside" id="c1W-Hr-0rB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dCV-6U-yXx" firstAttribute="top" secondItem="mCl-2E-6Cg" secondAttribute="bottom" constant="8" id="H9j-q2-0pP"/>
+                            <constraint firstItem="dCV-6U-yXx" firstAttribute="leading" secondItem="3nc-dK-ZhJ" secondAttribute="leading" id="Ir3-3h-e4C"/>
+                            <constraint firstItem="mCl-2E-6Cg" firstAttribute="top" secondItem="3nc-dK-ZhJ" secondAttribute="top" id="LnX-HY-rb6"/>
+                            <constraint firstItem="1uk-uB-Qz7" firstAttribute="bottom" secondItem="3nc-dK-ZhJ" secondAttribute="bottom" constant="-8" id="ORE-iy-oTr"/>
+                            <constraint firstItem="oZK-UN-GvV" firstAttribute="leading" secondItem="3nc-dK-ZhJ" secondAttribute="leading" constant="16" id="OuW-er-fwO"/>
+                            <constraint firstItem="3nc-dK-ZhJ" firstAttribute="trailing" secondItem="oZK-UN-GvV" secondAttribute="trailing" constant="16" id="PPm-1X-dBd"/>
+                            <constraint firstItem="1uk-uB-Qz7" firstAttribute="leading" secondItem="3nc-dK-ZhJ" secondAttribute="leading" constant="16" id="Qr0-Lq-f0V"/>
+                            <constraint firstItem="mCl-2E-6Cg" firstAttribute="trailing" secondItem="3nc-dK-ZhJ" secondAttribute="trailing" id="b4a-UL-0FO"/>
+                            <constraint firstItem="3nc-dK-ZhJ" firstAttribute="trailing" secondItem="1uk-uB-Qz7" secondAttribute="trailing" constant="16" id="j4F-el-Zej"/>
+                            <constraint firstItem="mCl-2E-6Cg" firstAttribute="height" secondItem="NU3-Ta-7C2" secondAttribute="height" multiplier="0.3" id="mlp-P1-V9G"/>
+                            <constraint firstItem="oZK-UN-GvV" firstAttribute="top" secondItem="dCV-6U-yXx" secondAttribute="bottom" constant="8" id="oGY-g3-ANE"/>
+                            <constraint firstItem="3nc-dK-ZhJ" firstAttribute="trailing" secondItem="dCV-6U-yXx" secondAttribute="trailing" id="qSc-wj-UAc"/>
+                            <constraint firstItem="mCl-2E-6Cg" firstAttribute="leading" secondItem="3nc-dK-ZhJ" secondAttribute="leading" id="yTQ-kM-KaC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3nc-dK-ZhJ"/>
                     </view>
+                    <connections>
+                        <outlet property="headerImageView" destination="mCl-2E-6Cg" id="wM2-Te-EyM"/>
+                        <outlet property="itemDescriptionLabel" destination="oZK-UN-GvV" id="orr-DS-5ls"/>
+                        <outlet property="itemNameLabel" destination="f0K-fw-9V4" id="qdc-fs-33e"/>
+                        <outlet property="orderButton" destination="1uk-uB-Qz7" id="zW4-KW-2Y7"/>
+                        <outlet property="priceLabel" destination="ieF-kC-cVQ" id="Lg6-bh-fyq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nst-Mg-xdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3657" y="19"/>
+            <point key="canvasLocation" x="3656.521739130435" y="18.75"/>
         </scene>
         <!--Pending Order List View Controller-->
         <scene sceneID="ljv-u1-car">
@@ -224,4 +289,7 @@
             <point key="canvasLocation" x="34.782608695652179" y="367.63392857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="turkish-coffee" width="1200" height="1109"/>
+    </resources>
 </document>

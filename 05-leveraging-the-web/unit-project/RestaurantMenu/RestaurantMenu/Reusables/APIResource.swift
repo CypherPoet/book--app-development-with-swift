@@ -12,7 +12,7 @@ import UIKit
 struct APIResource<T> {
     var urlRequest: URLRequest
     
-    let decode: (Data) -> Result<T, Error>
+    let parse: (Data) -> Result<T, Error>
     
     enum HTTPMethod {
         case get
@@ -36,7 +36,7 @@ extension APIResource where T: Decodable {
         self.urlRequest = URLRequest(url: url)
         self.urlRequest.httpMethod = HTTPMethod.get.name
         
-        self.decode = { data in
+        self.parse = { data in
             return Result { try decoder.decode(T.self, from: data) }
         }
     }
@@ -58,7 +58,7 @@ extension APIResource where T: Decodable {
             break
         }
         
-        self.decode = { data in
+        self.parse = { data in
             return Result { try decoder.decode(T.self, from: data) }
         }
     }
@@ -71,7 +71,7 @@ extension APIResource where T == UIImage? {
     init(get url: URL) {
         self.urlRequest = URLRequest(url: url)
         
-        self.decode = { data in
+        self.parse = { data in
             return .success(UIImage(data: data))
         }
     }

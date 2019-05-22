@@ -27,7 +27,7 @@ extension APIClient {
         transport.send(request: resource.urlRequest) { dataResult in
             switch dataResult {
             case .success(let data):
-                completionHandler(resource.decode(data))
+                completionHandler(resource.parse(data))
             case .failure(let error):
                 completionHandler(.failure(error))
             }

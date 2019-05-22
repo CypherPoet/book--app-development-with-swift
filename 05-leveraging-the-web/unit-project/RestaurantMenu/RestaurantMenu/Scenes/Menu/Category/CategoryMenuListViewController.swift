@@ -58,6 +58,9 @@ extension CategoryMenuListViewController {
         let menuItem = dataSource.models[selectedIndexPath.row]
         
         menuItemDetailVC.viewModel = MenuItemDetailViewController.ViewModel(
+            price: menuItem.price,
+            itemName: menuItem.name,
+            itemDescription: menuItem.details,
             itemImageURL: menuItem.imageURL
         )
     }
