@@ -11,6 +11,17 @@ import Foundation
 
 struct MenuItems {
     var items: [MenuItem]
+    
+    enum QueryParamName {
+        static let category = "category"
+    }
 }
 
-extension MenuItems: Codable {}
+extension MenuItems: Decodable {}
+
+
+// MARK: - Transportable
+
+extension MenuItems: Transportable {
+    static var baseURL = "http://localhost:8090/menu"
+}

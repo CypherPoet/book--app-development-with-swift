@@ -9,22 +9,42 @@
 import UIKit
 
 class MenuItemDetailViewController: UIViewController {
+    var viewModel: ViewModel!
+}
+
+
+// MARK: - Lifecycle
+
+extension MenuItemDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard viewModel != nil else {
+            preconditionFailure("No view model was found")
+        }
+        
+        configure(with: viewModel)
+    }
+
+}
+
+
+extension MenuItemDetailViewController {
+    
+    struct ViewModel {
+        var itemImageURL: URL
     }
     
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - Private Helper Methods
+
+private extension MenuItemDetailViewController {
+    
+    func configure(with viewModel: ViewModel) {
+        
     }
-    */
-
+    
 }

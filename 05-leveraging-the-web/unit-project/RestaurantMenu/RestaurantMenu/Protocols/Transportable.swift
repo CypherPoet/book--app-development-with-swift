@@ -1,5 +1,5 @@
 //
-//  Categories.swift
+//  Fetchable.swift
 //  RestaurantMenu
 //
 //  Created by Brian Sipple on 5/20/19.
@@ -8,10 +8,6 @@
 
 import Foundation
 
-
-struct Categories {
-    var categories: [Category]
+protocol Transportable {
+    static var baseURL: String { get }
 }
-
-
-extension Categories: Codable {}

@@ -24,18 +24,7 @@ extension MenuItem: Codable {
         case name
         case details = "description"
         case price
-        case imageURL
+        case imageURL = "image_url"
         case category
-    }
-}
-
-
-extension MenuItem {
-    static var defaultDecoder: JSONDecoder {
-        let decoder = JSONDecoder()
-        
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        return decoder
     }
 }

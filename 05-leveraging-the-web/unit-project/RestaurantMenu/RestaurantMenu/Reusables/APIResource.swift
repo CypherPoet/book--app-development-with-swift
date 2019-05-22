@@ -8,22 +8,61 @@
 
 import UIKit
 
+
 struct APIResource<T> {
     var urlRequest: URLRequest
     
     let decode: (Data) -> Result<T, Error>
+    
+    enum HTTPMethod {
+        case get
+        case post
+        
+        var name: String {
+            switch self {
+            case .get:
+                return "GET"
+            case .post:
+                return "POST"
+            }
+        }
+    }
 }
 
 
 extension APIResource where T: Decodable {
     
-    init(get url: URL, using decoder: JSONDecoder = JSONDecoder()) {
+    init(from url: URL, decoder: JSONDecoder = JSONDecoder()) {
         self.urlRequest = URLRequest(url: url)
+        self.urlRequest.httpMethod = HTTPMethod.get.name
         
         self.decode = { data in
             return Result { try decoder.decode(T.self, from: data) }
         }
     }
+
+
+    init(
+        to url: URL,
+        with payload: Data,
+        method: HTTPMethod = .post,
+        decoder: JSONDecoder = JSONDecoder()
+    ) {
+        self.urlRequest = URLRequest(url: url)
+        self.urlRequest.httpMethod = method.name
+        
+        switch method {
+        case .post:
+            self.urlRequest.httpBody = payload
+        case .get:
+            break
+        }
+        
+        self.decode = { data in
+            return Result { try decoder.decode(T.self, from: data) }
+        }
+    }
+    
 }
 
 
