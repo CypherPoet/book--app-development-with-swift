@@ -11,6 +11,8 @@ import UIKit
 class CategoriesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    var stateController: StateController!
+    
     var dataSource: TableViewDataSource<MenuCategory>!
     lazy var apiClient: APIClient = APIClient()
 }
@@ -23,6 +25,8 @@ extension CategoriesListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        assert(stateController != nil, "No state controller was found")
+
         loadData()
     }
 }
@@ -41,6 +45,7 @@ extension CategoriesListViewController {
         
         let category = dataSource.models[selectedIndexPath.row]
         
+        categoryMenuVC.stateController = stateController
         categoryMenuVC.modelController = CategoryMenuModelController(category: category)
     }
     

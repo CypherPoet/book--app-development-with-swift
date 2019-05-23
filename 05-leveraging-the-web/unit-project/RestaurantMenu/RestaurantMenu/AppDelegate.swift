@@ -12,10 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let stateController = StateController()
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        injectStateController()
+        
         return true
     }
 
@@ -40,7 +45,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
 
+// MARK: - Private Helper Methods
+
+private extension AppDelegate {
+    
+    func injectStateController() {
+    
+        guard
+            let tabBarController = window?.rootViewController as? UITabBarController,
+            let menuNavController = tabBarController.viewControllers?[0] as? UINavigationController,
+            let orderNavController = tabBarController.viewControllers?[1] as? UINavigationController,
+            let categoryListVC = menuNavController.topViewController as? CategoriesListViewController,
+            let pendingOrderListVC = orderNavController.topViewController as? PendingOrderListViewController
+        else {
+            preconditionFailure("Unable to find expected view controllers")
+        }
+
+        categoryListVC.stateController = stateController
+        pendingOrderListVC.stateController = stateController
+    }
 }
 

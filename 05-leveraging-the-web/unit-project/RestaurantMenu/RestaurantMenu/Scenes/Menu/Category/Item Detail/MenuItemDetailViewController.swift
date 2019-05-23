@@ -15,6 +15,7 @@ class MenuItemDetailViewController: UIViewController {
     @IBOutlet private weak var itemDescriptionLabel: UILabel!
     @IBOutlet private weak var orderButton: UIButton!
     
+    var itemAddedToOrder: (() -> Void)!
     
     var viewModel: ViewModel! {
         didSet {
@@ -32,10 +33,9 @@ extension MenuItemDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard viewModel != nil else {
-            preconditionFailure("No view model was found")
-        }
+        
+        assert(viewModel != nil, "No view model was found")
+        assert(itemAddedToOrder != nil, "No callback for adding an item to an order was found")
         
         setupUI()
         configure(with: viewModel)
@@ -51,6 +51,9 @@ extension MenuItemDetailViewController {
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         animateButtonTap(for: sender)
+        
+//        stateController.currentOrder.menuItems.append(
+        itemAddedToOrder()
     }
     
 }
@@ -83,7 +86,7 @@ private extension MenuItemDetailViewController {
     
     func loadHeaderImage(from url: URL) {
         let urlRequest = URLRequest(url: url)
-            
+        
         URLSession.shared.send(request: urlRequest) { [weak self] dataResult in
             DispatchQueue.main.async {
                 switch dataResult {

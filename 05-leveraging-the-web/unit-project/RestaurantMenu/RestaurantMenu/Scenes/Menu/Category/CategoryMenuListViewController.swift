@@ -11,6 +11,7 @@ import UIKit
 class CategoryMenuListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    var stateController: StateController!
     var modelController: CategoryMenuModelController!
     var dataSource: TableViewDataSource<MenuItem>!
 }
@@ -34,9 +35,8 @@ extension CategoryMenuListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard modelController != nil else {
-            preconditionFailure("No model controller was set")
-        }
+        assert(stateController != nil, "No state controller was found")
+        assert(modelController != nil, "No model controller was set")
         
         title = category.name.capitalized
         loadData()
@@ -63,6 +63,10 @@ extension CategoryMenuListViewController {
             itemDescription: menuItem.details,
             itemImageURL: menuItem.imageURL
         )
+        
+        menuItemDetailVC.itemAddedToOrder = { [weak self] in
+            self?.stateController.currentOrder.menuItems.append(menuItem)
+        }
     }
 }
 

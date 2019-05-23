@@ -9,6 +9,10 @@
 import UIKit
 
 class PendingOrderListViewController: UIViewController {
+    @IBOutlet private weak var tableView: UITableView!
+    
+    var stateController: StateController!
+    var dataSource: TableViewDataSource<MenuItem>!
     
     lazy var apiClient: APIClient = {
         let transport = HeaderedTransport(
@@ -21,6 +25,17 @@ class PendingOrderListViewController: UIViewController {
 }
 
 
+// MARK: - Computed Properties
+
+extension PendingOrderListViewController {
+    
+    var currentOrder: Order {
+        return stateController.currentOrder
+    }
+    
+}
+
+
 // MARK: - Lifecycle
 
 extension PendingOrderListViewController {
@@ -28,15 +43,39 @@ extension PendingOrderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        assert(stateController != nil, "No state controller was found")
+        
+        setupTableView()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
 }
 
 
 // MARK: - Private Helper Methods
 
 private extension PendingOrderListViewController {
+    
+    func setupTableView() {
+        let dataSource = TableViewDataSource(
+            models: currentOrder.menuItems,
+            cellReuseIdentifier: R.reuseIdentifier.pendingOrderTableCell.identifier,
+            cellConfigurator: { (menuItem, cell) in
+                cell.textLabel?.text = menuItem.name
+                cell.detailTextLabel?.text = "\(menuItem.price) sats"
+            }
+        )
+        
+        self.dataSource = dataSource
+        tableView.dataSource = dataSource
+        tableView.reloadData()
+    }
+    
     
     func place(_ order: Order) {
         guard
@@ -58,7 +97,6 @@ private extension PendingOrderListViewController {
                 }
             }
         }
-        
     }
     
 }
