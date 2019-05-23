@@ -15,6 +15,7 @@ class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
     typealias CellDeletionHandler = (Model, UITableViewCell, IndexPath) -> Void
     
     var models: [Model]
+    var canMoveCells: Bool
     
     private let cellReuseIdentifier: String
     private let cellConfigurator: CellConfigurator?
@@ -24,11 +25,13 @@ class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
     init(
         models: [Model],
         cellReuseIdentifier: String,
+        canMoveCells: Bool = true,
         cellConfigurator: CellConfigurator? = nil,
         cellDeletionHandler: CellDeletionHandler? = nil
-        ) {
+    ) {
         self.models = models
         self.cellReuseIdentifier = cellReuseIdentifier
+        self.canMoveCells = canMoveCells
         self.cellConfigurator = cellConfigurator
         self.cellDeletionHandler = cellDeletionHandler
     }
@@ -63,11 +66,16 @@ class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
     }
     
     
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return canMoveCells
+    }
+    
+    
     func tableView(
         _ tableView: UITableView,
         commit editingStyle: UITableViewCell.EditingStyle,
         forRowAt indexPath: IndexPath
-        ) {
+    ) {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let model = models[indexPath.row]
         

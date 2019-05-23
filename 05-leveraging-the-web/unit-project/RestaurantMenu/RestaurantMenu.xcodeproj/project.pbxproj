@@ -16,9 +16,9 @@
 		F316245B2295CB7C0059E49C /* MenuItemDetailViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316245A2295CB7C0059E49C /* MenuItemDetailViewController+ViewModel.swift */; };
 		F316245E2295E1040059E49C /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316245D2295E1040059E49C /* StateController.swift */; };
 		F3162460229652940059E49C /* NotificationName+StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316245F229652940059E49C /* NotificationName+StateController.swift */; };
+		F316246222965EC90059E49C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F316246122965EC80059E49C /* Assets.xcassets */; };
 		F3C4BCB02292601A00F9B202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCAF2292601A00F9B202 /* AppDelegate.swift */; };
 		F3C4BCB22292601A00F9B202 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCB12292601A00F9B202 /* CategoriesListViewController.swift */; };
-		F3C4BCB72292601B00F9B202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C4BCB62292601B00F9B202 /* Assets.xcassets */; };
 		F3C4BCC9229331BB00F9B202 /* PendingOrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCC8229331BB00F9B202 /* PendingOrderListViewController.swift */; };
 		F3C4BCCC22933BB900F9B202 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCCB22933BB900F9B202 /* R.generated.swift */; };
 		F3C4BCCE2293410500F9B202 /* CategoryMenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCCD2293410500F9B202 /* CategoryMenuListViewController.swift */; };
@@ -50,10 +50,10 @@
 		F316245A2295CB7C0059E49C /* MenuItemDetailViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemDetailViewController+ViewModel.swift"; sourceTree = "<group>"; };
 		F316245D2295E1040059E49C /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		F316245F229652940059E49C /* NotificationName+StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+StateController.swift"; sourceTree = "<group>"; };
+		F316246122965EC80059E49C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C4BCAC2292601A00F9B202 /* RestaurantMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C4BCAF2292601A00F9B202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3C4BCB12292601A00F9B202 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
-		F3C4BCB62292601B00F9B202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C4BCBB2292601B00F9B202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C4BCC8229331BB00F9B202 /* PendingOrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrderListViewController.swift; sourceTree = "<group>"; };
 		F3C4BCCB22933BB900F9B202 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -221,7 +221,7 @@
 		F3C4BCC722932CF500F9B202 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				F3C4BCB62292601B00F9B202 /* Assets.xcassets */,
+				F316246122965EC80059E49C /* Assets.xcassets */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -307,7 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31624572294ECE70059E49C /* Main.storyboard in Resources */,
-				F3C4BCB72292601B00F9B202 /* Assets.xcassets in Resources */,
+				F316246222965EC90059E49C /* Assets.xcassets in Resources */,
 				F31624562294ECE70059E49C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

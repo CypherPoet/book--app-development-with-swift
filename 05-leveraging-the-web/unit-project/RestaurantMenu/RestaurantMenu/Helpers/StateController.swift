@@ -24,4 +24,8 @@ extension StateController {
     func addItemToOrder(_ item: MenuItem) {
         currentOrder.menuItems.append(item)
     }
+    
+    func removeItemFromOrder(at index: Int) {
+        currentOrder.menuItems.remove(at: index)
+    }
 }

@@ -45,8 +45,15 @@ extension PendingOrderListViewController {
 
         assert(stateController != nil, "No state controller was found")
         
+        navigationItem.leftBarButtonItem = editButtonItem
         setupTableView()
         setupNotificationListeners()
+    }
+    
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: true)
     }
 }
 
@@ -62,6 +69,7 @@ extension PendingOrderListViewController {
 }
 
 
+
 // MARK: - Private Helper Methods
 
 private extension PendingOrderListViewController {
@@ -70,9 +78,13 @@ private extension PendingOrderListViewController {
         let dataSource = TableViewDataSource(
             models: currentOrder.menuItems,
             cellReuseIdentifier: R.reuseIdentifier.pendingOrderTableCell.identifier,
+            canMoveCells: false,
             cellConfigurator: { (menuItem, cell) in
                 cell.textLabel?.text = menuItem.name
                 cell.detailTextLabel?.text = "\(menuItem.price) sats"
+            },
+            cellDeletionHandler: { [weak self] (_, _, indexPath) in
+                self?.stateController.removeItemFromOrder(at: indexPath.row)
             }
         )
         

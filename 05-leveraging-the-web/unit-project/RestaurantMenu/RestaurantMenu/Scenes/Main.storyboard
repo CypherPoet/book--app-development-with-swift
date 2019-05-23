@@ -203,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="3656.521739130435" y="18.75"/>
         </scene>
-        <!--Pending Order List View Controller-->
+        <!--Your Order-->
         <scene sceneID="ljv-u1-car">
             <objects>
                 <viewController storyboardIdentifier="Pending Order List VC" id="Pwy-Sq-G5O" customClass="PendingOrderListViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
@@ -215,7 +215,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Pending Order Table Cell" textLabel="L3H-Pt-R7G" detailTextLabel="yDY-dA-NBo" style="IBUITableViewCellStyleValue1" id="eZi-ja-eIX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Pending Order Table Cell" textLabel="L3H-Pt-R7G" detailTextLabel="yDY-dA-NBo" style="IBUITableViewCellStyleValue1" id="eZi-ja-eIX">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eZi-ja-eIX" id="Kj9-Ta-X1s">
@@ -251,7 +251,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dSd-LZ-2Sd"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Tdw-We-wu6"/>
+                    <navigationItem key="navigationItem" title="Your Order" id="Tdw-We-wu6"/>
                     <connections>
                         <outlet property="tableView" destination="3Jt-KO-rNL" id="mkQ-bd-AYY"/>
                     </connections>
@@ -264,7 +264,7 @@
         <scene sceneID="a41-ww-nvx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n3i-Q6-6qX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Your Order" id="9mh-IB-qvg"/>
+                    <tabBarItem key="tabBarItem" title="Your Order" image="shopping-cart" id="9mh-IB-qvg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zhn-h0-SR5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -283,7 +283,7 @@
         <scene sceneID="XZ5-3S-Ljx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4yC-gv-PJs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" id="LjR-zv-maD"/>
+                    <tabBarItem key="tabBarItem" title="Menu" image="restaurant-menu" id="LjR-zv-maD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="aq1-e4-Zgy">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -319,6 +319,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="restaurant-menu" width="25" height="25"/>
+        <image name="shopping-cart" width="25" height="25"/>
         <image name="turkish-coffee" width="1200" height="1109"/>
     </resources>
 </document>

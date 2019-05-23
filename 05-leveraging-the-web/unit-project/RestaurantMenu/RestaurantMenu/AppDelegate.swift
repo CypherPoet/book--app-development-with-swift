@@ -76,7 +76,10 @@ private extension AppDelegate {
             preconditionFailure("Unable to find expected view controllers")
         }
         
-        orderNavController.tabBarItem.badgeValue = "\(stateController.currentOrder.menuItems.count)"
+        let newBadgeValue: String? = stateController.currentOrder.menuItems.count == 0 ?
+            nil : "\(stateController.currentOrder.menuItems.count)"
+        
+        orderNavController.tabBarItem.badgeValue = newBadgeValue
     }
 
 
