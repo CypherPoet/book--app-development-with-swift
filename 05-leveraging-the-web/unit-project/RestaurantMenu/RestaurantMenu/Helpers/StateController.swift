@@ -28,4 +28,8 @@ extension StateController {
     func removeItemFromOrder(at index: Int) {
         currentOrder.menuItems.remove(at: index)
     }
+    
+    func clearOrder() {
+        currentOrder.menuItems.removeAll(keepingCapacity: true)
+    }
 }

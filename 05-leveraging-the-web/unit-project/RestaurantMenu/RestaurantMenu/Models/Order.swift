@@ -36,3 +36,15 @@ extension Order: Encodable {
 extension Order: Transportable {
     static var baseURL = "http://localhost:8090/order"
 }
+
+
+// MARK: - Computed Properties
+
+extension Order {
+    
+    var totalPrice: Int {
+        return menuItems.reduce(0, { (accumulatedPrice, currentItem) -> Int in
+            return accumulatedPrice + currentItem.price
+        })
+    }
+}

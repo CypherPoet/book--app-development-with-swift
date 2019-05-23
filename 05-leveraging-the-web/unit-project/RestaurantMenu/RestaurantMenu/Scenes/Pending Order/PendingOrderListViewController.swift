@@ -22,6 +22,8 @@ class PendingOrderListViewController: UIViewController {
         
         return APIClient(transport: transport)
     }()
+    
+    var confirmationResult: Result<PreparationTime, Error>?
 }
 
 
@@ -66,6 +68,53 @@ extension PendingOrderListViewController {
         dataSource.models = currentOrder.menuItems
         tableView.reloadData()
     }
+    
+    
+    @IBAction func submitButtonTapped(_ sender: UIBarButtonItem) {
+        promptToConfirmSubmit()
+    }
+}
+
+
+// MARK: - Navigation
+
+extension PendingOrderListViewController {
+    
+    @IBAction func unwindFromOrderConfirmation(segue: UIStoryboardSegue) {
+        guard
+            segue.identifier == R.segue.orderConfirmationViewController.unwindFromOrderConfirmation.identifier
+        else { return }
+        
+        stateController.clearOrder()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == R.segue.pendingOrderListViewController.presentOrderConfirmationView.identifier,
+            let orderConfirmationVC = segue.destination as? OrderConfirmationViewController,
+            let confirmationResult = confirmationResult
+        else { return }
+        
+        var viewModel: OrderConfirmationViewController.ViewModel
+        
+        switch confirmationResult {
+        case .success(let prepTime):
+            viewModel = OrderConfirmationViewController.ViewModel(
+                confirmationResult: "Success!",
+                resultDescription: "Your order is underway",
+                preparationTime: prepTime.minutes
+            )
+        case .failure:
+            viewModel = OrderConfirmationViewController.ViewModel(
+                confirmationResult: "Uh-oh",
+                resultDescription: "We were unable to place your order at this time. Please try again later."
+            )
+        }
+        
+        orderConfirmationVC.viewModel = viewModel
+    }
+    
 }
 
 
@@ -104,9 +153,9 @@ private extension PendingOrderListViewController {
     }
     
     
-    func place(_ order: Order) {
+    @objc func placeOrder() {
         guard
-            let orderData = try? JSONEncoder().encode(order),
+            let orderData = try? JSONEncoder().encode(stateController.currentOrder),
             let url = URL(string: Order.baseURL)
         else {
             preconditionFailure("Failed to make data for post")
@@ -115,14 +164,29 @@ private extension PendingOrderListViewController {
         let prepTimeResource = APIResource<PreparationTime>(to: url, with: orderData)
         
         apiClient.sendRequest(for: prepTimeResource) { [weak self] result in
+            self?.confirmationResult = result
+            
             DispatchQueue.main.async {
-                switch result {
-                case .success(let prepTime):
-                    print("Prep time: \(prepTime.seconds)")
-                case .failure(let error):
-                    self?.display(alertMessage: "\(error)", title: "Error while submitting order.")
-                }
+                self?.performSegue(
+                    withIdentifier: R.segue.pendingOrderListViewController.presentOrderConfirmationView.identifier,
+                    sender: self
+                )
             }
         }
+    }
+    
+    
+    func promptToConfirmSubmit() {
+        let orderTotal = stateController.currentOrder.totalPrice
+        let message = "You are about to place an order for a price of \(orderTotal) sats."
+       
+        display(
+            promptMessage: message,
+            titled: "Confirm Order",
+            confirmButtonTitle: "Submit",
+            confirmationHandler: { action in
+                self.placeOrder()
+            }
+        )
     }
 }

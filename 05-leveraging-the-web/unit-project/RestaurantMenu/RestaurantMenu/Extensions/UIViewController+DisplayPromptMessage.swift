@@ -1,8 +1,8 @@
 //
-//  UIViewController+DisplayAlertMessage.swift
+//  UIViewController+DisplayPromptMessage.swift
 //  RestaurantMenu
 //
-//  Created by Brian Sipple on 5/21/19.
+//  Created by Brian Sipple on 5/23/19.
 //  Copyright © 2019 Brian Sipple. All rights reserved.
 //
 
@@ -10,14 +10,16 @@ import UIKit
 
 extension UIViewController {
     func display(
-        alertMessage: String,
+        promptMessage: String,
         titled title: String = "",
         confirmButtonTitle: String = "OK",
-        confirmationHandler: ((UIAlertAction) -> Void)? = nil
+        cancelButtonTitle: String = "Cancel",
+        confirmationHandler: ((UIAlertAction) -> Void)? = nil,
+        cancelationHandler: ((UIAlertAction) -> Void)? = nil
     ) {
         let alertController = UIAlertController(
             title: title,
-            message: alertMessage,
+            message: promptMessage,
             preferredStyle: .alert
         )
         
@@ -25,6 +27,11 @@ extension UIViewController {
             UIAlertAction(title: confirmButtonTitle, style: .default, handler: confirmationHandler)
         )
         
+        alertController.addAction(
+            UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: cancelationHandler)
+        )
+        
         present(alertController, animated: true)
     }
 }
+

@@ -9,14 +9,14 @@
 import Foundation
 
 struct PreparationTime {
-    var seconds: Double
+    var minutes: Int
 }
 
 
 extension PreparationTime: Codable {
     
     enum CodingKeys: String, CodingKey {
-        case seconds = "preparation_time"
+        case minutes = "preparation_time"
     }
     
 }

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         injectStateController()
         setupNotificationListeners()
+        setupURLCache()
         
         return true
     }
@@ -90,6 +91,21 @@ private extension AppDelegate {
             name: .StateControllerOrderUpdated,
             object: nil
         )
+    }
+    
+    
+    /**
+     Alot extra cache memory for all of our images.
+     */
+    func setupURLCache() {
+        let temporaryDirectory = NSTemporaryDirectory()
+        let cache = URLCache(
+            memoryCapacity: 25_000_000,
+            diskCapacity: 50_000_000,
+            diskPath: temporaryDirectory
+        )
+        
+        URLCache.shared = cache
     }
 }
 

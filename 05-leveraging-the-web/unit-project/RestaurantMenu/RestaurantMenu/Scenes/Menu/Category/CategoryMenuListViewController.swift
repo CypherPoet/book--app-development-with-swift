@@ -83,7 +83,7 @@ private extension CategoryMenuListViewController {
                     self?.setupTableView(with: menuItems)
                 case .failure(let error):
                     print("\(error)")
-                    self?.display(alertMessage: "\(error)", title: "Error while loading category menu items")
+                    self?.display(alertMessage: "\(error)", titled: "Error while loading category menu items")
                 }
             }
         }
