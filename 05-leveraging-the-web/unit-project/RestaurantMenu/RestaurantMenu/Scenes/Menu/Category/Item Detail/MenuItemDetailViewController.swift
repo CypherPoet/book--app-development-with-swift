@@ -52,7 +52,6 @@ extension MenuItemDetailViewController {
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         animateButtonTap(for: sender)
         
-//        stateController.currentOrder.menuItems.append(
         itemAddedToOrder()
     }
     

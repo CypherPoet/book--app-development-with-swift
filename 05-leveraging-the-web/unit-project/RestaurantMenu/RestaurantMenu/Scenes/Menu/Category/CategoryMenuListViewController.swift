@@ -65,7 +65,7 @@ extension CategoryMenuListViewController {
         )
         
         menuItemDetailVC.itemAddedToOrder = { [weak self] in
-            self?.stateController.currentOrder.menuItems.append(menuItem)
+            self?.stateController.addItemToOrder(menuItem)
         }
     }
 }

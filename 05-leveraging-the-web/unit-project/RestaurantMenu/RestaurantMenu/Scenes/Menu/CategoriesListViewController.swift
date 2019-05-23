@@ -48,7 +48,6 @@ extension CategoriesListViewController {
         categoryMenuVC.stateController = stateController
         categoryMenuVC.modelController = CategoryMenuModelController(category: category)
     }
-    
 }
 
 

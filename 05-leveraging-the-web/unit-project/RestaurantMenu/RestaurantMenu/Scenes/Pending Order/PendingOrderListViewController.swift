@@ -46,12 +46,17 @@ extension PendingOrderListViewController {
         assert(stateController != nil, "No state controller was found")
         
         setupTableView()
+        setupNotificationListeners()
     }
+}
+
+
+// MARK: - Event handling
+
+extension PendingOrderListViewController {
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    @objc func currentOrderUpdated() {
+        dataSource.models = currentOrder.menuItems
         tableView.reloadData()
     }
 }
@@ -77,6 +82,16 @@ private extension PendingOrderListViewController {
     }
     
     
+    func setupNotificationListeners() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(currentOrderUpdated),
+            name: .StateControllerOrderUpdated,
+            object: nil
+        )
+    }
+    
+    
     func place(_ order: Order) {
         guard
             let orderData = try? JSONEncoder().encode(order),
@@ -98,5 +113,4 @@ private extension PendingOrderListViewController {
             }
         }
     }
-    
 }

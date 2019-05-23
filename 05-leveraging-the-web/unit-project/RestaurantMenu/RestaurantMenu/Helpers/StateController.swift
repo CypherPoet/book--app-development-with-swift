@@ -10,5 +10,18 @@ import Foundation
 
 
 final class StateController {
-    var currentOrder: Order = Order()
+    
+    var currentOrder: Order = Order() {
+        didSet {
+            NotificationCenter.default.post(name: .StateControllerOrderUpdated, object: self)
+        }
+    }
+}
+
+
+extension StateController {
+    
+    func addItemToOrder(_ item: MenuItem) {
+        currentOrder.menuItems.append(item)
+    }
 }

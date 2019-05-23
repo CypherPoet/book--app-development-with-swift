@@ -12,14 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    let stateController = StateController()
+    var stateController = StateController()
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         injectStateController()
+        setupNotificationListeners()
         
         return true
     }
@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 private extension AppDelegate {
     
     func injectStateController() {
-    
         guard
             let tabBarController = window?.rootViewController as? UITabBarController,
             let menuNavController = tabBarController.viewControllers?[0] as? UINavigationController,
@@ -66,6 +65,28 @@ private extension AppDelegate {
 
         categoryListVC.stateController = stateController
         pendingOrderListVC.stateController = stateController
+    }
+
+
+    @objc func menuItemAddedToOrder() {
+        guard
+            let tabBarController = window?.rootViewController as? UITabBarController,
+            let orderNavController = tabBarController.viewControllers?[1] as? UINavigationController
+        else {
+            preconditionFailure("Unable to find expected view controllers")
+        }
+        
+        orderNavController.tabBarItem.badgeValue = "\(stateController.currentOrder.menuItems.count)"
+    }
+
+
+    func setupNotificationListeners() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(menuItemAddedToOrder),
+            name: .StateControllerOrderUpdated,
+            object: nil
+        )
     }
 }
 
