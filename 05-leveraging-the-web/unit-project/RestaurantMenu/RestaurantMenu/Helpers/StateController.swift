@@ -19,6 +19,21 @@ final class StateController {
 }
 
 
+// MARK: - Computed Properties
+
+extension StateController {
+    
+    var currentOrderFileURL: URL {
+        return FileManager
+            .userDocumentsDirectory
+            .appendingPathComponent("current-order", isDirectory: false)
+            .appendingPathExtension("json")
+    }
+}
+
+
+// MARK: - Core Methods
+
 extension StateController {
     
     func addItemToOrder(_ item: MenuItem) {
@@ -31,5 +46,27 @@ extension StateController {
     
     func clearOrder() {
         currentOrder.menuItems.removeAll(keepingCapacity: true)
+    }
+    
+    
+    func saveCurrentOrder() {
+        do {
+            let orderData = try JSONEncoder().encode(currentOrder) as Data
+            try orderData.write(to: currentOrderFileURL, options: [.atomic])
+            print("Saved current order data to \(currentOrderFileURL)")
+        } catch {
+            print("Error while saving data for current order:\n\n\(error)")
+        }
+    }
+    
+    
+    func loadCurrentOrder() {
+        do {
+            let orderData = try Data(contentsOf: currentOrderFileURL)
+            currentOrder = try JSONDecoder().decode(Order.self, from: orderData)
+            print("Loaded saved order data from \(currentOrderFileURL)")
+        } catch {
+            print("Error while loading data for current order:\n\n\(error)")
+        }
     }
 }

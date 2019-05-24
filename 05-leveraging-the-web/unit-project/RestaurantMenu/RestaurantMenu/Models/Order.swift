@@ -14,21 +14,9 @@ struct Order {
 }
 
 
-// MARK: - Encodable
+// MARK: - Codable
 
-extension Order: Encodable {
-    
-    enum CodingKeys: String, CodingKey {
-        case menuIds
-    }
-    
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(menuItems.map { $0.id }, forKey: .menuIds)
-    }
-}
+extension Order: Codable {}
 
 
 // MARK: - Transportable
@@ -46,5 +34,15 @@ extension Order {
         return menuItems.reduce(0, { (accumulatedPrice, currentItem) -> Int in
             return accumulatedPrice + currentItem.price
         })
+    }
+    
+    
+    var menuIds: [Int] {
+        return menuItems.map { $0.id }
+    }
+    
+    
+    var asPostableMenuData: [String: [Int]] {
+        return ["menuIds": menuIds]
     }
 }

@@ -197,8 +197,10 @@ private extension PendingOrderListViewController {
     
     
     @objc func placeOrder() {
+        let menuData = stateController.currentOrder.asPostableMenuData
+        
         guard
-            let orderData = try? JSONEncoder().encode(stateController.currentOrder),
+            let orderData = try? JSONEncoder().encode(menuData),
             let url = URL(string: Order.baseURL)
         else {
             preconditionFailure("Failed to make data for post")
