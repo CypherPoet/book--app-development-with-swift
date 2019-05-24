@@ -71,6 +71,33 @@ extension CategoryMenuListViewController {
 }
 
 
+// MARK: - UITableViewDelegate
+
+extension CategoryMenuListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        var menuItem = dataSource.models[indexPath.row]
+        
+        guard menuItem.fetchedImage == nil else { return }
+        
+        modelController.fetchImage(for: menuItem) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let image):
+                    menuItem.fetchedImage = image
+                case .failure(let error):
+                    print("Error while attempting to fetch menu item image:\n\n\(error)")
+                    menuItem.fetchedImage = menuItem.placeholderImage
+                }
+                
+                self?.dataSource.models[indexPath.row] = menuItem
+                self?.tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
+}
+
+
 // MARK: - Private Helper Methods
 
 private extension CategoryMenuListViewController {
@@ -97,11 +124,14 @@ private extension CategoryMenuListViewController {
             cellConfigurator: { (menuItem, cell) in
                 cell.textLabel?.text = menuItem.name
                 cell.detailTextLabel?.text = "\(menuItem.price) Sats"
+                cell.imageView?.image = menuItem.fetchedImage ?? menuItem.placeholderImage
             }
         )
         
         self.dataSource = dataSource
         tableView.dataSource = dataSource
+        
+        tableView.delegate = self
         tableView.reloadData()
     }
 }

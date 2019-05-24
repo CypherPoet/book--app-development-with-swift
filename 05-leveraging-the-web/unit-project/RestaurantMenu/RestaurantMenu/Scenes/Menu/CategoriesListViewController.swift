@@ -57,7 +57,7 @@ extension CategoriesListViewController {
 extension CategoriesListViewController {
     
     private func loadData() {
-        let categoriesResource = APIResource<CategoryList>(from: URL(string: CategoryList.baseURL)!)
+        let categoriesResource = APIResource<CategoryList>(at: URL(string: CategoryList.baseURL)!)
 
         apiClient.sendRequest(for: categoriesResource) { result in
             switch result {
@@ -82,6 +82,7 @@ extension CategoriesListViewController {
         )
         
         self.dataSource = dataSource
+        
         tableView.dataSource = dataSource
         tableView.reloadData()
     }

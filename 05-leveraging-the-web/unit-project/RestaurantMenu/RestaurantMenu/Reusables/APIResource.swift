@@ -32,7 +32,7 @@ struct APIResource<T> {
 
 extension APIResource where T: Decodable {
     
-    init(from url: URL, decoder: JSONDecoder = JSONDecoder()) {
+    init(at url: URL, decoder: JSONDecoder = JSONDecoder()) {
         self.urlRequest = URLRequest(url: url)
         self.urlRequest.httpMethod = HTTPMethod.get.name
         

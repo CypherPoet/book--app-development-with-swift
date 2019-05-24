@@ -6,7 +6,7 @@
 //  Copyright © 2019 Brian Sipple. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct MenuItem {
     var id: Int
@@ -15,6 +15,8 @@ struct MenuItem {
     var price: Int
     var imageURL: URL
     var category: String
+    var placeholderImage: UIImage = #imageLiteral(resourceName: "placeholder")
+    var fetchedImage: UIImage?
 }
 
 
