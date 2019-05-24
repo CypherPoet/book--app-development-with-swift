@@ -12,7 +12,7 @@ class CategoryMenuListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var stateController: StateController!
-    var modelController: CategoryMenuModelController!
+    var modelController: MenuModelController!
     var dataSource: TableViewDataSource<MenuItem>!
 }
 
@@ -39,6 +39,7 @@ extension CategoryMenuListViewController {
         assert(modelController != nil, "No model controller was set")
         
         title = category.name.capitalized
+        
         loadData()
     }
 }
@@ -50,18 +51,20 @@ extension CategoryMenuListViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
-            segue.identifier == R.segue.categoryMenuListViewController.showMenuItemDetailView.identifier,
+            segue.identifier == R.segue.categoryMenuListViewController.showMenuItemDetail.identifier,
             let menuItemDetailVC = segue.destination as? MenuItemDetailViewController,
             let selectedIndexPath = tableView.indexPathForSelectedRow
         else { return }
         
         let menuItem = dataSource.models[selectedIndexPath.row]
         
+        menuItemDetailVC.modelController = modelController
+        
         menuItemDetailVC.viewModel = MenuItemDetailViewController.ViewModel(
             price: menuItem.price,
             itemName: menuItem.name,
             itemDescription: menuItem.details,
-            itemImageURL: menuItem.imageURL
+            headerImage: menuItem.fetchedImage
         )
         
         menuItemDetailVC.itemAddedToOrder = { [weak self] in
@@ -80,20 +83,28 @@ extension CategoryMenuListViewController: UITableViewDelegate {
         
         guard menuItem.fetchedImage == nil else { return }
         
-        modelController.fetchImage(for: menuItem) { [weak self] result in
+        let urlRequest = URLRequest(url: menuItem.imageURL)
+        
+        URLSession.shared.send(request: urlRequest) { [weak self] dataResult in
             DispatchQueue.main.async {
-                switch result {
-                case .success(let image):
-                    menuItem.fetchedImage = image
-                case .failure(let error):
-                    print("Error while attempting to fetch menu item image:\n\n\(error)")
-                    menuItem.fetchedImage = menuItem.placeholderImage
-                }
+                menuItem.setFetchedImage(with: dataResult)
                 
                 self?.dataSource.models[indexPath.row] = menuItem
                 self?.tableView.reloadRows(at: [indexPath], with: .fade)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(
+            withIdentifier: R.segue.categoryMenuListViewController.showMenuItemDetail.identifier,
+            sender: self
+        )
     }
 }
 
@@ -120,18 +131,27 @@ private extension CategoryMenuListViewController {
     func setupTableView(with menuItems: [MenuItem]) {
         let dataSource = TableViewDataSource(
             models: menuItems,
-            cellReuseIdentifier: R.reuseIdentifier.menuItemCell.identifier,
+            cellReuseIdentifier: R.reuseIdentifier.menuItemTableCell.identifier,
             cellConfigurator: { (menuItem, cell) in
-                cell.textLabel?.text = menuItem.name
-                cell.detailTextLabel?.text = "\(menuItem.price) Sats"
-                cell.imageView?.image = menuItem.fetchedImage ?? menuItem.placeholderImage
+                guard let cell = cell as? MenuItemTableViewCell else {
+                    preconditionFailure("Unknown cell type")
+                }
+                
+                cell.viewModel = MenuItemTableViewCell.ViewModel(
+                    itemTitle: menuItem.name,
+                    itemPrice: menuItem.price,
+                    thumbnailImage: menuItem.fetchedImage ?? menuItem.placeholderImage
+                )
             }
         )
         
         self.dataSource = dataSource
         tableView.dataSource = dataSource
-        
         tableView.delegate = self
+        
+        let cellNib = UINib(nibName: R.nib.menuItemTableViewCell.name, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: R.reuseIdentifier.menuItemTableCell.identifier)
+        
         tableView.reloadData()
     }
 }

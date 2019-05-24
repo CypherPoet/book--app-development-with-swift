@@ -6,9 +6,7 @@
 //  Copyright © 2019 Brian Sipple. All rights reserved.
 //
 
-import Foundation
-
-
+import UIKit
 
 extension MenuItemDetailViewController {
     
@@ -16,28 +14,7 @@ extension MenuItemDetailViewController {
         var price: Int
         var itemName: String
         var itemDescription: String
-
-        var itemImageURL: URL
-        var itemImageData: Data?
-    }
-}
-
-
-// MARK: - Initializer to allow for empty image data
-
-extension MenuItemDetailViewController.ViewModel {
-    
-    init(
-        price: Int,
-        itemName: String,
-        itemDescription: String,
-        itemImageURL: URL
-    ) {
-        self.price = price
-        self.itemName = itemName
-        self.itemDescription = itemDescription
-        self.itemImageURL = itemImageURL
-        self.itemImageData = nil
+        var headerImage: UIImage?
     }
 }
 

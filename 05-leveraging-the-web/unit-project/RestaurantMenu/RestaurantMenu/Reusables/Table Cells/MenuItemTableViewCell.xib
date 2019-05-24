@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuItemTableViewCell" customModule="RestaurantMenu" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Menu Item Table Cell" id="pSf-E0-2j1" customClass="MenuItemTableViewCell" customModule="RestaurantMenu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pSf-E0-2j1" id="bPQ-wE-whj">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="qa1-EQ-bCO">
+                        <rect key="frame" x="0.0" y="0.0" width="100.5" height="99.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="qa1-EQ-bCO" secondAttribute="height" multiplier="100:99" id="Mbp-Rz-3qT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="11400 sats" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MP1-CK-AFK">
+                        <rect key="frame" x="288" y="0.0" width="88" height="99.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="88" id="ISr-Pq-I5s"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" text="Potentially Somewhat long item title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hat-5f-4l4">
+                        <rect key="frame" x="108.5" y="0.0" width="171.5" height="99.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MP1-CK-AFK" firstAttribute="top" secondItem="bPQ-wE-whj" secondAttribute="top" id="3HU-uQ-mcd"/>
+                    <constraint firstAttribute="bottom" secondItem="hat-5f-4l4" secondAttribute="bottom" id="4FP-4Z-8Bm"/>
+                    <constraint firstAttribute="trailing" secondItem="MP1-CK-AFK" secondAttribute="trailing" id="4Gw-Ns-qmn"/>
+                    <constraint firstItem="hat-5f-4l4" firstAttribute="leading" secondItem="qa1-EQ-bCO" secondAttribute="trailing" constant="8" id="LgU-gb-CEH"/>
+                    <constraint firstItem="hat-5f-4l4" firstAttribute="top" secondItem="bPQ-wE-whj" secondAttribute="top" id="P5G-xV-cyc"/>
+                    <constraint firstItem="MP1-CK-AFK" firstAttribute="leading" secondItem="hat-5f-4l4" secondAttribute="trailing" constant="8" id="TAs-yF-ZZ0"/>
+                    <constraint firstItem="qa1-EQ-bCO" firstAttribute="top" secondItem="bPQ-wE-whj" secondAttribute="top" id="W2Y-wD-DBc"/>
+                    <constraint firstAttribute="bottom" secondItem="qa1-EQ-bCO" secondAttribute="bottom" id="dEC-KD-bw2"/>
+                    <constraint firstItem="qa1-EQ-bCO" firstAttribute="leading" secondItem="bPQ-wE-whj" secondAttribute="leading" id="gyV-gv-bj3"/>
+                    <constraint firstAttribute="bottom" secondItem="MP1-CK-AFK" secondAttribute="bottom" id="jtQ-zz-16I"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="itemPriceLabel" destination="MP1-CK-AFK" id="rSe-xf-9IF"/>
+                <outlet property="itemTitleLabel" destination="hat-5f-4l4" id="87d-6I-pf2"/>
+                <outlet property="thumbnailImageView" destination="qa1-EQ-bCO" id="S2f-J1-v1C"/>
+            </connections>
+            <point key="canvasLocation" x="97" y="-71"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder" width="100" height="100"/>
+    </resources>
+</document>

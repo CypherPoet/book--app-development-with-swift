@@ -16,6 +16,7 @@ class MenuItemDetailViewController: UIViewController {
     @IBOutlet private weak var orderButton: UIButton!
     
     var itemAddedToOrder: (() -> Void)!
+    var modelController: MenuModelController!
     
     var viewModel: ViewModel! {
         didSet {
@@ -35,11 +36,11 @@ extension MenuItemDetailViewController {
         super.viewDidLoad()
         
         assert(viewModel != nil, "No view model was found")
+        assert(modelController != nil, "No model controller was set")
         assert(itemAddedToOrder != nil, "No callback for adding an item to an order was found")
         
         setupUI()
         configure(with: viewModel)
-        loadHeaderImage(from: viewModel.itemImageURL)
     }
 
 }
@@ -54,9 +55,7 @@ extension MenuItemDetailViewController {
         
         itemAddedToOrder()
     }
-    
 }
-
 
 
 // MARK: - Private Helper Methods
@@ -72,32 +71,9 @@ private extension MenuItemDetailViewController {
         itemNameLabel.text = viewModel.itemName
         priceLabel.text = viewModel.priceText
         itemDescriptionLabel.text = viewModel.itemDescription
-        
-        if
-            let imageData = viewModel.itemImageData,
-            !hasInsertedHeaderImage
-        {
-            hasInsertedHeaderImage = true
-            headerImageView.image = UIImage(data: imageData)
-        }
+        headerImageView.image = viewModel.headerImage
     }
     
-    
-    func loadHeaderImage(from url: URL) {
-        let urlRequest = URLRequest(url: url)
-        
-        URLSession.shared.send(request: urlRequest) { [weak self] dataResult in
-            DispatchQueue.main.async {
-                switch dataResult {
-                case .success(let imageData):
-                    self?.viewModel.itemImageData = imageData
-                case .failure(let error):
-                    print("\(error)")
-                    preconditionFailure("Unable to load item image")
-                }
-            }
-        }
-    }
     
     func animateButtonTap(for button: UIButton) {
         UIView.animate(

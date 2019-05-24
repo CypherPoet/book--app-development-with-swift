@@ -12,7 +12,7 @@
 		F31624532294D6C20059E49C /* UIViewController+DisplayAlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31624522294D6C20059E49C /* UIViewController+DisplayAlertMessage.swift */; };
 		F31624562294ECE70059E49C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31624542294ECE70059E49C /* LaunchScreen.storyboard */; };
 		F31624572294ECE70059E49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31624552294ECE70059E49C /* Main.storyboard */; };
-		F31624592294FBF20059E49C /* CategoryMenuModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31624582294FBF20059E49C /* CategoryMenuModelController.swift */; };
+		F31624592294FBF20059E49C /* MenuModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31624582294FBF20059E49C /* MenuModelController.swift */; };
 		F316245B2295CB7C0059E49C /* MenuItemDetailViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316245A2295CB7C0059E49C /* MenuItemDetailViewController+ViewModel.swift */; };
 		F316245E2295E1040059E49C /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316245D2295E1040059E49C /* StateController.swift */; };
 		F3162460229652940059E49C /* NotificationName+StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316245F229652940059E49C /* NotificationName+StateController.swift */; };
@@ -20,6 +20,9 @@
 		F316246522966FD60059E49C /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316246422966FD60059E49C /* OrderConfirmationViewController.swift */; };
 		F31624672296726C0059E49C /* OrderConfirmationViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31624662296726C0059E49C /* OrderConfirmationViewController+ViewModel.swift */; };
 		F316246922973A740059E49C /* UIViewController+DisplayPromptMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316246822973A740059E49C /* UIViewController+DisplayPromptMessage.swift */; };
+		F316246C22979C6C0059E49C /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316246B22979C6C0059E49C /* MenuItemTableViewCell.swift */; };
+		F316246E22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316246D22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift */; };
+		F31624702297BBFF0059E49C /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F316246F2297BBFF0059E49C /* MenuItemTableViewCell.xib */; };
 		F3C4BCB02292601A00F9B202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCAF2292601A00F9B202 /* AppDelegate.swift */; };
 		F3C4BCB22292601A00F9B202 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCB12292601A00F9B202 /* CategoriesListViewController.swift */; };
 		F3C4BCC9229331BB00F9B202 /* PendingOrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCC8229331BB00F9B202 /* PendingOrderListViewController.swift */; };
@@ -49,7 +52,7 @@
 		F31624522294D6C20059E49C /* UIViewController+DisplayAlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DisplayAlertMessage.swift"; sourceTree = "<group>"; };
 		F31624542294ECE70059E49C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31624552294ECE70059E49C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F31624582294FBF20059E49C /* CategoryMenuModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMenuModelController.swift; sourceTree = "<group>"; };
+		F31624582294FBF20059E49C /* MenuModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModelController.swift; sourceTree = "<group>"; };
 		F316245A2295CB7C0059E49C /* MenuItemDetailViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemDetailViewController+ViewModel.swift"; sourceTree = "<group>"; };
 		F316245D2295E1040059E49C /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		F316245F229652940059E49C /* NotificationName+StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+StateController.swift"; sourceTree = "<group>"; };
@@ -57,6 +60,9 @@
 		F316246422966FD60059E49C /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		F31624662296726C0059E49C /* OrderConfirmationViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderConfirmationViewController+ViewModel.swift"; sourceTree = "<group>"; };
 		F316246822973A740059E49C /* UIViewController+DisplayPromptMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DisplayPromptMessage.swift"; sourceTree = "<group>"; };
+		F316246B22979C6C0059E49C /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		F316246D22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemTableViewCell+ViewModel.swift"; sourceTree = "<group>"; };
+		F316246F2297BBFF0059E49C /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		F3C4BCAC2292601A00F9B202 /* RestaurantMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C4BCAF2292601A00F9B202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3C4BCB12292601A00F9B202 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +143,16 @@
 			path = Confirmation;
 			sourceTree = "<group>";
 		};
+		F316246A22979C4E0059E49C /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F316246B22979C6C0059E49C /* MenuItemTableViewCell.swift */,
+				F316246D22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift */,
+				F316246F2297BBFF0059E49C /* MenuItemTableViewCell.xib */,
+			);
+			path = "Table Cells";
+			sourceTree = "<group>";
+		};
 		F3C4BCA32292601A00F9B202 = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +227,7 @@
 		F3C4BCC422932C7C00F9B202 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				F316246A22979C4E0059E49C /* Table Cells */,
 				F3C4BCD522934BB200F9B202 /* APIResource.swift */,
 				F3C4BCEB22939DD400F9B202 /* TableViewDataSource.swift */,
 			);
@@ -248,7 +265,7 @@
 			children = (
 				F316245C2295E0C50059E49C /* Item Detail */,
 				F3C4BCCD2293410500F9B202 /* CategoryMenuListViewController.swift */,
-				F31624582294FBF20059E49C /* CategoryMenuModelController.swift */,
+				F31624582294FBF20059E49C /* MenuModelController.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -324,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31624572294ECE70059E49C /* Main.storyboard in Resources */,
+				F31624702297BBFF0059E49C /* MenuItemTableViewCell.xib in Resources */,
 				F316246222965EC90059E49C /* Assets.xcassets in Resources */,
 				F31624562294ECE70059E49C /* LaunchScreen.storyboard in Resources */,
 			);
@@ -413,7 +431,8 @@
 				F3C4BCF02293A21D00F9B202 /* Transportable.swift in Sources */,
 				F31624532294D6C20059E49C /* UIViewController+DisplayAlertMessage.swift in Sources */,
 				F316245B2295CB7C0059E49C /* MenuItemDetailViewController+ViewModel.swift in Sources */,
-				F31624592294FBF20059E49C /* CategoryMenuModelController.swift in Sources */,
+				F316246C22979C6C0059E49C /* MenuItemTableViewCell.swift in Sources */,
+				F31624592294FBF20059E49C /* MenuModelController.swift in Sources */,
 				F3C4BCF42293B41700F9B202 /* APIClient.swift in Sources */,
 				F3C4BCC9229331BB00F9B202 /* PendingOrderListViewController.swift in Sources */,
 				F3C4BCE422938DD300F9B202 /* CategoryList.swift in Sources */,
@@ -423,6 +442,7 @@
 				F3C4BCD622934BB200F9B202 /* APIResource.swift in Sources */,
 				F3162460229652940059E49C /* NotificationName+StateController.swift in Sources */,
 				F31624672296726C0059E49C /* OrderConfirmationViewController+ViewModel.swift in Sources */,
+				F316246E22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift in Sources */,
 				F3C4BCCC22933BB900F9B202 /* R.generated.swift in Sources */,
 				F3C4BCCE2293410500F9B202 /* CategoryMenuListViewController.swift in Sources */,
 				F3C4BCD922934C0100F9B202 /* Transport.swift in Sources */,

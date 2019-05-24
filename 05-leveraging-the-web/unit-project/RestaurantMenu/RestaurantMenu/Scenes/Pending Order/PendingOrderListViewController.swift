@@ -46,7 +46,7 @@ extension PendingOrderListViewController {
         super.viewDidLoad()
 
         assert(stateController != nil, "No state controller was found")
-        
+
         navigationItem.leftBarButtonItem = editButtonItem
         setupTableView()
         setupNotificationListeners()
@@ -118,6 +118,34 @@ extension PendingOrderListViewController {
 }
 
 
+// MARK: - UITableViewDelegate
+
+extension PendingOrderListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        var menuItem = dataSource.models[indexPath.row]
+        
+        guard menuItem.fetchedImage == nil else { return }
+        
+        let urlRequest = URLRequest(url: menuItem.imageURL)
+        
+        URLSession.shared.send(request: urlRequest) { [weak self] dataResult in
+            DispatchQueue.main.async {
+                menuItem.setFetchedImage(with: dataResult)
+                
+                self?.dataSource.models[indexPath.row] = menuItem
+                self?.tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+
 
 // MARK: - Private Helper Methods
 
@@ -126,11 +154,20 @@ private extension PendingOrderListViewController {
     func setupTableView() {
         let dataSource = TableViewDataSource(
             models: currentOrder.menuItems,
-            cellReuseIdentifier: R.reuseIdentifier.pendingOrderTableCell.identifier,
+            cellReuseIdentifier: R.reuseIdentifier.menuItemTableCell.identifier,
             canMoveCells: false,
             cellConfigurator: { (menuItem, cell) in
-                cell.textLabel?.text = menuItem.name
-                cell.detailTextLabel?.text = "\(menuItem.price) sats"
+                guard let cell = cell as? MenuItemTableViewCell else {
+                    preconditionFailure("Unknown cell type")
+                }
+                
+                cell.viewModel = MenuItemTableViewCell.ViewModel(
+                    itemTitle: menuItem.name,
+                    itemPrice: menuItem.price,
+                    thumbnailImage: menuItem.fetchedImage ?? menuItem.placeholderImage
+                )
+                
+                cell.accessoryType = .none
             },
             cellDeletionHandler: { [weak self] (_, _, indexPath) in
                 self?.stateController.removeItemFromOrder(at: indexPath.row)
@@ -139,6 +176,12 @@ private extension PendingOrderListViewController {
         
         self.dataSource = dataSource
         tableView.dataSource = dataSource
+
+        tableView.delegate = self
+        
+        let cellNib = UINib(nibName: R.nib.menuItemTableViewCell.name, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: R.reuseIdentifier.menuItemTableCell.identifier)
+        
         tableView.reloadData()
     }
     

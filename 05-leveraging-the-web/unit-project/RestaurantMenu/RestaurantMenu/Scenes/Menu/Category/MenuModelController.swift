@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CategoryMenuModelController {
+final class MenuModelController {
     var category: MenuCategory
     
     lazy var apiClient = APIClient()
@@ -26,7 +26,7 @@ final class CategoryMenuModelController {
 
 // MARK: - Computed Properties
 
-extension CategoryMenuModelController {
+extension MenuModelController {
     
     var menuItemsURL: URL {
         guard let baseURL = URL(string: MenuItems.baseURL) else {
@@ -43,7 +43,7 @@ extension CategoryMenuModelController {
 
 // MARK: - Core Methods
 
-extension CategoryMenuModelController {
+extension MenuModelController {
     
     func loadMenuItems(
         then completionHandler: @escaping (Result<[MenuItem], Error>) -> Void
@@ -54,31 +54,6 @@ extension CategoryMenuModelController {
             switch result {
             case .success(let menuItems):
                 completionHandler(.success(menuItems.items))
-            case .failure(let error):
-                completionHandler(.failure(error))
-            }
-        }
-    }
-    
-    
-    func fetchImage(
-        for menuItem: MenuItem,
-        then completionHandler: @escaping (Result<UIImage, Error>) -> Void
-    ) {
-        let urlRequest = URLRequest(url: menuItem.imageURL)
-        
-        URLSession.shared.send(request: urlRequest) { dataResult in
-            switch dataResult {
-            case .success(let imageData):
-                if let image = UIImage(data: imageData) {
-                    completionHandler(.success(image))
-                } else {
-                    completionHandler(.failure(
-                        ImageError.badData(
-                            "Failed to make image from data at url \"\(menuItem.imageURL)\""
-                        )
-                    ))
-                }
             case .failure(let error):
                 completionHandler(.failure(error))
             }
