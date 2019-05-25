@@ -10,10 +10,19 @@ import UIKit
 
 final class MenuModelController {
     lazy var apiClient = APIClient()
+
+    private var availableCategories: [MenuCategory] = []
+    private var itemsByID: [Int: MenuItem] = [:]
+    private var itemsByCategoryName: [String: [MenuItem]] = [:]
+    
+    
+    enum MenuModelControllerError: Error {
+        case noData
+    }
 }
 
 
-// MARK: - Computed Properties
+// MARK: - Computed Properties and Helpers
 
 extension MenuModelController {
     
@@ -25,6 +34,34 @@ extension MenuModelController {
         return baseURL.withQuery(params: [
             MenuItems.QueryParamName.category: category.name
         ])!
+    }
+    
+    
+    func detailsViewModel(forMenuId id: Int) -> MenuItemDetailViewController.ViewModel {
+        guard let menuItem = itemsByID[id] else {
+            preconditionFailure("No menu item found for id \"\(id)\"")
+        }
+        
+        return MenuItemDetailViewController.ViewModel(
+            price: menuItem.price,
+            itemName: menuItem.name,
+            itemDescription: menuItem.details,
+            headerImage: menuItem.fetchedImage
+        )
+    }
+    
+    
+    func menuItems(for category: MenuCategory) -> Result<[MenuItem], Error> {
+        guard let menuItems = itemsByCategoryName[category.name] else {
+            return .failure(MenuModelControllerError.noData)
+        }
+        
+        return .success(menuItems)
+    }
+    
+    
+    var categories: [MenuCategory] {
+        return availableCategories.sorted { $0.name.lowercased() < $1.name.lowercased() }
     }
 }
 

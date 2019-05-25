@@ -52,13 +52,7 @@ extension CategoryMenuListViewController {
         let menuItem = dataSource.models[selectedIndexPath.row]
         
         menuItemDetailVC.modelController = modelController
-        
-        menuItemDetailVC.viewModel = MenuItemDetailViewController.ViewModel(
-            price: menuItem.price,
-            itemName: menuItem.name,
-            itemDescription: menuItem.details,
-            headerImage: menuItem.fetchedImage
-        )
+        menuItemDetailVC.viewModel = modelController.detailsViewModel(forMenuId: menuItem.id)
         
         menuItemDetailVC.itemAddedToOrder = { [weak self] in
             self?.stateController.addItemToOrder(menuItem)
