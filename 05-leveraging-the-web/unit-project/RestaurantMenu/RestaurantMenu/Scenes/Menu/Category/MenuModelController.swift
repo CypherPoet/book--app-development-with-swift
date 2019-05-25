@@ -9,18 +9,7 @@
 import UIKit
 
 final class MenuModelController {
-    var category: MenuCategory
-    
     lazy var apiClient = APIClient()
-    
-    
-    init(category: MenuCategory) {
-        self.category = category
-    }
-    
-    enum ImageError: Error {
-        case badData(String)
-    }
 }
 
 
@@ -28,7 +17,7 @@ final class MenuModelController {
 
 extension MenuModelController {
     
-    var menuItemsURL: URL {
+    func menuItemsURL(for category: MenuCategory) -> URL {
         guard let baseURL = URL(string: MenuItems.baseURL) else {
             preconditionFailure("Unable to make url")
         }
@@ -37,7 +26,6 @@ extension MenuModelController {
             MenuItems.QueryParamName.category: category.name
         ])!
     }
-    
 }
 
 
@@ -46,9 +34,10 @@ extension MenuModelController {
 extension MenuModelController {
     
     func loadMenuItems(
+        for category: MenuCategory,
         then completionHandler: @escaping (Result<[MenuItem], Error>) -> Void
     ) {
-        let menuItemsResource = APIResource<MenuItems>(at: menuItemsURL)
+        let menuItemsResource = APIResource<MenuItems>(at: menuItemsURL(for: category))
         
         apiClient.sendRequest(for: menuItemsResource) { result in
             switch result {

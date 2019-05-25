@@ -14,18 +14,10 @@ class CategoryMenuListViewController: UIViewController {
     var stateController: StateController!
     var modelController: MenuModelController!
     var dataSource: TableViewDataSource<MenuItem>!
-}
-
-
-// MARK: - Computed Properties
-
-extension CategoryMenuListViewController {
-
-    var category: MenuCategory {
-        return modelController.category
-    }
     
+    var category: MenuCategory!
 }
+
 
 
 // MARK: - Lifecycle
@@ -37,6 +29,7 @@ extension CategoryMenuListViewController {
 
         assert(stateController != nil, "No state controller was found")
         assert(modelController != nil, "No model controller was set")
+        assert(category != nil, "No menu category was set")
         
         title = category.name.capitalized
         
@@ -114,7 +107,7 @@ extension CategoryMenuListViewController: UITableViewDelegate {
 private extension CategoryMenuListViewController {
     
     func loadData() {
-        modelController.loadMenuItems { [weak self] result in
+        modelController.loadMenuItems(for: category) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let menuItems):

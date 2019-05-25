@@ -46,7 +46,8 @@ extension CategoriesListViewController {
         let category = dataSource.models[selectedIndexPath.row]
         
         categoryMenuVC.stateController = stateController
-        categoryMenuVC.modelController = MenuModelController(category: category)
+        categoryMenuVC.modelController = MenuModelController()
+        categoryMenuVC.category = category
     }
 }
 

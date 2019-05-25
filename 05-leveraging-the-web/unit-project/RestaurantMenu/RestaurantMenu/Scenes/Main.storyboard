@@ -13,7 +13,7 @@
         <!--⭐️ Five Stars-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CategoriesListViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Category List View Controller" id="BYZ-38-t0r" customClass="CategoriesListViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
         <!--Category Menu List View Controller-->
         <scene sceneID="acA-TP-3br">
             <objects>
-                <viewController storyboardIdentifier="Category Menu List" id="XeG-Jn-OTf" customClass="CategoryMenuListViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Category Menu List View Controller" id="XeG-Jn-OTf" customClass="CategoryMenuListViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f5z-GB-Nah">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +98,7 @@
         <!--Menu Item Detail View Controller-->
         <scene sceneID="MuD-wA-B5W">
             <objects>
-                <viewController id="X8b-4a-4C2" customClass="MenuItemDetailViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Menu Item Detail View Controller" id="X8b-4a-4C2" customClass="MenuItemDetailViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NU3-Ta-7C2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +178,7 @@
         <!--Your Order-->
         <scene sceneID="ljv-u1-car">
             <objects>
-                <viewController storyboardIdentifier="Pending Order List VC" id="Pwy-Sq-G5O" customClass="PendingOrderListViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Pending Order List View Controller" id="Pwy-Sq-G5O" customClass="PendingOrderListViewController" customModule="RestaurantMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Rk-8F-YrY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,7 +282,7 @@
         <!--Your Order-->
         <scene sceneID="a41-ww-nvx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n3i-Q6-6qX" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="Order Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="n3i-Q6-6qX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Your Order" image="shopping-cart" id="9mh-IB-qvg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zhn-h0-SR5">
@@ -301,7 +301,7 @@
         <!--Menu-->
         <scene sceneID="XZ5-3S-Ljx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4yC-gv-PJs" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="Menu Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="4yC-gv-PJs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Menu" image="restaurant-menu" id="LjR-zv-maD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="aq1-e4-Zgy">
@@ -320,7 +320,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="WIZ-V7-VaH">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Yu-r9-FTd" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="Root Controller" automaticallyAdjustsScrollViewInsets="NO" id="3Yu-r9-FTd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x2H-1J-2GF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

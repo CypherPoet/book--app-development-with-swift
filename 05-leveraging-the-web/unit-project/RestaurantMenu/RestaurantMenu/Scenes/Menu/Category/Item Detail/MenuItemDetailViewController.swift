@@ -32,6 +32,14 @@ class MenuItemDetailViewController: UIViewController {
 
 extension MenuItemDetailViewController {
 
+    override func encodeRestorableState(with coder: NSCoder) {
+        // get menu item ID
+        
+        // request an updated view model from the model controller using the menu item id
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
