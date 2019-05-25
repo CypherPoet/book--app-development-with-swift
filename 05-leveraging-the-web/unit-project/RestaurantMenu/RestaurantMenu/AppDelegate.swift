@@ -17,13 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
-//        return true
-        return false // TODO: Get this working 🙂
+        return false
     }
     
     func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
-//        return true
-        return false  // TODO: Get this working 🙂
+        return false
     }
     
     

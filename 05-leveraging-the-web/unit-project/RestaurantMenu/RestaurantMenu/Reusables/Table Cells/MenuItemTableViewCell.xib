@@ -25,7 +25,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="11400 sats" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MP1-CK-AFK">
-                        <rect key="frame" x="288" y="0.0" width="88" height="99.5"/>
+                        <rect key="frame" x="280" y="0.0" width="88" height="99.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="88" id="ISr-Pq-I5s"/>
                         </constraints>
@@ -34,7 +34,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" text="Potentially Somewhat long item title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hat-5f-4l4">
-                        <rect key="frame" x="108.5" y="0.0" width="171.5" height="99.5"/>
+                        <rect key="frame" x="108.5" y="0.0" width="163.5" height="99.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,9 +43,9 @@
                 <constraints>
                     <constraint firstItem="MP1-CK-AFK" firstAttribute="top" secondItem="bPQ-wE-whj" secondAttribute="top" id="3HU-uQ-mcd"/>
                     <constraint firstAttribute="bottom" secondItem="hat-5f-4l4" secondAttribute="bottom" id="4FP-4Z-8Bm"/>
-                    <constraint firstAttribute="trailing" secondItem="MP1-CK-AFK" secondAttribute="trailing" id="4Gw-Ns-qmn"/>
                     <constraint firstItem="hat-5f-4l4" firstAttribute="leading" secondItem="qa1-EQ-bCO" secondAttribute="trailing" constant="8" id="LgU-gb-CEH"/>
                     <constraint firstItem="hat-5f-4l4" firstAttribute="top" secondItem="bPQ-wE-whj" secondAttribute="top" id="P5G-xV-cyc"/>
+                    <constraint firstAttribute="trailing" secondItem="MP1-CK-AFK" secondAttribute="trailing" constant="8" id="SNC-Ep-3Wt"/>
                     <constraint firstItem="MP1-CK-AFK" firstAttribute="leading" secondItem="hat-5f-4l4" secondAttribute="trailing" constant="8" id="TAs-yF-ZZ0"/>
                     <constraint firstItem="qa1-EQ-bCO" firstAttribute="top" secondItem="bPQ-wE-whj" secondAttribute="top" id="W2Y-wD-DBc"/>
                     <constraint firstAttribute="bottom" secondItem="qa1-EQ-bCO" secondAttribute="bottom" id="dEC-KD-bw2"/>

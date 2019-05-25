@@ -175,3 +175,19 @@ Projects, playgrounds, and notes made while following along with Apple's book [_
 
 <br/>
 <br/>
+
+
+| Unit | Project | Topics Covered | Progress |
+| :--: | :--------------------------: | :--------------: | :--------: |
+| 5 - Leveraging the Web | [Restaurant Menu](./05-leveraging-the-web/unit-project/RestaurantMenu): An interactive menu for a restaurant that allows the customer to view a list of offerings, add items to an order, and submit the order to the restaurant. | Modeling data returning by a server API :::: Architecting networking logic :::: Lazilly fetching images from URL information :::: Maintaining "cart" state in a state controller :::: Dependency-injecting state controllers :::: Communicating loading events using NotificationCenter :::: Saving and restoring application state across app loads | ✅ |
+
+
+<br/>
+<br/>
+
+<div style="text-align: center;">
+  <img src="./05-leveraging-the-web/unit-project/RestaurantMenu/Screenshots/recording-1.gif" width="500px"/>
+</div>
+
+<br/>
+<br/>

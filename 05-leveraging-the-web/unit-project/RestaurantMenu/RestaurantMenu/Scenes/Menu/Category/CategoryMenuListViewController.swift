@@ -24,33 +24,9 @@ class CategoryMenuListViewController: UIViewController {
 
 extension CategoryMenuListViewController {
     
-    override func encodeRestorableState(with coder: NSCoder) {
-        super.encodeRestorableState(with: coder)
-        
-        coder.encode(category.name, forKey: "categoryName")
-    }
-    
-
-    override func decodeRestorableState(with coder: NSCoder) {
-        super.decodeRestorableState(with: coder)
-        
-        let categoryName = coder.decodeObject(forKey: "categoryName") as! String
-        category = MenuCategory(name: categoryName)
-        
-        setupWithModelController()
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        guard
-//            stateController != nil,
-//            modelController != nil,
-//            category != nil
-//        else {
-//            return
-//        }
         assert(stateController != nil, "No state controller was set")
         assert(modelController != nil, "No model controller was set")
         assert(category != nil, "No menu category was set")
