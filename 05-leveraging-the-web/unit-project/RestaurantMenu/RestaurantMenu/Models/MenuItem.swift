@@ -14,7 +14,7 @@ struct MenuItem {
     var details: String
     var price: Int
     var imageURL: URL
-    var category: String
+    var categoryName: String
     var placeholderImage: UIImage = #imageLiteral(resourceName: "placeholder")
     var fetchedImage: UIImage?
 }
@@ -27,7 +27,7 @@ extension MenuItem: Codable {
         case details = "description"
         case price
         case imageURL = "image_url"
-        case category
+        case categoryName = "category"
     }
 }
 

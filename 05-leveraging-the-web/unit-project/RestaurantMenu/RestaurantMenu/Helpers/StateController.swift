@@ -13,7 +13,9 @@ final class StateController {
     
     var currentOrder: Order = Order() {
         didSet {
-            NotificationCenter.default.post(name: .StateControllerOrderUpdated, object: self)
+            DispatchQueue.main.async { [weak self] in
+                self?.defaultNotificationCenter.post(name: .StateControllerOrderUpdated, object: self)
+            }
         }
     }
 }
@@ -49,7 +51,7 @@ extension StateController {
     }
     
     
-    func saveCurrentOrder() {
+    func persistCurrentOrder() {
         do {
             let orderData = try JSONEncoder().encode(currentOrder) as Data
             try orderData.write(to: currentOrderFileURL, options: [.atomic])
@@ -60,7 +62,7 @@ extension StateController {
     }
     
     
-    func loadCurrentOrder() {
+    func loadPersistedCurrentOrder() {
         do {
             let orderData = try Data(contentsOf: currentOrderFileURL)
             currentOrder = try JSONDecoder().decode(Order.self, from: orderData)
@@ -70,3 +72,6 @@ extension StateController {
         }
     }
 }
+
+
+extension StateController: AppNotifiable {}

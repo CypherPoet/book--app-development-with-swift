@@ -24,6 +24,8 @@
 		F316246E22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316246D22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift */; };
 		F31624702297BBFF0059E49C /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F316246F2297BBFF0059E49C /* MenuItemTableViewCell.xib */; };
 		F316247222989C080059E49C /* FileManager+UserDocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316247122989C080059E49C /* FileManager+UserDocumentsDirectory.swift */; };
+		F3162474229916350059E49C /* NotificationName+MenuModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3162473229916350059E49C /* NotificationName+MenuModelController.swift */; };
+		F316247622991CF70059E49C /* AppNotifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F316247522991CF70059E49C /* AppNotifiable.swift */; };
 		F3C4BCB02292601A00F9B202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCAF2292601A00F9B202 /* AppDelegate.swift */; };
 		F3C4BCB22292601A00F9B202 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCB12292601A00F9B202 /* CategoriesListViewController.swift */; };
 		F3C4BCC9229331BB00F9B202 /* PendingOrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4BCC8229331BB00F9B202 /* PendingOrderListViewController.swift */; };
@@ -65,6 +67,8 @@
 		F316246D22979C9D0059E49C /* MenuItemTableViewCell+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemTableViewCell+ViewModel.swift"; sourceTree = "<group>"; };
 		F316246F2297BBFF0059E49C /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		F316247122989C080059E49C /* FileManager+UserDocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+UserDocumentsDirectory.swift"; sourceTree = "<group>"; };
+		F3162473229916350059E49C /* NotificationName+MenuModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+MenuModelController.swift"; sourceTree = "<group>"; };
+		F316247522991CF70059E49C /* AppNotifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifiable.swift; sourceTree = "<group>"; };
 		F3C4BCAC2292601A00F9B202 /* RestaurantMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C4BCAF2292601A00F9B202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3C4BCB12292601A00F9B202 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				F31624522294D6C20059E49C /* UIViewController+DisplayAlertMessage.swift */,
 				F316246822973A740059E49C /* UIViewController+DisplayPromptMessage.swift */,
 				F316245F229652940059E49C /* NotificationName+StateController.swift */,
+				F3162473229916350059E49C /* NotificationName+MenuModelController.swift */,
 				F316247122989C080059E49C /* FileManager+UserDocumentsDirectory.swift */,
 			);
 			path = Extensions;
@@ -278,6 +283,7 @@
 			children = (
 				F3C4BCD822934C0100F9B202 /* Transport.swift */,
 				F3C4BCEF2293A21D00F9B202 /* Transportable.swift */,
+				F316247522991CF70059E49C /* AppNotifiable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -425,11 +431,13 @@
 			files = (
 				F3C4BCDE22934CFB00F9B202 /* URLSession+Transport.swift in Sources */,
 				F31624512294A6CF0059E49C /* HeaderedTransport.swift in Sources */,
+				F3162474229916350059E49C /* NotificationName+MenuModelController.swift in Sources */,
 				F3C4BCB22292601A00F9B202 /* CategoriesListViewController.swift in Sources */,
 				F316246922973A740059E49C /* UIViewController+DisplayPromptMessage.swift in Sources */,
 				F3C4BCEC22939DD400F9B202 /* TableViewDataSource.swift in Sources */,
 				F316246522966FD60059E49C /* OrderConfirmationViewController.swift in Sources */,
 				F3C4BCD12293413900F9B202 /* MenuItemDetailViewController.swift in Sources */,
+				F316247622991CF70059E49C /* AppNotifiable.swift in Sources */,
 				F3C4BCB02292601A00F9B202 /* AppDelegate.swift in Sources */,
 				F3C4BCF02293A21D00F9B202 /* Transportable.swift in Sources */,
 				F31624532294D6C20059E49C /* UIViewController+DisplayAlertMessage.swift in Sources */,

@@ -9,9 +9,8 @@
 import UIKit
 
 final class MenuModelController {
-    lazy var apiClient = APIClient()
+    private lazy var apiClient = APIClient()
 
-    private var availableCategories: [MenuCategory] = []
     private var itemsByID: [Int: MenuItem] = [:]
     private var itemsByCategoryName: [String: [MenuItem]] = [:]
     
@@ -26,22 +25,36 @@ final class MenuModelController {
 
 extension MenuModelController {
     
-    func menuItemsURL(for category: MenuCategory) -> URL {
-        guard let baseURL = URL(string: MenuItems.baseURL) else {
-            preconditionFailure("Unable to make url")
-        }
-        
-        return baseURL.withQuery(params: [
-            MenuItems.QueryParamName.category: category.name
-        ])!
+    private var menuItemsFileURL: URL {
+        return FileManager
+            .userDocumentsDirectory
+            .appendingPathComponent("menu-items", isDirectory: false)
+            .appendingPathExtension("json")
     }
     
     
-    func detailsViewModel(forMenuId id: Int) -> MenuItemDetailViewController.ViewModel {
-        guard let menuItem = itemsByID[id] else {
-            preconditionFailure("No menu item found for id \"\(id)\"")
+    private var menuItemsAPIPath: URL {
+        guard let url = URL(string: MenuItems.baseURL) else {
+            preconditionFailure("Unable to make base MenuItems url")
         }
         
+        return url
+    }
+    
+    
+    private func menuItemsAPIPath(for category: MenuCategory) -> URL {
+        return menuItemsAPIPath.withQuery(params: [
+            MenuItems.QueryParamName.category: category.name
+        ])!
+    }
+}
+
+
+// MARK: - Core Methods and Computeds
+
+extension MenuModelController {
+    
+    func detailsViewModel(for menuItem: MenuItem) -> MenuItemDetailViewController.ViewModel {        
         return MenuItemDetailViewController.ViewModel(
             price: menuItem.price,
             itemName: menuItem.name,
@@ -51,38 +64,78 @@ extension MenuModelController {
     }
     
     
-    func menuItems(for category: MenuCategory) -> Result<[MenuItem], Error> {
-        guard let menuItems = itemsByCategoryName[category.name] else {
-            return .failure(MenuModelControllerError.noData)
-        }
-        
-        return .success(menuItems)
+    func menuItems(for category: MenuCategory) -> [MenuItem] {
+        return itemsByCategoryName[category.name] ?? [MenuItem]()
     }
     
     
     var categories: [MenuCategory] {
+        let availableCategories = Array(itemsByCategoryName.keys).map { MenuCategory(name: $0) }
+        
         return availableCategories.sorted { $0.name.lowercased() < $1.name.lowercased() }
     }
-}
-
-
-// MARK: - Core Methods
-
-extension MenuModelController {
     
-    func loadMenuItems(
-        for category: MenuCategory,
-        then completionHandler: @escaping (Result<[MenuItem], Error>) -> Void
-    ) {
-        let menuItemsResource = APIResource<MenuItems>(at: menuItemsURL(for: category))
+    
+    func persistMenuItems() {
+        let menuItems = Array(itemsByID.values)
         
-        apiClient.sendRequest(for: menuItemsResource) { result in
+        do {
+            let data = try JSONEncoder().encode(menuItems) as Data
+            try data.write(to: menuItemsFileURL, options: [.atomic])
+            print("Saved menu items data to \(menuItemsFileURL)")
+        } catch {
+            print("Error while saving data for menu items:\n\n\(error)")
+        }
+    }
+    
+    
+    func loadPersistedMenuItems() {
+        do {
+            let data = try Data(contentsOf: menuItemsFileURL)
+            let menuItems = try JSONDecoder().decode([MenuItem].self, from: data)
+            print("Loaded local menu items from \(menuItemsFileURL)")
+            
+            menuItemsLoaded(menuItems)
+        } catch {
+            print("Error while loading local menu items from \(menuItemsFileURL):\n\n\(error)")
+        }
+    }
+    
+    
+    func fetchRemoteData() {
+        let menuItemsResource = APIResource<MenuItems>(at: menuItemsAPIPath)
+        
+        apiClient.sendRequest(for: menuItemsResource) { [weak self] result in
             switch result {
             case .success(let menuItems):
-                completionHandler(.success(menuItems.items))
+                self?.menuItemsLoaded(menuItems.items)
             case .failure(let error):
-                completionHandler(.failure(error))
+                print("Error while fetching remote menuItems data:\n\n\(error)")
             }
         }
     }
 }
+
+
+
+// MARK: - Private Helper Methods
+
+private extension MenuModelController  {
+
+    func menuItemsLoaded(_ menuItems: [MenuItem]) {
+        itemsByID.removeAll(keepingCapacity: true)
+        itemsByCategoryName.removeAll(keepingCapacity: true)
+        
+        for menuItem in menuItems {
+            itemsByID[menuItem.id] = menuItem
+            itemsByCategoryName[menuItem.categoryName, default: []].append(menuItem)
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.defaultNotificationCenter.post(name: .MenuModelControllerDataUpdated, object: self)
+        }
+    }
+}
+
+
+extension MenuModelController: AppNotifiable {}

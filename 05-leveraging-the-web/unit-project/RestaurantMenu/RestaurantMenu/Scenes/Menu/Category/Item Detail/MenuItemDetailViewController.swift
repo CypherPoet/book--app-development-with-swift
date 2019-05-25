@@ -32,20 +32,33 @@ class MenuItemDetailViewController: UIViewController {
 
 extension MenuItemDetailViewController {
 
-    override func encodeRestorableState(with coder: NSCoder) {
-        // get menu item ID
-        
-        // request an updated view model from the model controller using the menu item id
-        
-    }
+//    override func encodeRestorableState(with coder: NSCoder) {
+//        super.encodeRestorableState(with: coder)
+//        
+//        coder.encode(menuItemID, forKey: "menuItemID")
+//    }
+//    
+//    
+//    override func decodeRestorableState(with coder: NSCoder) {
+//        super.decodeRestorableState(with: coder)
+//        
+//        coder.decodeObject(forKey: "menuItemID")
+//    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        assert(viewModel != nil, "No view model was found")
-        assert(modelController != nil, "No model controller was set")
-        assert(itemAddedToOrder != nil, "No callback for adding an item to an order was found")
+
+        guard
+            viewModel != nil,
+            modelController != nil,
+            itemAddedToOrder != nil
+        else {
+            return
+        }
+//        assert(viewModel != nil, "No view model was found")
+//        assert(modelController != nil, "No model controller was set")
+//        assert(itemAddedToOrder != nil, "No callback for adding an item to an order was found")
         
         setupUI()
         configure(with: viewModel)

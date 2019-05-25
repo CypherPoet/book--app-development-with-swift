@@ -23,17 +23,40 @@ class CategoryMenuListViewController: UIViewController {
 // MARK: - Lifecycle
 
 extension CategoryMenuListViewController {
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+        
+        coder.encode(category.name, forKey: "categoryName")
+    }
+    
 
+    override func decodeRestorableState(with coder: NSCoder) {
+        super.decodeRestorableState(with: coder)
+        
+        let categoryName = coder.decodeObject(forKey: "categoryName") as! String
+        category = MenuCategory(name: categoryName)
+        
+        setupWithModelController()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        assert(stateController != nil, "No state controller was found")
+//        guard
+//            stateController != nil,
+//            modelController != nil,
+//            category != nil
+//        else {
+//            return
+//        }
+        assert(stateController != nil, "No state controller was set")
         assert(modelController != nil, "No model controller was set")
         assert(category != nil, "No menu category was set")
         
-        title = category.name.capitalized
-        
-        loadData()
+        setupObservers()
+        setupWithModelController()
     }
 }
 
@@ -52,7 +75,7 @@ extension CategoryMenuListViewController {
         let menuItem = dataSource.models[selectedIndexPath.row]
         
         menuItemDetailVC.modelController = modelController
-        menuItemDetailVC.viewModel = modelController.detailsViewModel(forMenuId: menuItem.id)
+        menuItemDetailVC.viewModel = modelController.detailsViewModel(for: menuItem)
         
         menuItemDetailVC.itemAddedToOrder = { [weak self] in
             self?.stateController.addItemToOrder(menuItem)
@@ -100,24 +123,21 @@ extension CategoryMenuListViewController: UITableViewDelegate {
 
 private extension CategoryMenuListViewController {
     
-    func loadData() {
-        modelController.loadMenuItems(for: category) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let menuItems):
-                    self?.setupTableView(with: menuItems)
-                case .failure(let error):
-                    print("\(error)")
-                    self?.display(alertMessage: "\(error)", titled: "Error while loading category menu items")
-                }
-            }
-        }
+    func setupObservers() {
+        defaultNotificationCenter.addObserver(
+            self,
+            selector: #selector(setupWithModelController),
+            name: .MenuModelControllerDataUpdated,
+            object: nil
+        )
     }
     
     
-    func setupTableView(with menuItems: [MenuItem]) {
+    @objc func setupWithModelController() {
+        title = category.name.capitalized
+        
         let dataSource = TableViewDataSource(
-            models: menuItems,
+            models: modelController.menuItems(for: category),
             cellReuseIdentifier: R.reuseIdentifier.menuItemTableCell.identifier,
             cellConfigurator: { (menuItem, cell) in
                 guard let cell = cell as? MenuItemTableViewCell else {
@@ -142,3 +162,6 @@ private extension CategoryMenuListViewController {
         tableView.reloadData()
     }
 }
+
+
+extension CategoryMenuListViewController: AppNotifiable {}

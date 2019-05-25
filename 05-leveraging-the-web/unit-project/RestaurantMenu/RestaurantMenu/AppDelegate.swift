@@ -13,19 +13,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var stateController = StateController()
+    var menuModelController = MenuModelController()
     
     
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
-        return true
+//        return true
+        return false // TODO: Get this working 🙂
     }
     
     func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
-        return true
+//        return true
+        return false  // TODO: Get this working 🙂
     }
     
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        stateController.loadCurrentOrder()
+        stateController.loadPersistedCurrentOrder()
+        
+        menuModelController.loadPersistedMenuItems()
+        menuModelController.fetchRemoteData()
         
         return true
     }
@@ -34,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        injectStateController()
+        injectControllers()
         setupNotificationListeners()
         setupURLCache()
         
@@ -49,7 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        stateController.saveCurrentOrder()
+        stateController.persistCurrentOrder()
+        menuModelController.persistMenuItems()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -70,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private extension AppDelegate {
     
-    func injectStateController() {
+    func injectControllers() {
         guard
             let tabBarController = window?.rootViewController as? UITabBarController,
             let menuNavController = tabBarController.viewControllers?[0] as? UINavigationController,
@@ -83,6 +90,8 @@ private extension AppDelegate {
 
         categoryListVC.stateController = stateController
         pendingOrderListVC.stateController = stateController
+        
+        categoryListVC.modelController = menuModelController
     }
 
 
@@ -102,7 +111,7 @@ private extension AppDelegate {
 
 
     func setupNotificationListeners() {
-        NotificationCenter.default.addObserver(
+        defaultNotificationCenter.addObserver(
             self,
             selector: #selector(menuItemAddedToOrder),
             name: .StateControllerOrderUpdated,
@@ -126,3 +135,4 @@ private extension AppDelegate {
     }
 }
 
+extension AppDelegate: AppNotifiable {}

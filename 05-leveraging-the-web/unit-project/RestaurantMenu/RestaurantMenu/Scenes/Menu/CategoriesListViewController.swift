@@ -12,6 +12,7 @@ class CategoriesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var stateController: StateController!
+    var modelController: MenuModelController!
     
     var dataSource: TableViewDataSource<MenuCategory>!
     lazy var apiClient: APIClient = APIClient()
@@ -25,9 +26,11 @@ extension CategoriesListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(stateController != nil, "No state controller was found")
+        assert(stateController != nil, "No state controller was set")
+        assert(modelController != nil, "No model controller was set")
 
-        loadData()
+        setupObservers()
+        setupWithModelController()
     }
 }
 
@@ -46,7 +49,7 @@ extension CategoriesListViewController {
         let category = dataSource.models[selectedIndexPath.row]
         
         categoryMenuVC.stateController = stateController
-        categoryMenuVC.modelController = MenuModelController()
+        categoryMenuVC.modelController = modelController
         categoryMenuVC.category = category
     }
 }
@@ -55,30 +58,24 @@ extension CategoriesListViewController {
 
 // MARK: - Private Helper Methods
 
-extension CategoriesListViewController {
+private extension CategoriesListViewController {
     
-    private func loadData() {
-        let categoriesResource = APIResource<CategoryList>(at: URL(string: CategoryList.baseURL)!)
-
-        apiClient.sendRequest(for: categoriesResource) { result in
-            switch result {
-            case .success(let categoryList):
-                DispatchQueue.main.async { [weak self] in
-                    self?.setupDataSource(with: categoryList)
-                }
-            case .failure(let error):
-                fatalError("Error while attempting to load categoryList: \(error)")
-            }
-        }
+    func setupObservers() {
+        defaultNotificationCenter.addObserver(
+            self,
+            selector: #selector(setupWithModelController),
+            name: .MenuModelControllerDataUpdated,
+            object: nil
+        )
     }
     
     
-    private func setupDataSource(with categoryList: CategoryList) {
+    @objc func setupWithModelController() {
         let dataSource = TableViewDataSource(
-            models: categoryList.categories,
+            models: modelController.categories,
             cellReuseIdentifier: R.reuseIdentifier.categoryCell.identifier,
-            cellConfigurator: { (model, cell) in
-                cell.textLabel?.text = model.name.capitalized
+            cellConfigurator: { (category, cell) in
+                cell.textLabel?.text = category.name.capitalized
             }
         )
         
@@ -88,3 +85,5 @@ extension CategoriesListViewController {
         tableView.reloadData()
     }
 }
+
+extension CategoriesListViewController: AppNotifiable {}
