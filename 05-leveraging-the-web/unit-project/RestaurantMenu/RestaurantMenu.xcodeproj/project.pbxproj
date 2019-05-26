@@ -197,8 +197,8 @@
 		F3C4BCC122932C6500F9B202 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F31624542294ECE70059E49C /* LaunchScreen.storyboard */,
 				F31624552294ECE70059E49C /* Main.storyboard */,
+				F31624542294ECE70059E49C /* LaunchScreen.storyboard */,
 				F3C4BCC622932CCE00F9B202 /* Pending Order */,
 				F3C4BCC522932CC400F9B202 /* Menu */,
 			);
